@@ -1,6 +1,7 @@
 import { Header } from '#viewsback/partials/header'
 import { Footer } from '#viewsback/partials/footer'
 import { Vite } from '#resources/helpers/asset'
+import { Nav } from '#viewsback/partials/nav'
 
 interface AdminProps {
   title?: string
@@ -23,13 +24,13 @@ export function Admin(props: AdminProps) {
           />
         </head>
         <body>
-          <div>
-            <Header />
-            <main>
-              <h1>{title}</h1>
+          <Header />
+          <Nav />
+          <div id="main-container">
+            <div id="main-content">
               {children}
-            </main>
-            <Footer />
+              <Footer />
+            </div>
           </div>
         </body>
       </html>
