@@ -1,5 +1,6 @@
 import type { Children } from '@kitajs/html'
 import { route } from '#start/view'
+import { Vite } from '#resources/helpers/asset'
 
 interface AppProps {
   children: Children
@@ -15,7 +16,12 @@ export function OldApp(props: AppProps) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
         />
-        <link rel={'stylesheet'} href={'/assets/css/oldapp.css'} />
+        <Vite.Entrypoint
+          entrypoints={[
+            'resources/assets/example/css/app.css',
+            'resources/assets/example/js/app.js',
+          ]}
+        />
       </head>
       <body>
         <main class="container">
