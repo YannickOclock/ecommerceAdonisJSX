@@ -1,31 +1,50 @@
 import { route } from '#start/view'
 import { HttpContext } from '@adonisjs/core/http'
-import clsx from 'clsx'
+import { Link } from '#viewsback/components/nav/link'
+import { TitleLink } from '#viewsback/components/nav/title_link'
+import { SubMenu } from '#viewsback/components/nav/submenu'
 
 export function Nav() {
   const { request } = HttpContext.getOrFail()
 
-  const links = [
-    {
-      title: 'Tableau de bord',
-      icon: 'trending_up',
-      url: route('admin.dashboard'),
-      active: request.matchesRoute('admin.dashboard'),
-    },
-  ]
+  const dashboardLink = {
+    title: 'Tableau de bord',
+    icon: 'trending_up',
+    url: route('admin.dashboard'),
+    active: request.matchesRoute('admin.dashboard'),
+  }
+  const catalogLink = {
+    title: 'Catalogue',
+    icon: 'store',
+    url: '#',
+    active: false,
+  }
+  const productsLink = {
+    title: 'Produits',
+    url: '#',
+    active: false,
+    level: 2,
+  }
+  const categoriesLink = {
+    title: 'Catégories',
+    url: '#',
+    active: false,
+    level: 2,
+  }
 
   return (
     <nav id="navbar">
       <ul>
-        <li class={clsx('link-levelone', links[0].active ? 'link-active' : '')}>
-          <a href={links[0].url}>
-            <i class={`material-icons mi-${links[0].icon}`}>{links[0].icon}</i>
-            {links[0].title}
-          </a>
-        </li>
-        <li class="category-title">
-          <span class="title">Vendre</span>
-        </li>
+        <Link {...dashboardLink} />
+        <TitleLink title="Vendre" />
+        <Link {...catalogLink}>
+          <SubMenu>
+            <>
+              <Link {...productsLink} />
+              <Link {...categoriesLink} />
+            </>
+          </SubMenu>
+        </Link>
       </ul>
     </nav>
   )
