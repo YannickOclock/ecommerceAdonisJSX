@@ -1,4 +1,5 @@
 //import { HttpContext } from "@adonisjs/core/http";
+import { route } from '#start/view'
 
 export async function Header() {
   //const { auth } = HttpContext.getOrFail()
@@ -7,12 +8,12 @@ export async function Header() {
   return (
     <header id="header">
       <nav id="header_infos">
-        <a href="#" id="header_logo"></a>
+        <a href={route('admin.dashboard')} id="header_logo"></a>
         <span id="shop-version">0.0.1</span>
         <div id="quick-access">Menu rapide</div>
         <div id="header-search">Recherche</div>
         <div id="header-right">
-          <a id="show-boutique" href="#">
+          <a id="show-boutique" href={route('front.home')}>
             <i class="material-icons">visibility</i>
             Voir la boutique
           </a>

@@ -17,6 +17,7 @@
     "#app/*": "./app/*.js",
     "#blog/*": "./app/blog/*.js",
     "#admin/*": "./app/admin/*.js",
+    "#front/*": "./app/front/*.js",
     "#dashboard/*": "./app/dashboard/*.js",
     "#core/*": "./app/core/*.js",
     "#mails/*": "./app/mails/*.js",

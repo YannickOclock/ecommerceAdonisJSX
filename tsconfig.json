@@ -13,6 +13,7 @@
       "#app/*": ["./app/*.js"],
       "#blog/*": ["./app/blog/*.js"],
       "#admin/*": ["./app/admin/*.js"],
+      "#front/*": ["./app/front/*.js"],
       "#core/*": ["./app/core/*.js"],
       "#mails/*": ["./app/mails/*.js"],
       "#services/*": ["./app/services/*.js"],
