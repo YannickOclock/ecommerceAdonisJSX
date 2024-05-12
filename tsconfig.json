@@ -28,6 +28,8 @@
       "#types/*": ["./types/*.js"],
       "#resources/*": ["./resources/*.js"],
       "#views/*": ["./resources/views/*.js"],
+      "#viewsback/*": ["./resources/views/back/*.js"],
+      "#viewsfront/*": ["./resources/views/front/*.js"],
     },
   },
 }
