@@ -1,4 +1,5 @@
 import { Vite } from '#resources/helpers/asset'
+import { route } from '#start/view'
 
 interface ProductProps {
   id: string
@@ -11,19 +12,21 @@ export function ProductSample(props: ProductProps) {
   const { id, name, price, images } = props
   // Il faut placer les images dans le dossier public/images/products/
   // directement (sans utiliser le fichier hot.json)
-  const publicPath = `images/products/`
+  const publicPath = `/images/products/`
 
   return (
     <div class="product" data-id={id}>
       <div class="thumbnail">
-        <img src={`${publicPath}${images[0]}`} alt="Produit populaire 1" />
+        <img src={`${publicPath}${images[0]}`} alt={`Image principale du produit ${name}`} />
         <div class="hightlighted--info">
           <a
-            href="/step1"
+            href={route('front.step1', { id: id })}
             class="quick-view"
             up-layer="new"
             up-mode="modal"
-            up-on-dismissed="up.reload('#cart')"
+            up-size="large"
+            up-accept-event="cart:reload"
+            up-on-accepted="up.reload('#cart')"
           >
             <i class="material-icons">search</i>
             Aperçu rapide

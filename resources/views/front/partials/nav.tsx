@@ -17,7 +17,7 @@ export function Nav() {
               <i class="material-icons">admin_panel_settings</i>
               <span>Administration</span>
             </a>
-            <div id="cart" up-source="/cart" load-fragment></div>
+            <div id="cart" up-source={route('front.cart')} load-fragment></div>
           </nav>
         </div>
       </div>

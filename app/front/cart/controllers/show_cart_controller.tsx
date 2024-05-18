@@ -8,13 +8,7 @@ export default class ShowHomeController {
   constructor() {}
 
   async render({}: HttpContext) {
-    const nbProducts = cart.nbProducts
+    const nbProducts = cart.getTotalQuantity()
     return <Cart nbProducts={nbProducts} />
-  }
-
-  async add({}: HttpContext) {
-    cart.nbProducts++
-    console.log(`Add product to cart ${cart.nbProducts}`)
-    return cart.nbProducts
   }
 }

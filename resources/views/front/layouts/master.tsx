@@ -25,7 +25,7 @@ export function Master(props: MasterProps) {
             ]}
           />
         </head>
-        <body up-main>
+        <body id="master-body" up-main>
           {/*<Header />*/}
           {children}
         </body>
