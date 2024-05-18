@@ -24,7 +24,7 @@ export function ProductSample(props: ProductProps) {
             class="quick-view"
             up-layer="new"
             up-mode="modal"
-            up-size="large"
+            up-size="grow"
             up-accept-event="cart:reload"
             up-on-accepted="up.reload('#cart')"
           >

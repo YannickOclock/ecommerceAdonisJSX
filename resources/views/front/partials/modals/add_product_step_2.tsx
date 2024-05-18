@@ -41,7 +41,8 @@ export function AddProductStep2(props: AddProductStep2Props) {
                 </div>
                 <div class="modal-info-cart">
                   <p class="cart-products-count">
-                    Il y a <span class="quantity"></span> dans votre panier.
+                    Il y a <span class="quantity">{cart.getTotalQuantity()}</span> produit(s) dans
+                    panier.
                   </p>
                   <div class="line-cart subtotal">
                     <p>
