@@ -17,13 +17,7 @@ export function Nav() {
               <i class="material-icons">admin_panel_settings</i>
               <span>Administration</span>
             </a>
-            <a href="#" class="btn-cart" id="btn-cart">
-              <i class="material-icons">shopping_cart</i>
-              <span>Panier</span>
-              <span class="quantity">
-                (<span>0</span>)
-              </span>
-            </a>
+            <div id="cart" up-source="/cart" load-fragment></div>
           </nav>
         </div>
       </div>

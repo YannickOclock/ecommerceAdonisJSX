@@ -1,4 +1,3 @@
-import { Header } from '#viewsfront/partials/header'
 import { Footer } from '#viewsfront/partials/footer'
 import { Vite } from '#resources/helpers/asset'
 import { Nav } from '#viewsfront/partials/nav'
@@ -20,7 +19,10 @@ export function Base(props: BaseProps) {
           <meta name={'viewport'} content={'width=device-width, initial-scale=1.0'} />
           <title>{title}</title>
           <Vite.Entrypoint
-            entrypoints={['resources/assets/front/css/app.css', 'resources/assets/front/js/app.js']}
+            entrypoints={[
+              'resources/assets/front/css/app.css',
+              'resources/assets/front/js/app.tsx',
+            ]}
           />
         </head>
         <body>
