@@ -2,12 +2,12 @@ import { Footer } from '#viewsfront/partials/footer'
 import { Vite } from '#resources/helpers/asset'
 import { Nav } from '#viewsfront/partials/nav'
 
-interface BaseProps {
+interface MasterProps {
   title?: string
   children: JSX.Element
 }
 
-export function Base(props: BaseProps) {
+export function Master(props: MasterProps) {
   const { title = `Boutique`, children } = props
 
   return (
@@ -25,11 +25,9 @@ export function Base(props: BaseProps) {
             ]}
           />
         </head>
-        <body>
+        <body up-main>
           {/*<Header />*/}
-          <Nav />
-          <main up-main>{children}</main>
-          <Footer />
+          {children}
         </body>
       </html>
     </>

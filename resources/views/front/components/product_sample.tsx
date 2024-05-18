@@ -18,7 +18,13 @@ export function ProductSample(props: ProductProps) {
       <div class="thumbnail">
         <img src={`${publicPath}${images[0]}`} alt="Produit populaire 1" />
         <div class="hightlighted--info">
-          <a href="#" class="quick-view">
+          <a
+            href="/step1"
+            class="quick-view"
+            up-layer="new"
+            up-mode="modal"
+            up-on-dismissed="up.reload('#cart')"
+          >
             <i class="material-icons">search</i>
             Aperçu rapide
           </a>

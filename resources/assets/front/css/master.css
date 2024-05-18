@@ -1,0 +1,41 @@
+#master h1 {
+  font-size: 1.5rem;
+  color: #c45e5e;
+  margin-block: 1rem;
+}
+
+#master p {
+  font-size: 1rem;
+  color: #333;
+  margin-block: 2rem;
+}
+
+#master a {
+  background-color: #c45e5e;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+
+#master form {
+  display: flex;
+  flex-direction: column;
+  margin-block: 2rem;
+}
+
+#master input {
+  padding: 0.5rem;
+  margin-block: 0.5rem;
+}
+
+#master button {
+  background-color: #c45e5e;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  margin-block: 0.5rem;
+}

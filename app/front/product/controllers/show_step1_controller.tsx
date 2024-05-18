@@ -1,20 +1,19 @@
-import { Cart } from '#viewsfront/partials/cart'
+import { AddProductStep1 } from '#viewsfront/partials/modals/add_product_step_1'
 import { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
 import { cart } from '#front/cart_state'
 
 @inject()
-export default class ShowHomeController {
+export default class ShowStep1Controller {
   constructor() {}
 
   async render({}: HttpContext) {
-    const nbProducts = cart.nbProducts
-    return <Cart nbProducts={nbProducts} />
+    return <AddProductStep1 />
   }
 
-  async add({}: HttpContext) {
+  async add({ response }: HttpContext) {
     cart.nbProducts++
     console.log(`Add product to cart ${cart.nbProducts}`)
-    return cart.nbProducts
+    response.redirect().toRoute('front.step2')
   }
 }
