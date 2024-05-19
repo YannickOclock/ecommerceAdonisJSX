@@ -6,6 +6,12 @@ function Image(props: { src: string; alt?: string; class?: string }) {
   return Html.createElement('img', { src: url, alt: props.alt, class: props.class })
 }
 
+function Script(props: { src: string; type?: string }) {
+  const url = vite.assetPath(props.src)
+
+  return Html.createElement('script', { src: url, type: props.type })
+}
+
 function Entrypoint(props: { entrypoints: string[] }) {
   const assets = vite.generateEntryPointsTags(props.entrypoints)
 
@@ -27,4 +33,5 @@ function Entrypoint(props: { entrypoints: string[] }) {
 export const Vite = {
   Entrypoint,
   Image,
+  Script,
 }

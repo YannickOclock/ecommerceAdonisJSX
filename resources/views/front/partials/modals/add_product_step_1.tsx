@@ -2,6 +2,8 @@ import { CartProductRepositoryResult } from '#app/front/product/repositories/car
 import { csrfField } from '#resources/helpers/csrf_field'
 import { route } from '#start/view'
 import { Master } from '#viewsfront/layouts/master'
+import { Vite } from '#resources/helpers/asset'
+import { randomUUID } from 'node:crypto'
 
 interface AddProductStep1Props {
   product: CartProductRepositoryResult
@@ -10,9 +12,14 @@ interface AddProductStep1Props {
 export function AddProductStep1(props: AddProductStep1Props) {
   const { product } = props
   const publicPath = `/images/products/`
+  const random = randomUUID()
   return (
     <Master>
       <div id="master">
+        <Vite.Script
+          type="module"
+          src={`resources/assets/front/js/components/input_number.ts?random=${random}`}
+        />
         <div class="modal-container">
           <div class="modal">
             <header class="modal-header">
@@ -52,7 +59,12 @@ export function AddProductStep1(props: AddProductStep1Props) {
                     <p></p>
                   </div>
                   <div class="product-actions">
-                    <form action={route('front.step1.add')} method="post" up-submit>
+                    <form
+                      id="cartModalForm"
+                      action={route('front.step1.add')}
+                      method="post"
+                      up-submit
+                    >
                       {csrfField()}
                       <input type="hidden" name="product_id" value={product.id} />
                       <div class="add-to-cart">
