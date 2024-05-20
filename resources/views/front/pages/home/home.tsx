@@ -14,16 +14,18 @@ export function Home(props: HomeProps) {
     <Base title={`Page d'accueil`}>
       <>
         <Slider />
-        <section class="products">
-          <h2>Produits populaires</h2>
-          <div class="thumbnails">
-            {products.map((product) => {
-              const { id, name, price } = product
-              const images = product.productImages.map((image) => image.path)
-              return <ProductSample id={id} name={name} price={price} images={images} />
-            })}
-          </div>
-        </section>
+        <div class="container">
+          <section class="products">
+            <h2>Produits populaires</h2>
+            <div class="thumbnails">
+              {products.map((product) => {
+                const { id, name, price } = product
+                const images = product.productImages.map((image) => image.path)
+                return <ProductSample id={id} name={name} price={price} images={images} />
+              })}
+            </div>
+          </section>
+        </div>
       </>
     </Base>
   )

@@ -161,7 +161,11 @@ main {
   min-height: 500px;
   display: block;
   margin: auto;
+}
+
+.container {
   max-width: 1140px;
+  margin: auto;
 }
 
 .carousel-container {
