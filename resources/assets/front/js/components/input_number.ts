@@ -1,43 +1,41 @@
 // Gérer les champs numériques (utilisé dans les modales produits)
 
 export class InputNumber {
-  inputValue: number
+  constructor(private inputValue = 1) {}
 
-  constructor(inputValue = 1) {
-    this.inputValue = inputValue
-  }
-
-  add() {
+  add(): void {
     if (this.inputValue >= 0) {
       this.inputValue++
     }
   }
 
-  substract() {
+  substract(): void {
     if (this.inputValue > 1) {
       this.inputValue--
     }
   }
 
-  handleAddClick(e) {
+  handleAddClick(e: SubmitEvent): void {
     e.preventDefault()
     this.add()
-    const inputGroup = e.currentTarget.closest('.input-group')
+    const formElement = e.currentTarget as HTMLFormElement
+    const inputGroup = formElement.closest('.input-group')
     const inputNumber = inputGroup.querySelector('input')
-    inputNumber.value = this.inputValue
+    inputNumber.value = this.inputValue.toString()
   }
 
-  handleSubstractClick(e) {
+  handleSubstractClick(e: SubmitEvent): void {
     e.preventDefault()
     this.substract()
-    const inputGroup = e.currentTarget.closest('.input-group')
+    const formElement = e.currentTarget as HTMLFormElement
+    const inputGroup = formElement.closest('.input-group')
     const inputNumber = inputGroup.querySelector('input')
-    inputNumber.value = this.inputValue
+    inputNumber.value = this.inputValue.toString()
   }
 
-  initTouchButtons(formElement) {
-    const touchUpButton = formElement.querySelector('.touch-up')
-    const touchDownButton = formElement.querySelector('.touch-down')
+  initTouchButtons(document: Document): void {
+    const touchUpButton = document.querySelector('.touch-up')
+    const touchDownButton = document.querySelector('.touch-down')
     if (touchUpButton !== null && touchDownButton !== null) {
       touchUpButton.addEventListener('click', this.handleAddClick.bind(this))
       touchDownButton.addEventListener('click', this.handleSubstractClick.bind(this))
