@@ -17,7 +17,7 @@ export function Link(props: LinkProps) {
 
   return (
     <li class={clsx(classes, active ? 'link-active' : '')}>
-      <a href={url}>
+      <a href={url} class={clsx(active ? 'link-active' : '')}>
         {iconElement}
         {title}
       </a>
