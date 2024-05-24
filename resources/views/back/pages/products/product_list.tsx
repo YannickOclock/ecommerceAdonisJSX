@@ -1,6 +1,17 @@
+import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
+import { route } from '#start/view'
 import { Admin } from '#viewsback/layouts/admin'
 
-export function ProductList() {
+interface ProductListProps {
+  products: AdminProductListQueryResult
+}
+
+export function ProductList(props: ProductListProps) {
+  // Il faut placer les images dans le dossier public/images/products/
+  // directement (sans utiliser le fichier hot.json)
+  const publicPath = `/images/products/`
+
+  const { products } = props
   return (
     <Admin
       title={'Administration - Liste des produits'}
@@ -37,46 +48,54 @@ export function ProductList() {
             </tr>
           </thead>
           <tbody>
-            <tr data-id="1">
-              <td>
-                <div class="checkbox-js">
-                  <div class="bulk"></div>
-                </div>
-              </td>
-              <td>1</td>
-              <td>image</td>
-              <td>Produit 1</td>
-              <td>produit-1</td>
-              <td>10,00 €</td>
-              <td>10</td>
-              <td>
-                <div class="form-check form-switch">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="switch1"
-                    disabled
+            {products.map((product) => (
+              <tr data-id="1">
+                <td>
+                  <div class="checkbox-js">
+                    <div class="bulk"></div>
+                  </div>
+                </td>
+                <td>{product.id}</td>
+                <td>
+                  <img
+                    src={`${publicPath}${product.productImages[0]?.path}`}
+                    alt={`Image principale du produit ${product.name}`}
                   />
-                  <label class="form-check-label" for="switch1"></label>
-                </div>
-              </td>
-              <td>Catégorie 1</td>
-              <td class="td-flex">
-                <a href="#" class="btn">
-                  <i class="material-icons">edit</i>
-                </a>
-                <a href="" class="btn btn-dropdown">
-                  <i class="material-icons">more_vert</i>
-                </a>
-                <div class="dropdown">
-                  <a href="#" class="btn btn-delete">
-                    <i class="material-icons">delete</i>
-                    Supprimer
+                </td>
+                <td>{product.name}</td>
+                <td>-</td>
+                <td>{product.price},00 €</td>
+                <td>{product.stock}</td>
+                <td>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      checked={product.published ? true : false}
+                      id="switch1"
+                      disabled
+                    />
+                    <label class="form-check-label" for="switch1"></label>
+                  </div>
+                </td>
+                <td>-</td>
+                <td class="td-flex">
+                  <a href={route('admin.product.edit', { id: product.id })} class="btn">
+                    <i class="material-icons">edit</i>
                   </a>
-                </div>
-              </td>
-            </tr>
+                  <a href="" class="btn btn-dropdown">
+                    <i class="material-icons">more_vert</i>
+                  </a>
+                  <div class="dropdown">
+                    <a href="#" class="btn btn-delete">
+                      <i class="material-icons">delete</i>
+                      Supprimer
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </>

@@ -364,7 +364,6 @@ form > div label.required::before {
 }
 
 form > div input.form-control {
-  flex-basis: 0;
   flex-grow: 1;
   height: 1.5rem;
   line-height: 1.5;
@@ -374,12 +373,17 @@ form > div input.form-control {
 }
 
 form > div textarea.form-control {
+  box-sizing: border-box;
   line-height: 1.5;
   background-color: var(--edition-white);
   border: 1px solid #bbcdd2;
   padding: 0.5rem 1rem;
   min-height: 8rem;
   width: 100%;
+}
+
+form > div .form-control.is-invalid {
+  border-color: var(--edition-destructive-500);
 }
 
 /* checkbox js */
@@ -511,6 +515,19 @@ form > div textarea.form-control {
 }
 .alert-warning::before {
   content: "warning";
+}
+
+/* ALERT DANGER */
+
+.alert-danger {
+  color: var(--edition-destructive-900);
+  background-color: var(--edition-destructive-50);
+}
+.alert-danger .btn-close {
+  color: var(--edition-destructive-900);
+}
+.alert-danger::before {
+  content: "error";
 }
 
 /* badges */

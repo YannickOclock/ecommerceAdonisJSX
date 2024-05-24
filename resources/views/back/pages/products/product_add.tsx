@@ -1,5 +1,6 @@
-import { route } from '#start/view'
+import { csrfField } from '#resources/helpers/csrf_field'
 import { Admin } from '#viewsback/layouts/admin'
+import { FormField } from '../../components/form/form_field.tsx'
 
 export function ProductAdd() {
   return (
@@ -9,43 +10,19 @@ export function ProductAdd() {
       header="Ajouter un produit"
       bodyTitle="Ajouter un produit"
     >
-      <form method="post">
-        <div class="form-group">
-          <label for="name" class="required">
-            Entrez le nom du produit
-          </label>
-          <input type="text" id="name" name="name" class="form-control my-2" required />
-        </div>
-        <div class="form-group">
-          <label for="description" class="required">
-            Entrez la description
-          </label>
-          <textarea id="description" name="description" class="form-control my-2" required />
-        </div>
-        <div class="form-group">
-          <label for="category" class="required">
-            Catégorie
-          </label>
-          <input type="text" id="category" name="category" class="form-control my-2" required />
-        </div>
-        <div class="form-group">
-          <label for="price" class="required">
-            Entrez le prix
-          </label>
-          <input type="number" id="price" name="price" class="form-control my-2" required />
-        </div>
-        <div class="form-group">
-          <label for="quantity">Entrez le stock disponible</label>
-          <input type="number" id="quantity" name="quantity" class="form-control my-2" />
-        </div>
-        <div class="form-group">
-          <label for="published">Est en ligne ?</label>
-          <input type="checkbox" id="published" name="published" value="1" checked />
-        </div>
+      <form method="post" enctype="multipart/form-data">
+        <FormField name="name" label="Nom du produit" required />
+        <FormField name="description" label="Description" required inputTagName="textarea" />
+        <FormField name="category" label="Catégorie" required />
+        <FormField name="price" label="Entrez le prix" required inputType="number" />
+        <FormField name="quantity" label="Entrez le stock disponible" required inputType="number" />
+        <FormField name="published" label="Est en ligne ?" inputType="checkbox" value="1" />
+
         <div class="form-group">
           <label for="images">Images du produit</label>
-          <input type="file" id="images" name="images" multiple class="form-control my-2" />
+          <input type="file" id="images" name="images[]" multiple class="form-control my-2" />
         </div>
+        {csrfField()}
         <button type="submit" class="btn btn-primary my-2">
           Ajouter
         </button>
