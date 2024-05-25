@@ -6,9 +6,11 @@ export type HomeProductListQueryResult = ResultOf<HomeProductRepository, 'home'>
 export class HomeProductRepository {
   async home() {
     return await Product.query()
-      .preload('productImages')
       .where('published', true)
       .orderBy('created_at', 'desc')
-      .limit(5)
+      .preload('productImages', (query) => {
+        query.orderBy('created_at', 'asc')
+      })
+      .limit(10)
   }
 }

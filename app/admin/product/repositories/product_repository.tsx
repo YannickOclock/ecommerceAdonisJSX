@@ -25,11 +25,21 @@ export type AdminProductEditQueryResult = ResultOf<ProductRepository, 'find'>
 
 export class ProductRepository {
   async all() {
-    return await Product.query().orderBy('created_at', 'desc').preload('productImages').limit(5)
+    return await Product.query()
+      .orderBy('created_at', 'desc')
+      .preload('productImages', (query) => {
+        query.orderBy('created_at', 'asc')
+      })
+      .limit(5)
   }
 
   async find(id: string) {
-    return await Product.query().where('id', '=', id).firstOrFail()
+    return await Product.query()
+      .where('id', '=', id)
+      .preload('productImages', (query) => {
+        query.orderBy('created_at', 'asc')
+      })
+      .firstOrFail()
   }
 
   wideProductFromPayload(payload: StoreProductDTO | UpdateProductDTO, product: Product) {

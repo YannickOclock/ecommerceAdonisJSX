@@ -1,7 +1,10 @@
 TODO
 
 - centraliser la fonction du prix [OK]
-- centraliser le path des images produit
+- centraliser le path des images produit [OK]
+- gérer le multi images dans l'admin [OK]
+- gérer le multi images dans la modale front [OK]
+
 - gérer l'affichage des messages flash
-- gérer le multi images dans l'admin
-- gérer le multi images dans la modale front
+- gérer la suppression d'une image dans d'édition de produits
+- gérer le changement d'images dans la modale front

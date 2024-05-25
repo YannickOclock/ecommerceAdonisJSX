@@ -5,6 +5,11 @@ export type CartProductRepositoryResult = ResultOf<CartProductRepository, 'findO
 
 export class CartProductRepository {
   async findOneById(id: string) {
-    return await Product.query().preload('productImages').where('id', id).firstOrFail()
+    return await Product.query()
+      .preload('productImages', (query) => {
+        query.orderBy('created_at', 'asc')
+      })
+      .where('id', id)
+      .firstOrFail()
   }
 }

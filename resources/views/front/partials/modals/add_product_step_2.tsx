@@ -32,7 +32,7 @@ export function AddProductStep2(props: AddProductStep2Props) {
                   </div>
                   <div class="info-product">
                     <h6>{product.name}</h6>
-                    <p class="product-price">{product.price},00 €</p>
+                    <p class="product-price">{convertPrice(product.price)}</p>
                     <p class="product-quantity">
                       Quantité :{' '}
                       <strong class="quantity">{cart.getTotalQuantityOfProduct(product.id)}</strong>

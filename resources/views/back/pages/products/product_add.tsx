@@ -6,7 +6,7 @@ export function ProductAdd() {
   return (
     <Admin
       title={'Administration - Ajouter un produit'}
-      breadcrumb="Produits &gt; Nouveau produit"
+      breadcrumb="Catalogue &gt; Produits &gt; Nouveau produit"
       header="Ajouter un produit"
       bodyTitle="Ajouter un produit"
     >

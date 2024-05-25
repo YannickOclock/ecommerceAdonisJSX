@@ -11,10 +11,16 @@ interface ProductProps {
 export function ProductSample(props: ProductProps) {
   const { id, name, price, images } = props
 
+  let image = images[0]
+  if (images[0] === undefined) {
+    image = images[1]
+  }
+  console.log(image)
+
   return (
     <div class="product" data-id={id}>
       <div class="thumbnail">
-        <img src={productImagesMinSrc(images[0])} alt={`Image principale du produit ${name}`} />
+        <img src={productImagesMinSrc(image)} alt={`Image principale du produit ${name}`} />
         <div class="hightlighted--info">
           <a
             href={route('front.step1', { id: id })}

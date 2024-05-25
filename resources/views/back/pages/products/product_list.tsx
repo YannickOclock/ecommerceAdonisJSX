@@ -1,7 +1,9 @@
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
+import { Vite } from '#resources/helpers/asset'
 import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 import { route } from '#start/view'
 import { Admin } from '#viewsback/layouts/admin'
+import { randomUUID } from 'node:crypto'
 
 interface ProductListProps {
   products: AdminProductListQueryResult
@@ -9,14 +11,19 @@ interface ProductListProps {
 
 export function ProductList(props: ProductListProps) {
   const { products } = props
+  const random = randomUUID()
   return (
     <Admin
       title={'Administration - Liste des produits'}
-      breadcrumb="Produits"
+      breadcrumb="Catalogue &gt; Produits"
       header="Liste des produits"
       bodyTitle="Liste des produits"
     >
       <>
+        <Vite.Script
+          type="module"
+          src={`resources/assets/back/js/components/check_to_switch_btn.ts?random=${random}`}
+        />
         <div class="relative">
           <button class="btn btn-bulk-action">
             Actions groupées
