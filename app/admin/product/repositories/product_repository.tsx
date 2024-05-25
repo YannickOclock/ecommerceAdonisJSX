@@ -26,7 +26,7 @@ export type AdminProductEditQueryResult = ResultOf<ProductRepository, 'find'>
 export class ProductRepository {
   async all() {
     return await Product.query()
-      .orderBy('created_at', 'desc')
+      .orderBy('name', 'desc')
       .preload('productImages', (query) => {
         query.orderBy('created_at', 'asc')
       })
@@ -63,5 +63,12 @@ export class ProductRepository {
     const product = await this.find(payload.id)
     this.wideProductFromPayload(payload, product)
     await product.save()
+  }
+
+  async switch(productId: string): Promise<boolean> {
+    const product = await this.find(productId)
+    product.published = !product.published
+    await product.save()
+    return product.published
   }
 }

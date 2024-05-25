@@ -564,6 +564,9 @@ form > div .form-control.is-invalid {
   gap: 0.2rem;
   align-items: center;
 }
+a.ps-switch {
+  display: block;
+}
 .ps-switch {
   box-sizing: border-box;
   width: 30px;

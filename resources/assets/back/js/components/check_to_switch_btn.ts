@@ -16,7 +16,6 @@ const checkboxToSwitchBtn = {
         if (inputEl) {
           // lancer l'action d'update en backend (s'il est défini dans l'élément html)
           console.log(inputEl.dataset.href)
-          //if (inputEl.dataset.href !== undefined) updateComponent.updateBackendAction(inputEl)
           // on met enfin à jour la vrai checkbox
           inputEl.checked = !inputEl.checked
         }
@@ -25,9 +24,19 @@ const checkboxToSwitchBtn = {
   },
 
   // -- construction des switch (plus fun)
-  createPsSwitchEl: function (btnState = false, btnEnabled = true): HTMLDivElement {
-    const psSwitchEl = document.createElement('div')
+  createPsSwitchEl: function (
+    btnState: boolean = false,
+    inputDataHref: string | undefined = undefined,
+    btnEnabled: boolean = true
+  ): HTMLAnchorElement {
+    const psSwitchEl = document.createElement('a')
     psSwitchEl.classList.add('ps-switch')
+
+    if (inputDataHref) {
+      psSwitchEl.href = inputDataHref
+      psSwitchEl.setAttribute('up-follow', '')
+      psSwitchEl.setAttribute('up-target', '#main')
+    }
 
     // Son état doit être par défaut activé/désactivé ?
     if (btnState) psSwitchEl.classList.add(checkboxToSwitchBtn.onClass)
@@ -56,7 +65,7 @@ const checkboxToSwitchBtn = {
       if (inputFormEl) {
         inputFormEl.classList.add('parent-switch')
         // création de bouton activé, en écriture (2ème paramètre)
-        inputFormEl.append(checkboxToSwitchBtn.createPsSwitchEl(inputEl.checked, true))
+        inputFormEl.append(checkboxToSwitchBtn.createPsSwitchEl(inputEl.checked, undefined, true))
       }
     }
   },
@@ -70,11 +79,14 @@ const checkboxToSwitchBtn = {
 
     for (const inputEl of [...Array.from(inputEls)]) {
       inputEl.style.display = 'none'
+      const inputDataHref = inputEl.dataset.href
       const tdEl = inputEl.closest('td')
       if (tdEl) {
         tdEl.classList.add('parent-switch')
         // création de bouton  activés, en écriture (2ème paramètre)
-        tdEl.append(checkboxToSwitchBtn.createPsSwitchEl(inputEl.checked, true))
+        tdEl.append(
+          checkboxToSwitchBtn.createPsSwitchEl(inputEl.checked, inputDataHref ?? undefined, true)
+        )
       }
     }
   },

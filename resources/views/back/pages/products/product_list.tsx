@@ -77,6 +77,7 @@ export function ProductList(props: ProductListProps) {
                       type="checkbox"
                       role="switch"
                       checked={product.published ? true : false}
+                      data-href={route('admin.product.switch', { id: product.id })}
                       id="switch1"
                       disabled
                     />
