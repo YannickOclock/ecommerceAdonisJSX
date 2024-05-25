@@ -4,6 +4,7 @@ import { route } from '#start/view'
 import { Master } from '#viewsfront/layouts/master'
 import { Vite } from '#resources/helpers/asset'
 import { randomUUID } from 'node:crypto'
+import { convertPrice } from '#resources/helpers/utils'
 
 interface AddProductStep1Props {
   product: CartProductRepositoryResult
@@ -51,7 +52,7 @@ export function AddProductStep1(props: AddProductStep1Props) {
                   <h1>{product.name}</h1>
                   <div class="prices">
                     <div class="current-price">
-                      <span class="current-price-value">{product.price},00 €</span>
+                      <span class="current-price-value">{convertPrice(product.price)}</span>
                     </div>
                     <div class="tax-shipping">TTC</div>
                   </div>

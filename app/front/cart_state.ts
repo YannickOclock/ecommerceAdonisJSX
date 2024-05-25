@@ -8,7 +8,7 @@ interface Product {
 export interface Cart {
   products: Product[]
   getTotalQuantity(): number
-  getTotal(): Promise<number>
+  getTotal(): number
   getTotalQuantityOfProduct(productId: string): number
   getProduct(productId: string): Product | undefined
   addProduct(productId: string, name: string, price: number, quantity: number): void
@@ -27,7 +27,7 @@ export const cart: Cart = {
     return totalQuantity
   },
 
-  getTotal: async function () {
+  getTotal: function () {
     let subTotal = 0
     for (const product of this.products) {
       const price = product.price

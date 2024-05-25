@@ -9,7 +9,7 @@ export default class extends BaseSchema {
 
       table.string('name').notNullable()
       table.text('description').nullable()
-      table.integer('price').unsigned().defaultTo('0')
+      table.float('price').unsigned().defaultTo('0')
       table.integer('stock').defaultTo('0')
       table.boolean('published').defaultTo('1')
 

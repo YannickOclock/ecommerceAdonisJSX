@@ -1,4 +1,4 @@
-import { Vite } from '#resources/helpers/asset'
+import { convertPrice } from '#resources/helpers/utils'
 import { route } from '#start/view'
 
 interface ProductProps {
@@ -44,7 +44,7 @@ export function ProductSample(props: ProductProps) {
           <a href="#">{name}</a>
         </h3>
         <div class="product--price">
-          <span class="price">{price}&nbsp;€</span>
+          <span class="price">{convertPrice(price)}</span>
         </div>
       </div>
     </div>

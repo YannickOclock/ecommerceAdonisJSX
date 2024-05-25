@@ -1,5 +1,6 @@
 import { Cart } from '#app/front/cart_state'
 import { CartProductRepositoryResult } from '#app/front/product/repositories/cart_product_repository'
+import { convertPrice } from '#resources/helpers/utils'
 import { Master } from '#viewsfront/layouts/master'
 
 interface AddProductStep2Props {
@@ -49,7 +50,7 @@ export function AddProductStep2(props: AddProductStep2Props) {
                       <strong>Sous-total</strong>
                     </p>
                     <p>
-                      <strong class="value">{cart.getTotal()},00 €</strong>
+                      <strong class="value">{convertPrice(cart.getTotal())}</strong>
                     </p>
                   </div>
                   <div class="line-cart">
@@ -63,7 +64,7 @@ export function AddProductStep2(props: AddProductStep2Props) {
                       <strong>Total (TTC)</strong>
                     </p>
                     <p>
-                      <strong class="value">{cart.getTotal()},00 €</strong>
+                      <strong class="value">{convertPrice(cart.getTotal())}</strong>
                     </p>
                   </div>
                   <a class="btn cancel btn-space" up-emit="cart:reload">

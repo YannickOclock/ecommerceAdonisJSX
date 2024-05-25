@@ -32,6 +32,21 @@ export function FormInput(props: FormInputProps) {
         required={required}
       />
     )
+  } else if (inputType === 'price') {
+    return (
+      <input
+        type={'number'}
+        id={name}
+        name={name}
+        value={getFlashMessages().get(`${name}`) || value}
+        step="0.01"
+        class={clsx(
+          'form-control my-2',
+          getFlashMessages().has(`inputErrorsBag.${name}`) && 'is-invalid'
+        )}
+        required={required}
+      />
+    )
   } else {
     return (
       <input

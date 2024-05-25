@@ -32,20 +32,7 @@ export class ProductRepository {
     return await Product.query().where('id', '=', id).firstOrFail()
   }
 
-  async create(payload: StoreProductDTO): Promise<string> {
-    const product = new Product()
-    product.name = payload.name
-    product.description = payload.description
-    //product.category = payload.category
-    product.price = payload.price
-    product.stock = payload.quantity
-    if (payload.published) product.published = payload.published
-    await product.save()
-    return product.id
-  }
-
-  async update(payload: UpdateProductDTO) {
-    const product = await this.find(payload.id)
+  wideProductFromPayload(payload: StoreProductDTO | UpdateProductDTO, product: Product) {
     product.name = payload.name
     product.description = payload.description
     //product.category = payload.category
@@ -53,6 +40,18 @@ export class ProductRepository {
     product.stock = payload.quantity
     product.published = false
     if (payload.published) product.published = true
+  }
+
+  async create(payload: StoreProductDTO): Promise<string> {
+    const product = new Product()
+    this.wideProductFromPayload(payload, product)
+    await product.save()
+    return product.id
+  }
+
+  async update(payload: UpdateProductDTO) {
+    const product = await this.find(payload.id)
+    this.wideProductFromPayload(payload, product)
     await product.save()
   }
 }

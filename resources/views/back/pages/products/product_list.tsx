@@ -1,4 +1,5 @@
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
+import { convertPrice } from '#resources/helpers/utils'
 import { route } from '#start/view'
 import { Admin } from '#viewsback/layouts/admin'
 
@@ -64,7 +65,7 @@ export function ProductList(props: ProductListProps) {
                 </td>
                 <td>{product.name}</td>
                 <td>-</td>
-                <td>{product.price},00 €</td>
+                <td>{convertPrice(product.price)}</td>
                 <td>{product.stock}</td>
                 <td>
                   <div class="form-check form-switch">

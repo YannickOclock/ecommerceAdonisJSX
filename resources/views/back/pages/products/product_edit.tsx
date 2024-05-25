@@ -32,7 +32,7 @@ export function ProductEdit(props: ProductEditProps) {
           label="Entrez le prix"
           value={`${product.price}`}
           required
-          inputType="number"
+          inputType="price"
         />
         <FormField
           name="quantity"
