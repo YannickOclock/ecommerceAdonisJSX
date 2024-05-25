@@ -8,10 +8,6 @@ interface ProductListProps {
 }
 
 export function ProductList(props: ProductListProps) {
-  // Il faut placer les images dans le dossier public/images/products/
-  // directement (sans utiliser le fichier hot.json)
-  const publicPath = `/images/products/`
-
   const { products } = props
   return (
     <Admin

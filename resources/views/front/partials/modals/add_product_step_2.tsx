@@ -1,6 +1,6 @@
 import { Cart } from '#app/front/cart_state'
 import { CartProductRepositoryResult } from '#app/front/product/repositories/cart_product_repository'
-import { convertPrice } from '#resources/helpers/utils'
+import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 import { Master } from '#viewsfront/layouts/master'
 
 interface AddProductStep2Props {
@@ -10,7 +10,6 @@ interface AddProductStep2Props {
 
 export function AddProductStep2(props: AddProductStep2Props) {
   const { cart, product } = props
-  const publicPath = `/images/products/`
   return (
     <Master>
       <div id="master">
@@ -27,7 +26,7 @@ export function AddProductStep2(props: AddProductStep2Props) {
                 <div class="modal-cart-product">
                   <div class="picture">
                     <img
-                      src={`${publicPath}${product.productImages[0].path}`}
+                      src={productImagesMinSrc(product.productImages[0].path)}
                       alt={`Image principale du produit ${product.name}`}
                     />
                   </div>
