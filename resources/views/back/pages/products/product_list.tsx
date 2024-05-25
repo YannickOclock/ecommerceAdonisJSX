@@ -1,5 +1,5 @@
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
-import { convertPrice } from '#resources/helpers/utils'
+import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 import { route } from '#start/view'
 import { Admin } from '#viewsback/layouts/admin'
 
@@ -59,7 +59,7 @@ export function ProductList(props: ProductListProps) {
                 <td>{product.id}</td>
                 <td>
                   <img
-                    src={`${publicPath}${product.productImages[0]?.path}`}
+                    src={productImagesMinSrc(product.productImages[0]?.path)}
                     alt={`Image principale du produit ${product.name}`}
                   />
                 </td>

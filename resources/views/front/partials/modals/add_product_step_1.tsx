@@ -4,7 +4,7 @@ import { route } from '#start/view'
 import { Master } from '#viewsfront/layouts/master'
 import { Vite } from '#resources/helpers/asset'
 import { randomUUID } from 'node:crypto'
-import { convertPrice } from '#resources/helpers/utils'
+import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 
 interface AddProductStep1Props {
   product: CartProductRepositoryResult
@@ -12,7 +12,6 @@ interface AddProductStep1Props {
 
 export function AddProductStep1(props: AddProductStep1Props) {
   const { product } = props
-  const publicPath = `/images/products/`
   const random = randomUUID()
   return (
     <Master>
@@ -31,7 +30,7 @@ export function AddProductStep1(props: AddProductStep1Props) {
                 <div class="modal-body-thumbnails">
                   <div class="picture">
                     <img
-                      src={`${publicPath}${product.productImages[0].path}`}
+                      src={productImagesMinSrc(product.productImages[0].path)}
                       alt={`Image principale du produit ${product.name}`}
                     />
                   </div>
@@ -40,7 +39,7 @@ export function AddProductStep1(props: AddProductStep1Props) {
                       <li>
                         <div class="picture">
                           <img
-                            src={`${publicPath}${image.path}`}
+                            src={productImagesMinSrc(image.path)}
                             alt={`Image du produit ${product.name}`}
                           />
                         </div>

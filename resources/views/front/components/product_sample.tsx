@@ -1,4 +1,4 @@
-import { convertPrice } from '#resources/helpers/utils'
+import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 import { route } from '#start/view'
 
 interface ProductProps {
@@ -10,14 +10,11 @@ interface ProductProps {
 
 export function ProductSample(props: ProductProps) {
   const { id, name, price, images } = props
-  // Il faut placer les images dans le dossier public/images/products/
-  // directement (sans utiliser le fichier hot.json)
-  const publicPath = `/images/products/`
 
   return (
     <div class="product" data-id={id}>
       <div class="thumbnail">
-        <img src={`${publicPath}${images[0]}`} alt={`Image principale du produit ${name}`} />
+        <img src={productImagesMinSrc(images[0])} alt={`Image principale du produit ${name}`} />
         <div class="hightlighted--info">
           <a
             href={route('front.step1', { id: id })}
