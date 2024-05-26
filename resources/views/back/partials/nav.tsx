@@ -33,8 +33,8 @@ export function Nav() {
   }
   const categoriesLink = {
     title: 'Catégories',
-    url: '#',
-    active: false,
+    url: route('admin.category.list'),
+    active: request.matchesRoute('admin.category.list'),
     level: 2,
   }
 
