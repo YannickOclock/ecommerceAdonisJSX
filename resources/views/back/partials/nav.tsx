@@ -17,12 +17,18 @@ export function Nav() {
     title: 'Catalogue',
     icon: 'store',
     url: '#',
-    active: request.matchesRoute(['admin.product.list', 'admin.product.add']),
+    active: request.matchesRoute([
+      'admin.product.list',
+      'admin.product.add',
+      'admin.product.edit',
+      'admin.category.list',
+      'admin.category.add',
+    ]),
   }
   const productsLink = {
     title: 'Produits',
     url: route('admin.product.list'),
-    active: request.matchesRoute('admin.product.list'),
+    active: request.matchesRoute(['admin.product.list', 'admin.product.edit']),
     level: 2,
   }
   const productsAddLink = {
@@ -37,6 +43,12 @@ export function Nav() {
     active: request.matchesRoute('admin.category.list'),
     level: 2,
   }
+  const categoriesAddLink = {
+    title: 'Ajouter une catégorie',
+    url: route('admin.category.add'),
+    active: request.matchesRoute('admin.category.add'),
+    level: 2,
+  }
 
   return (
     <nav id="navbar">
@@ -49,6 +61,7 @@ export function Nav() {
               <Link {...productsLink} />
               <Link {...productsAddLink} />
               <Link {...categoriesLink} />
+              <Link {...categoriesAddLink} />
             </>
           </SubMenu>
         </Link>

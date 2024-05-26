@@ -9,35 +9,26 @@ const messages = {
 }
 
 const fields = {
-  id: 'id du produit',
   name: 'nom du produit',
   description: 'description',
-  category: 'catégorie',
-  price: 'prix',
-  quantity: 'quantité',
   published: 'publié',
-  images: 'images',
+  order: "ordre d'affichage",
+  imagePath: 'image',
+  parent: 'catégorie parente',
 }
 
 /**
  * Validates the post's creation action
  */
-const updateProductValidator = vine.compile(
+const createCategoryValidator = vine.compile(
   vine.object({
-    id: vine.string().trim(),
     name: vine.string().trim().minLength(6),
     description: vine.string().trim().nullable().optional(),
-    category: vine.string().trim().minLength(3),
-    price: vine.number(),
-    quantity: vine.number(),
     published: vine.boolean().nullable().optional(),
-    /*images: vine.array(
-      vine.file({
-        size: '2mb',
-        extnames: ['jpg', 'png'],
-      })
-    ),*/
+    order: vine.number().nullable().optional(),
+    imagePath: vine.string().nullable().optional(),
+    parent: vine.string().nullable().optional(),
   })
 )
-updateProductValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
-export { updateProductValidator }
+createCategoryValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
+export { createCategoryValidator }

@@ -26,6 +26,7 @@ const EditProductController = () => import('#admin/product/controllers/edit_prod
 const SwitchProductController = () => import('#admin/product/controllers/switch_product_controller')
 const ShowListCategoryController = () =>
   import('#admin/category/controllers/show_list_category_controller')
+const AddCategoryController = () => import('#admin/category/controllers/add_category_controller')
 
 router.get('/admin', [ShowDashboardController, 'render']).as('admin.dashboard')
 router.get('/admin/products', [ShowListProductController, 'render']).as('admin.product.list')
@@ -39,3 +40,5 @@ router
   .get('/admin/products/switch/:id', [SwitchProductController, 'switch'])
   .as('admin.product.switch')
 router.get('/admin/categories', [ShowListCategoryController, 'render']).as('admin.category.list')
+router.get('/admin/categories/add', [AddCategoryController, 'render']).as('admin.category.add')
+router.post('/admin/categories/add', [AddCategoryController, 'store']).as('admin.category.store')

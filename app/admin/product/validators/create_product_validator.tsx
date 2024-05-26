@@ -23,7 +23,7 @@ const fields = {
 const createProductValidator = vine.compile(
   vine.object({
     name: vine.string().trim().minLength(6),
-    description: vine.string().trim().minLength(10),
+    description: vine.string().trim().nullable().optional(),
     category: vine.string().trim().minLength(3),
     price: vine.number(),
     quantity: vine.number(),

@@ -31,7 +31,6 @@ export function ProductEdit(props: ProductEditProps) {
           name="description"
           label="Description"
           value={product.description}
-          required
           inputTagName="textarea"
         />
         <FormField name="category" label="Catégorie" value={product.name} required />

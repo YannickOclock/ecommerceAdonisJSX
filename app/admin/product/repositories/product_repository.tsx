@@ -3,7 +3,7 @@ import { ResultOf } from '#types/common'
 
 interface StoreProductDTO {
   name: string
-  description: string
+  description: string | null | undefined
   category: string
   price: number
   quantity: number
@@ -13,7 +13,7 @@ interface StoreProductDTO {
 interface UpdateProductDTO {
   id: string
   name: string
-  description: string
+  description: string | null | undefined
   category: string
   price: number
   quantity: number
@@ -33,7 +33,7 @@ export class ProductRepository {
       .limit(5)
   }
 
-  async find(id: string) {
+  async find(id: string): Promise<Product> {
     return await Product.query()
       .where('id', '=', id)
       .preload('productImages', (query) => {
@@ -44,7 +44,7 @@ export class ProductRepository {
 
   wideProductFromPayload(payload: StoreProductDTO | UpdateProductDTO, product: Product) {
     product.name = payload.name
-    product.description = payload.description
+    if (payload.description) product.description = payload.description
     //product.category = payload.category
     product.price = payload.price
     product.stock = payload.quantity
