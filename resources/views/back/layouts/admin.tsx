@@ -2,6 +2,7 @@ import { Header } from '#viewsback/partials/header'
 import { Footer } from '#viewsback/partials/footer'
 import { Vite } from '#resources/helpers/asset'
 import { Nav } from '#viewsback/partials/nav'
+import { FlashMessages } from '#viewsback/partials/flash_messages'
 
 interface AdminProps {
   title?: string
@@ -43,6 +44,7 @@ export function Admin(props: AdminProps) {
               <h1>{header}</h1>
             </header>
             <div id="main-content">
+              <FlashMessages />
               <div id="main">
                 <div class="card-header">
                   {/* block body_title ici */}
