@@ -22,8 +22,7 @@ export default class EditProductController {
     await this.productRepository.update(payload)
 
     // upload and create Image in DB
-    const images = request.files('images')
-    await this.productImagesService.create(payload.id, images)
+    await this.productImagesService.create(payload.id, payload.images)
 
     session.flash('notification', {
       type: 'success',

@@ -1,12 +1,12 @@
 import Category from '#core/models/category'
 import { ResultOf } from '#types/common'
 
-interface StoreCategoryDTO {
+export interface StoreCategoryDTO {
   name: string
   description: string | null | undefined
   published: boolean | null | undefined
   order: number | null | undefined
-  imagePath: string | null | undefined
+  imagePath: string | undefined
   parent: string | null | undefined
 }
 

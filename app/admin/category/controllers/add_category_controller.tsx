@@ -14,7 +14,10 @@ export default class AddCategoryController {
 
   async store({ request, response, session }: HttpContext) {
     const payload = await request.validateUsing(createCategoryValidator)
-    const categoryId = await this.categoryRepository.create(payload)
+
+    // on enlève l'image et on rajoute le path de l'image
+    const { image, ...categoryPayload } = { ...payload, imagePath: undefined }
+    await this.categoryRepository.create(categoryPayload)
 
     // upload and create Image in DB
     //const images = request.files('images')

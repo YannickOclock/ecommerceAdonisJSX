@@ -21,8 +21,7 @@ export default class AddProductController {
     const productId = await this.productRepository.create(payload)
 
     // upload and create Image in DB
-    const images = request.files('images')
-    await this.productImagesService.create(productId, images)
+    await this.productImagesService.create(productId, payload.images)
 
     session.flash('notification', {
       type: 'success',

@@ -13,7 +13,7 @@ const fields = {
   description: 'description',
   published: 'publié',
   order: "ordre d'affichage",
-  imagePath: 'image',
+  image: 'image',
   parent: 'catégorie parente',
 }
 
@@ -26,7 +26,14 @@ const createCategoryValidator = vine.compile(
     description: vine.string().trim().nullable().optional(),
     published: vine.boolean().nullable().optional(),
     order: vine.number().nullable().optional(),
-    imagePath: vine.string().nullable().optional(),
+    image: vine
+      // @ts-ignore
+      .file({
+        size: '2mb',
+        extnames: ['jpg', 'png'],
+      })
+      // @ts-ignore
+      .optional(),
     parent: vine.string().nullable().optional(),
   })
 )

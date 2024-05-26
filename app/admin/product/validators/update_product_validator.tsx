@@ -31,12 +31,15 @@ const updateProductValidator = vine.compile(
     price: vine.number(),
     quantity: vine.number(),
     published: vine.boolean().nullable().optional(),
-    /*images: vine.array(
-      vine.file({
-        size: '2mb',
-        extnames: ['jpg', 'png'],
-      })
-    ),*/
+    images: vine
+      .array(
+        // @ts-ignore
+        vine.file({
+          size: '2mb',
+          extnames: ['jpg', 'png'],
+        })
+      )
+      .optional(),
   })
 )
 updateProductValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
