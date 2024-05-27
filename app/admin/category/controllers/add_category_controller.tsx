@@ -13,7 +13,8 @@ export default class AddCategoryController {
   ) {}
 
   async render({}: HttpContext) {
-    return <CategoryAdd />
+    const categories = await this.categoryRepository.all()
+    return <CategoryAdd categories={categories} />
   }
 
   async store({ request, response, session }: HttpContext) {

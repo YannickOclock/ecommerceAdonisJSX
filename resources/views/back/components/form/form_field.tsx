@@ -2,6 +2,7 @@ import { getFlashMessages } from '#resources/helpers/flash_messages'
 import clsx from 'clsx'
 import { FormInput } from './form_input.tsx'
 import { FormTextarea } from './form_textarea.tsx'
+import { FormSelectCategory } from './select/select_category.tsx'
 
 interface FormFieldProps {
   name: string
@@ -10,13 +11,17 @@ interface FormFieldProps {
   required?: boolean
   inputTagName?: string
   inputType?: string
+  inputValues?: any
 }
 
 export function FormField(props: FormFieldProps) {
-  const { name, label, value, required, inputTagName, inputType } = props
+  const { name, label, value, required, inputTagName, inputType, inputValues } = props
 
   let fieldElement = null
   switch (inputTagName) {
+    case 'select':
+      fieldElement = <FormSelectCategory name={name} values={inputValues} required={required} />
+      break
     case 'textarea':
       fieldElement = <FormTextarea name={name} value={value} required={required} />
       break

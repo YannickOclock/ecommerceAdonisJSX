@@ -1,10 +1,16 @@
+import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
 import { csrfField } from '#resources/helpers/csrf_field'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
 import { FormField } from '../../components/form/form_field.tsx'
 import { Vite } from '#resources/helpers/asset'
 
-export function CategoryAdd() {
+interface CategoryAddProps {
+  categories: AdminCategoryListQueryResult
+}
+
+export function CategoryAdd(props: CategoryAddProps) {
+  const { categories } = props
   const random = randomUUID()
   return (
     <Admin
@@ -22,7 +28,12 @@ export function CategoryAdd() {
         <FormField name="description" label="Description" inputTagName="textarea" />
         <FormField name="published" label="Est en ligne ?" inputType="checkbox" value="1" />
         <FormField name="order" label="Entrez l'ordre d'affichage" inputType="number" />
-        <FormField name="parent" label="Catégorie parente" inputType="number" />
+        <FormField
+          name="parent"
+          label="Catégorie parente"
+          inputTagName="select"
+          inputValues={categories}
+        />
 
         <div class="form-group">
           <label for="images">Image de la catégorie</label>
