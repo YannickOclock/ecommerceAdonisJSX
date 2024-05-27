@@ -26,7 +26,7 @@ export type AdminProductEditQueryResult = ResultOf<ProductRepository, 'find'>
 export class ProductRepository {
   async all() {
     return await Product.query()
-      .orderBy('name', 'desc')
+      .orderBy('name', 'asc')
       .preload('productImages', (query) => {
         query.orderBy('created_at', 'asc')
       })

@@ -27,8 +27,12 @@ const SwitchProductController = () => import('#admin/product/controllers/switch_
 const ShowListCategoryController = () =>
   import('#admin/category/controllers/show_list_category_controller')
 const AddCategoryController = () => import('#admin/category/controllers/add_category_controller')
+const EditCategoryController = () => import('#admin/category/controllers/edit_category_controller')
 
 router.get('/admin', [ShowDashboardController, 'render']).as('admin.dashboard')
+
+// PARTIE PRODUCTS
+
 router.get('/admin/products', [ShowListProductController, 'render']).as('admin.product.list')
 router.get('/admin/products/add', [AddProductController, 'render']).as('admin.product.add')
 router.post('/admin/products/add', [AddProductController, 'store']).as('admin.product.store')
@@ -39,6 +43,15 @@ router
 router
   .get('/admin/products/switch/:id', [SwitchProductController, 'switch'])
   .as('admin.product.switch')
+
+// PARTIE CATEGORIES
+
 router.get('/admin/categories', [ShowListCategoryController, 'render']).as('admin.category.list')
 router.get('/admin/categories/add', [AddCategoryController, 'render']).as('admin.category.add')
 router.post('/admin/categories/add', [AddCategoryController, 'store']).as('admin.category.store')
+router
+  .get('/admin/categories/edit/:id', [EditCategoryController, 'render'])
+  .as('admin.category.edit')
+router
+  .post('/admin/categories/edit/:id', [EditCategoryController, 'update'])
+  .as('admin.category.update')

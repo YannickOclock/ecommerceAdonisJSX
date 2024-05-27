@@ -10,11 +10,22 @@ export interface StoreCategoryDTO {
   parent: string | null | undefined
 }
 
+interface UpdateCategoryDTO {
+  id: string
+  name: string
+  description: string | null | undefined
+  published: boolean | null | undefined
+  order: number | null | undefined
+  imagePath: string | undefined
+  parent: string | null | undefined
+}
+
 export type AdminCategoryListQueryResult = ResultOf<CategoryRepository, 'all'>
+export type AdminCategoryEditQueryResult = ResultOf<CategoryRepository, 'find'>
 
 export class CategoryRepository {
   async all() {
-    return await Category.query().orderBy('name', 'desc').limit(10)
+    return await Category.query().orderBy('name', 'asc').limit(10)
   }
 
   async find(id: string): Promise<Category> {
@@ -38,5 +49,11 @@ export class CategoryRepository {
     this.wideCategoryFromPayload(payload, category)
     await category.save()
     return category.id
+  }
+
+  async update(payload: UpdateCategoryDTO): Promise<void> {
+    const category = await this.find(payload.id)
+    this.wideCategoryFromPayload(payload, category)
+    await category.save()
   }
 }

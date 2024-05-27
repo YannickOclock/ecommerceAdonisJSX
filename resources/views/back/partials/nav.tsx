@@ -23,6 +23,7 @@ export function Nav() {
       'admin.product.edit',
       'admin.category.list',
       'admin.category.add',
+      'admin.category.edit',
     ]),
   }
   const productsLink = {
@@ -40,7 +41,7 @@ export function Nav() {
   const categoriesLink = {
     title: 'Catégories',
     url: route('admin.category.list'),
-    active: request.matchesRoute('admin.category.list'),
+    active: request.matchesRoute(['admin.category.list', 'admin.category.edit']),
     level: 2,
   }
   const categoriesAddLink = {

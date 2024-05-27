@@ -3,6 +3,7 @@ import { Vite } from '#resources/helpers/asset'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
 import { PublicImage } from '../../components/utils/image.tsx'
+import { route } from '#start/view'
 
 interface CategoryListProps {
   categories: AdminCategoryListQueryResult
@@ -80,7 +81,7 @@ export function CategoryList(props: CategoryListProps) {
                 </td>
                 <td>{category.parent?.name}</td>
                 <td class="td-flex">
-                  <a href={'#'} class="btn">
+                  <a href={route('admin.category.edit', { id: category.id })} class="btn">
                     <i class="material-icons">edit</i>
                   </a>
                   <a href="" class="btn btn-dropdown">
