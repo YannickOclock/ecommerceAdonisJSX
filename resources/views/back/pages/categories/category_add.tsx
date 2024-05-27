@@ -18,7 +18,7 @@ export function CategoryAdd() {
           type="module"
           src={`resources/assets/back/js/components/check_to_switch_btn.ts?random=${random}`}
         />
-        <FormField name="name" label="Nom du produit" required />
+        <FormField name="name" label="Nom de la catégorie" required />
         <FormField name="description" label="Description" inputTagName="textarea" />
         <FormField name="published" label="Est en ligne ?" inputType="checkbox" value="1" />
         <FormField name="order" label="Entrez l'ordre d'affichage" inputType="number" />

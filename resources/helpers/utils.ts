@@ -19,3 +19,16 @@ export function productImagesSrc(image: string): string {
 export function productImagesMinSrc(image: string): string {
   return `${productImagesMinPath()}/${image}`
 }
+
+export function categoryImagesPath(): string {
+  return app.makePath(`/images/categories`)
+}
+export function categoryImagesMinPath(): string {
+  return app.makePath(`/images/categories`)
+}
+export function categoryImagesSrc(image: string): string {
+  return `${categoryImagesPath()}/${image}`
+}
+export function categoryImagesMinSrc(image: string): string {
+  return `${categoryImagesMinPath()}/${image}`
+}

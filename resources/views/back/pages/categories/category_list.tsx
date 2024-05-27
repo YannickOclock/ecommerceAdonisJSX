@@ -2,6 +2,7 @@ import { AdminCategoryListQueryResult } from '#admin/category/repositories/categ
 import { Vite } from '#resources/helpers/asset'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
+import { PublicImage } from '../../components/utils/image.tsx'
 
 interface CategoryListProps {
   categories: AdminCategoryListQueryResult
@@ -55,7 +56,13 @@ export function CategoryList(props: CategoryListProps) {
                   </div>
                 </td>
                 <td>{category.id}</td>
-                <td>Image</td>
+                <td>
+                  <PublicImage
+                    src={category.imagePath ?? ''}
+                    alt={`Image principale du produit ${category.name}`}
+                    type="category"
+                  />
+                </td>
                 <td>{category.name}</td>
                 <td>
                   <div class="form-check form-switch">

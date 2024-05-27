@@ -1,9 +1,10 @@
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
 import { Vite } from '#resources/helpers/asset'
-import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
+import { convertPrice } from '#resources/helpers/utils'
 import { route } from '#start/view'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
+import { PublicImage } from '../../components/utils/image.tsx'
 
 interface ProductListProps {
   products: AdminProductListQueryResult
@@ -61,8 +62,8 @@ export function ProductList(props: ProductListProps) {
                 </td>
                 <td>{product.id}</td>
                 <td>
-                  <img
-                    src={productImagesMinSrc(product.productImages[0]?.path)}
+                  <PublicImage
+                    src={product.productImages[0]?.path}
                     alt={`Image principale du produit ${product.name}`}
                   />
                 </td>
