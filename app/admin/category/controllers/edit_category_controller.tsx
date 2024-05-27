@@ -20,9 +20,12 @@ export default class EditCategoryController {
   async update({ request, response, session }: HttpContext) {
     const payload = await request.validateUsing(updateCategoryValidator)
 
-    // upload and create Image in DB
-    // TODO delete old image if exists
-    const imagePath = await this.categoryImagesService.create(payload.image)
+    // On supprime l'ancienne image (s'il y en a une) et on upload la nouvelle image
+    let imagePath
+    if (payload.image) {
+      this.categoryImagesService.deleteFromCategory(payload.id)
+      imagePath = await this.categoryImagesService.create(payload.image)
+    }
 
     // on enlève l'image et on rajoute le path de l'image
     const { image, ...categoryPayload } = { ...payload, imagePath: imagePath }

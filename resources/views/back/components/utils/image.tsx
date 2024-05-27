@@ -1,4 +1,6 @@
 import { categoryImagesMinSrc, productImagesMinSrc } from '#resources/helpers/utils'
+import app from '@adonisjs/core/services/app'
+import { existsSync } from 'node:fs'
 
 interface PublicImageInterface {
   src: string
@@ -17,7 +19,9 @@ export function PublicImage(props: PublicImageInterface) {
       pathSrc = productImagesMinSrc(src)
       break
   }
-  if (!pathSrc) pathSrc = 'https://fakeimg.pl/300x300?text=No+image'
+  if (!pathSrc || (pathSrc && !existsSync(`${app.makePath('public')}/${pathSrc}`))) {
+    pathSrc = 'https://fakeimg.pl/300x300?text=No+image'
+  }
 
   return <img src={pathSrc} alt={`${alt}`} />
 }

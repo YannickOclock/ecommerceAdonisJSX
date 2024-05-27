@@ -72,7 +72,7 @@ export function CategoryList(props: CategoryListProps) {
                       type="checkbox"
                       role="switch"
                       checked={category.published ? true : false}
-                      data-href={'#'}
+                      data-href={route('admin.category.switch', { id: category.id })}
                       id="switch1"
                       disabled
                     />

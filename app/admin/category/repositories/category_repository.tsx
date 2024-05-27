@@ -56,4 +56,17 @@ export class CategoryRepository {
     this.wideCategoryFromPayload(payload, category)
     await category.save()
   }
+
+  async deleteImage(categoryId: string): Promise<void> {
+    const category = await this.find(categoryId)
+    category.imagePath = null
+    await category.save()
+  }
+
+  async switch(categoryId: string): Promise<boolean> {
+    const category = await this.find(categoryId)
+    category.published = !category.published
+    await category.save()
+    return category.published
+  }
 }

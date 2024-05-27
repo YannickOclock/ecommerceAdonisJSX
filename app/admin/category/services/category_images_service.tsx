@@ -1,3 +1,4 @@
+import { CategoryRepository } from '#admin/category/repositories/category_repository'
 import { inject } from '@adonisjs/core'
 import { MultipartFile } from '@adonisjs/core/bodyparser'
 import { cuid } from '@adonisjs/core/helpers'
@@ -7,7 +8,7 @@ import fs from 'node:fs'
 
 @inject()
 export class CategoryImagesService {
-  constructor() {}
+  constructor(private categoryRepository: CategoryRepository) {}
   async create(image: MultipartFile | undefined): Promise<string | undefined> {
     if (image) {
       const publicPath = app.makePath('public/images/categories')
@@ -27,5 +28,24 @@ export class CategoryImagesService {
       })
       return imageMinPath
     }
+  }
+  async deleteFromCategory(categoryId: string): Promise<boolean> {
+    const category = await this.categoryRepository.find(categoryId)
+    const publicPath = app.makePath('public/images/categories')
+
+    const imageMin = category.imagePath
+
+    // Supprimer l'ancienne image uniquement s'il y a en a une sur la catégorie
+    if (imageMin) {
+      const image = imageMin?.replace('-min', '')
+      if (fs.existsSync(`${publicPath}/${imageMin}`) && fs.existsSync(`${publicPath}/${image}`)) {
+        fs.unlinkSync(`${publicPath}/${imageMin}`)
+        fs.unlinkSync(`${publicPath}/${image}`)
+        await this.categoryRepository.deleteImage(categoryId)
+        return true
+      }
+    }
+
+    return false
   }
 }
