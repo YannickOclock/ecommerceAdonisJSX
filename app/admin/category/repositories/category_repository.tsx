@@ -7,7 +7,7 @@ export interface StoreCategoryDTO {
   published: boolean | null | undefined
   order: number | null | undefined
   imagePath: string | undefined
-  parent: string | null | undefined
+  parentId: string | null | undefined
 }
 
 interface UpdateCategoryDTO {
@@ -17,7 +17,7 @@ interface UpdateCategoryDTO {
   published: boolean | null | undefined
   order: number | null | undefined
   imagePath: string | undefined
-  parent: string | null | undefined
+  parentId: string | null | undefined
 }
 
 export type AdminCategoryListQueryResult = ResultOf<CategoryRepository, 'all'>
@@ -25,7 +25,7 @@ export type AdminCategoryEditQueryResult = ResultOf<CategoryRepository, 'find'>
 
 export class CategoryRepository {
   async all() {
-    return await Category.query().orderBy('name', 'asc').limit(10)
+    return await Category.query().orderBy('name', 'asc').preload('parent').limit(10)
   }
 
   async find(id: string): Promise<Category> {
@@ -39,8 +39,8 @@ export class CategoryRepository {
     if (payload.published) category.published = true
     if (payload.order && payload.order > 0) category.order = payload.order
     if (payload.imagePath) category.imagePath = payload.imagePath
-    if (payload.parent) {
-      //category.parent = await this.find(payload.parent)
+    if (payload.parentId) {
+      category.parentId = payload.parentId
     }
   }
 

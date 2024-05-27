@@ -22,7 +22,12 @@ export default class Category extends BaseModel {
   @column()
   declare imagePath: string | null
 
-  @belongsTo(() => Category)
+  @column()
+  declare parentId: string | null
+
+  @belongsTo(() => Category, {
+    foreignKey: 'parentId',
+  })
   declare parent: BelongsTo<typeof Category>
 
   @hasMany(() => Category)

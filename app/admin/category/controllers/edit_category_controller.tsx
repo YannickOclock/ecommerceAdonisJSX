@@ -14,7 +14,8 @@ export default class EditCategoryController {
 
   async render({ request }: HttpContext) {
     const category = await this.categoryRepository.find(request.param('id'))
-    return <CategoryEdit category={category} />
+    const categories = await this.categoryRepository.all()
+    return <CategoryEdit category={category} categories={categories} />
   }
 
   async update({ request, response, session }: HttpContext) {

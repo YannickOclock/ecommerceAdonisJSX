@@ -14,7 +14,7 @@ const fields = {
   published: 'publié',
   order: "ordre d'affichage",
   image: 'image',
-  parent: 'catégorie parente',
+  parentId: 'catégorie parente',
 }
 
 /**
@@ -34,7 +34,7 @@ const createCategoryValidator = vine.compile(
       })
       // @ts-ignore
       .optional(),
-    parent: vine.string().nullable().optional(),
+    parentId: vine.string().nullable().optional(),
   })
 )
 createCategoryValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)

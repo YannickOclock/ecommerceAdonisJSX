@@ -29,7 +29,7 @@ export function CategoryAdd(props: CategoryAddProps) {
         <FormField name="published" label="Est en ligne ?" inputType="checkbox" value="1" />
         <FormField name="order" label="Entrez l'ordre d'affichage" inputType="number" />
         <FormField
-          name="parent"
+          name="parentId"
           label="Catégorie parente"
           inputTagName="select"
           inputValues={categories}

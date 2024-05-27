@@ -1,4 +1,7 @@
-import { AdminCategoryEditQueryResult } from '#admin/category/repositories/category_repository'
+import {
+  AdminCategoryEditQueryResult,
+  AdminCategoryListQueryResult,
+} from '#admin/category/repositories/category_repository'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
 import { FormField } from '../../components/form/form_field.tsx'
@@ -7,10 +10,11 @@ import { csrfField } from '#resources/helpers/csrf_field'
 
 interface CategoryEditProps {
   category: AdminCategoryEditQueryResult
+  categories: AdminCategoryListQueryResult
 }
 
 export function CategoryEdit(props: CategoryEditProps) {
-  const { category } = props
+  const { category, categories } = props
   const random = randomUUID()
   return (
     <Admin
@@ -39,7 +43,12 @@ export function CategoryEdit(props: CategoryEditProps) {
           value={`${category.published}`}
         />
         <FormField name="order" label="Entrez l'ordre d'affichage" inputType="number" />
-        <FormField name="parent" label="Catégorie parente" inputType="number" />
+        <FormField
+          name="parentId"
+          label="Catégorie parente"
+          inputTagName="select"
+          inputValues={categories}
+        />
 
         <div class="form-group">
           <label for="images">Image de la catégorie</label>
