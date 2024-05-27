@@ -17,5 +17,7 @@ export function PublicImage(props: PublicImageInterface) {
       pathSrc = productImagesMinSrc(src)
       break
   }
+  if (!pathSrc) pathSrc = 'https://fakeimg.pl/300x300?text=No+image'
+
   return <img src={pathSrc} alt={`${alt}`} />
 }

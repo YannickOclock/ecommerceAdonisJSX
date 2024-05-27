@@ -13,11 +13,15 @@ export function productImagesPath(): string {
 export function productImagesMinPath(): string {
   return app.makePath(`/images/products`)
 }
-export function productImagesSrc(image: string): string {
-  return `${productImagesPath()}/${image}`
+export function productImagesSrc(image: string): string | undefined {
+  if (image) {
+    return `${productImagesPath()}/${image}`
+  }
 }
-export function productImagesMinSrc(image: string): string {
-  return `${productImagesMinPath()}/${image}`
+export function productImagesMinSrc(image: string): string | undefined {
+  if (image) {
+    return `${productImagesMinPath()}/${image}`
+  }
 }
 
 export function categoryImagesPath(): string {
@@ -26,9 +30,13 @@ export function categoryImagesPath(): string {
 export function categoryImagesMinPath(): string {
   return app.makePath(`/images/categories`)
 }
-export function categoryImagesSrc(image: string): string {
-  return `${categoryImagesPath()}/${image}`
+export function categoryImagesSrc(image: string): string | undefined {
+  if (image) {
+    return `${categoryImagesPath()}/${image}`
+  }
 }
-export function categoryImagesMinSrc(image: string): string {
-  return `${categoryImagesMinPath()}/${image}`
+export function categoryImagesMinSrc(image: string): string | undefined {
+  if (image) {
+    return `${categoryImagesMinPath()}/${image}`
+  }
 }
