@@ -81,7 +81,12 @@ export function CategoryList(props: CategoryListProps) {
                 </td>
                 <td>{category.parent?.name}</td>
                 <td class="td-flex">
-                  <a href={route('admin.category.edit', { id: category.id })} class="btn">
+                  <a
+                    href={route('admin.category.edit', { id: category.id })}
+                    class="btn"
+                    up-follow
+                    up-target="#main-content"
+                  >
                     <i class="material-icons">edit</i>
                   </a>
                   <a href="" class="btn btn-dropdown">

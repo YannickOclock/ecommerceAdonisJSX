@@ -9,8 +9,11 @@ TODO
 
 - gérer la suppression d'une image dans d'édition de produits [OK]
 - gérer le changement d'images dans la modale front [OK]
-- styliser le select dans le back
+- styliser le select dans le back [OK]
 - faire la liaison entre le produit et la catégorie
+- désactiver la visibilité des produits quand on enlève la visibilité d'une catégorie
+- activer la visibilité des produits quand on réactive la visibilité d'une catégorie
+- attention - si une catégorie est désactivée et qu'un produit de cette catégorie est active, il ne doit pas être visible en ligne (à vérifier) - pour l'instant sur la page d'accueil
 
 - gérer l'affichage des pages catégories par level
 - gérer le petit bouton loupe qui permet d'accéder au détail d'une catégorie parente

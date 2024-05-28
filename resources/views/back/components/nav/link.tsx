@@ -17,7 +17,7 @@ export function Link(props: LinkProps) {
 
   return (
     <li class={clsx(classes, active ? 'link-active' : '')}>
-      <a href={url} class={clsx(active ? 'link-active' : '')}>
+      <a href={url} class={clsx(active ? 'link-active' : '')} up-follow up-target="#main-container">
         {iconElement}
         {title}
       </a>

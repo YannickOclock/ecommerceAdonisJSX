@@ -87,7 +87,12 @@ export function ProductList(props: ProductListProps) {
                 </td>
                 <td>-</td>
                 <td class="td-flex">
-                  <a href={route('admin.product.edit', { id: product.id })} class="btn">
+                  <a
+                    href={route('admin.product.edit', { id: product.id })}
+                    class="btn"
+                    up-follow
+                    up-target="#main-content"
+                  >
                     <i class="material-icons">edit</i>
                   </a>
                   <a href="" class="btn btn-dropdown">
