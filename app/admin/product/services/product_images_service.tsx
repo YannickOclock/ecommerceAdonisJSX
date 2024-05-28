@@ -38,4 +38,24 @@ export class ProductImagesService {
       }
     }
   }
+
+  async deleteFromProductImage(productImageId: string): Promise<boolean> {
+    const productImage = await this.productImageRepository.find(productImageId)
+    const publicPath = app.makePath('public/images/products')
+
+    const imageMin = productImage.path
+
+    // Supprimer l'ancienne image uniquement s'il y a en a une sur la catégorie
+    if (imageMin) {
+      const image = imageMin?.replace('-min', '')
+      if (fs.existsSync(`${publicPath}/${imageMin}`) && fs.existsSync(`${publicPath}/${image}`)) {
+        fs.unlinkSync(`${publicPath}/${imageMin}`)
+        fs.unlinkSync(`${publicPath}/${image}`)
+        await this.productImageRepository.delete(productImage)
+        return true
+      }
+    }
+
+    return false
+  }
 }

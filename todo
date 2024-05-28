@@ -5,6 +5,13 @@ TODO
 - gérer le multi images dans l'admin [OK]
 - gérer le multi images dans la modale front [OK]
 
-- gérer l'affichage des messages flash
-- gérer la suppression d'une image dans d'édition de produits
+- gérer l'affichage des messages flash - côté back [OK]
+
+- gérer la suppression d'une image dans d'édition de produits [OK]
 - gérer le changement d'images dans la modale front
+- styliser le select dans le back
+- faire la liaison entre le produit et la catégorie
+
+- gérer l'affichage des pages catégories par level
+- gérer le petit bouton loupe qui permet d'accéder au détail d'une catégorie parente
+- gérer le breadcrumb

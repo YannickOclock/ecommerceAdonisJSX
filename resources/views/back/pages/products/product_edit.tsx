@@ -5,6 +5,7 @@ import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
 import { FormField } from '../../components/form/form_field.tsx'
 import { Vite } from '#resources/helpers/asset'
+import { route } from '#start/view'
 
 interface ProductEditProps {
   product: AdminProductEditQueryResult
@@ -69,7 +70,17 @@ export function ProductEdit(props: ProductEditProps) {
                 alt="Image"
                 class="border border-secondary"
               />
-              <a class="btn-remove">Supprimer</a>
+              <a
+                class="btn-remove"
+                href={route('admin.product.image.delete', {
+                  id: productImage.id,
+                  productId: product.id,
+                })}
+                up-follow
+                up-target="#main-content"
+              >
+                Supprimer
+              </a>
             </div>
           ))}
         </div>

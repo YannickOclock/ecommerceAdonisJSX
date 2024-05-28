@@ -26,6 +26,8 @@ const ShowListProductController = () =>
 const AddProductController = () => import('#admin/product/controllers/add_product_controller')
 const EditProductController = () => import('#admin/product/controllers/edit_product_controller')
 const SwitchProductController = () => import('#admin/product/controllers/switch_product_controller')
+const DeleteProductImageController = () =>
+  import('#admin/product/controllers/delete_product_image_controller')
 
 // CONTROLLERS CATEGORIES
 
@@ -52,6 +54,9 @@ router
 router
   .get('/admin/products/switch/:id', [SwitchProductController, 'switch'])
   .as('admin.product.switch')
+router
+  .get('/admin/products/:productId/images/delete/:id', [DeleteProductImageController, 'delete'])
+  .as('admin.product.image.delete')
 
 // PARTIE CATEGORIES
 
