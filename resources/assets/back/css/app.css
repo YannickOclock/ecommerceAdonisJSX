@@ -362,13 +362,17 @@ form > div label.required::before {
   color: var(--edition-destructive-500);
 }
 
-form > div input.form-control {
+form > div input.form-control, form > div select.form-control {
   flex-grow: 1;
   height: 1.5rem;
   line-height: 1.5;
   padding: 0.5rem 1rem;
   background-color: var(--edition-white);
   border: 1px solid #bbcdd2;
+}
+
+form > div select.form-control {
+  height: 2.5rem;
 }
 
 form > div textarea.form-control {

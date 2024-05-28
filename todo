@@ -8,7 +8,7 @@ TODO
 - gérer l'affichage des messages flash - côté back [OK]
 
 - gérer la suppression d'une image dans d'édition de produits [OK]
-- gérer le changement d'images dans la modale front
+- gérer le changement d'images dans la modale front [OK]
 - styliser le select dans le back
 - faire la liaison entre le produit et la catégorie
 
