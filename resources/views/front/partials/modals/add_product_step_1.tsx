@@ -5,14 +5,26 @@ import { Master } from '#viewsfront/layouts/master'
 import { Vite } from '#resources/helpers/asset'
 import { randomUUID } from 'node:crypto'
 import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
+import clsx from 'clsx'
 
 interface AddProductStep1Props {
   product: CartProductRepositoryResult
+  selectedProductImageId?: string
 }
 
 export function AddProductStep1(props: AddProductStep1Props) {
-  const { product } = props
+  const { product, selectedProductImageId } = props
   const random = randomUUID()
+
+  // sélectionner la première image par défaut
+  let selectedThumbnail = product.productImages[0]
+  if (selectedProductImageId) {
+    const foundProductImage = product.productImages.find(
+      (productImage) => productImage.id === selectedProductImageId
+    )
+    if (foundProductImage) selectedThumbnail = foundProductImage
+  }
+
   return (
     <Master>
       <div id="master">
@@ -30,7 +42,7 @@ export function AddProductStep1(props: AddProductStep1Props) {
                 <div class="modal-body-thumbnails">
                   <div class="picture">
                     <img
-                      src={productImagesMinSrc(product.productImages[0].path)}
+                      src={productImagesMinSrc(selectedThumbnail.path)}
                       alt={`Image principale du produit ${product.name}`}
                     />
                   </div>
@@ -38,10 +50,20 @@ export function AddProductStep1(props: AddProductStep1Props) {
                     {product.productImages.map((image) => (
                       <li>
                         <div class="picture">
-                          <img
-                            src={productImagesMinSrc(image.path)}
-                            alt={`Image du produit ${product.name}`}
-                          />
+                          <a
+                            href={route('front.step1', {
+                              id: product.id,
+                              productImageId: image.id,
+                            })}
+                            up-follow
+                            up-target=".modal-body-thumbnails"
+                          >
+                            <img
+                              src={productImagesMinSrc(image.path)}
+                              alt={`Image du produit ${product.name}`}
+                              class={clsx(image === selectedThumbnail ? 'selected' : '')}
+                            />
+                          </a>
                         </div>
                       </li>
                     ))}

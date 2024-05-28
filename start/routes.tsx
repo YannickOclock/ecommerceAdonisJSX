@@ -9,7 +9,7 @@ const ShowHomeController = () => import('#front/home/controllers/show_home_contr
 
 router.get('/cart', [ShowCartController, 'render']).as('front.cart')
 
-router.get('/step1/:id', [ShowStep1Controller, 'render']).as('front.step1')
+router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('front.step1')
 router.post('/step1', [ShowStep1Controller, 'add']).as('front.step1.add')
 router.get('/step2/:id', [ShowStep2Controller, 'render']).as('front.step2')
 

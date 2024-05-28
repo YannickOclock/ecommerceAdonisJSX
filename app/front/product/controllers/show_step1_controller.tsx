@@ -10,9 +10,10 @@ export default class ShowStep1Controller {
 
   async render({ request }: HttpContext) {
     const id = request.param('id')
+    const productImageId = request.param('productImageId')
     const product = await this.cartProductRepository.findOneById(id)
 
-    return <AddProductStep1 product={product} />
+    return <AddProductStep1 product={product} selectedProductImageId={productImageId} />
   }
 
   async add({ request, response }: HttpContext) {
