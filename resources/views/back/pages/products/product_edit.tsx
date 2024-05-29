@@ -1,4 +1,5 @@
 import { AdminProductEditQueryResult } from '#admin/product/repositories/product_repository'
+import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
 import { csrfField } from '#resources/helpers/csrf_field'
 import { productImagesMinSrc } from '#resources/helpers/utils'
 import { Admin } from '#viewsback/layouts/admin'
@@ -9,10 +10,11 @@ import { route } from '#start/view'
 
 interface ProductEditProps {
   product: AdminProductEditQueryResult
+  categories: AdminCategoryListQueryResult
 }
 
 export function ProductEdit(props: ProductEditProps) {
-  const { product } = props
+  const { product, categories } = props
   const random = randomUUID()
   return (
     <Admin
@@ -54,6 +56,12 @@ export function ProductEdit(props: ProductEditProps) {
           label="Est en ligne ?"
           inputType="checkbox"
           value={`${product.published}`}
+        />
+        <FormField
+          name="categoryId"
+          label="Catégorie"
+          inputTagName="select"
+          inputValues={categories}
         />
 
         <div class="form-group">

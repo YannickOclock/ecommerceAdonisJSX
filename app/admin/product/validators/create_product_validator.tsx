@@ -11,7 +11,7 @@ const messages = {
 const fields = {
   name: 'nom du produit',
   description: 'description',
-  category: 'catégorie',
+  categoryId: 'catégorie',
   price: 'prix',
   quantity: 'quantité',
   published: 'publié',
@@ -24,7 +24,7 @@ const createProductValidator = vine.compile(
   vine.object({
     name: vine.string().trim().minLength(6),
     description: vine.string().trim().nullable().optional(),
-    category: vine.string().trim().minLength(3),
+    categoryId: vine.string().trim().optional(),
     price: vine.number(),
     quantity: vine.number(),
     published: vine.boolean().nullable().optional(),

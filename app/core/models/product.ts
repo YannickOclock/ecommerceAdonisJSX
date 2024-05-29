@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeCreate, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, beforeCreate, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import { v4 as uuid } from 'uuid'
 import ProductImage from '#core/models/product_image'
-import type { HasMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import Category from '#core/models/category'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -22,6 +23,14 @@ export default class Product extends BaseModel {
 
   @column()
   declare published: boolean
+
+  @column()
+  declare categoryId: string | null
+
+  @belongsTo(() => Category, {
+    foreignKey: 'categoryId',
+  })
+  declare category: BelongsTo<typeof Category>
 
   @hasMany(() => ProductImage)
   declare productImages: HasMany<typeof ProductImage>

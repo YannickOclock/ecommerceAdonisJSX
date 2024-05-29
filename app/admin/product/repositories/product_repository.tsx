@@ -4,7 +4,7 @@ import { ResultOf } from '#types/common'
 interface StoreProductDTO {
   name: string
   description: string | null | undefined
-  category: string
+  categoryId: string | undefined
   price: number
   quantity: number
   published: boolean | null | undefined
@@ -14,7 +14,7 @@ interface UpdateProductDTO {
   id: string
   name: string
   description: string | null | undefined
-  category: string
+  categoryId: string | undefined
   price: number
   quantity: number
   published: boolean | null | undefined
@@ -30,6 +30,7 @@ export class ProductRepository {
       .preload('productImages', (query) => {
         query.orderBy('created_at', 'asc')
       })
+      .preload('category')
       .limit(5)
   }
 
@@ -50,6 +51,7 @@ export class ProductRepository {
     product.stock = payload.quantity
     product.published = false
     if (payload.published) product.published = true
+    if (payload.categoryId) product.categoryId = payload.categoryId
   }
 
   async create(payload: StoreProductDTO): Promise<string> {

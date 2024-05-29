@@ -2,6 +2,7 @@ import { ProductEdit } from '#viewsback/pages/products/product_edit'
 import { HttpContext } from '@adonisjs/core/http'
 import { ProductRepository } from '#admin/product/repositories/product_repository'
 import { ProductImagesService } from '#admin/product/services/product_images_service'
+import { CategoryRepository } from '#admin/category/repositories/category_repository'
 import { updateProductValidator } from '#admin/product/validators/update_product_validator'
 import { inject } from '@adonisjs/core'
 
@@ -9,12 +10,14 @@ import { inject } from '@adonisjs/core'
 export default class EditProductController {
   constructor(
     private productRepository: ProductRepository,
-    private productImagesService: ProductImagesService
+    private productImagesService: ProductImagesService,
+    private categoryRepository: CategoryRepository
   ) {}
 
   async render({ request }: HttpContext) {
     const product = await this.productRepository.find(request.param('id'))
-    return <ProductEdit product={product} />
+    const categories = await this.categoryRepository.all()
+    return <ProductEdit product={product} categories={categories} />
   }
 
   async update({ request, response, session }: HttpContext) {

@@ -1,10 +1,16 @@
+import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
 import { Vite } from '#resources/helpers/asset'
 import { csrfField } from '#resources/helpers/csrf_field'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
 import { FormField } from '../../components/form/form_field.tsx'
 
-export function ProductAdd() {
+interface ProductAddProps {
+  categories: AdminCategoryListQueryResult
+}
+
+export function ProductAdd(props: ProductAddProps) {
+  const { categories } = props
   const random = randomUUID()
   return (
     <Admin
@@ -24,6 +30,12 @@ export function ProductAdd() {
         <FormField name="price" label="Entrez le prix" required inputType="number" />
         <FormField name="quantity" label="Entrez le stock disponible" required inputType="number" />
         <FormField name="published" label="Est en ligne ?" inputType="checkbox" value="1" />
+        <FormField
+          name="categoryId"
+          label="Catégorie"
+          inputTagName="select"
+          inputValues={categories}
+        />
 
         <div class="form-group">
           <label for="images">Images du produit</label>

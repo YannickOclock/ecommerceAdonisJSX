@@ -85,7 +85,7 @@ export function ProductList(props: ProductListProps) {
                     <label class="form-check-label" for="switch1"></label>
                   </div>
                 </td>
-                <td>-</td>
+                <td>{product.category ? product.category.name : '-'}</td>
                 <td class="td-flex">
                   <a
                     href={route('admin.product.edit', { id: product.id })}
