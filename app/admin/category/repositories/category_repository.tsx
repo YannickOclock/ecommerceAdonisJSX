@@ -63,10 +63,14 @@ export class CategoryRepository {
     await category.save()
   }
 
-  async switch(categoryId: string): Promise<boolean> {
+  async switch(categoryId: string, published: boolean): Promise<boolean> {
     const category = await this.find(categoryId)
-    category.published = !category.published
+    category.published = published
     await category.save()
     return category.published
+  }
+
+  async findWithSubCategories(id: string): Promise<Category> {
+    return await Category.query().where('id', '=', id).preload('subCategories').firstOrFail()
   }
 }

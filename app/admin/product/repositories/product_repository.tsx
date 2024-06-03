@@ -24,7 +24,7 @@ export type AdminProductListQueryResult = ResultOf<ProductRepository, 'all'>
 export type AdminProductEditQueryResult = ResultOf<ProductRepository, 'find'>
 
 export class ProductRepository {
-  async all() {
+  async all(): Promise<Product[]> {
     return await Product.query()
       .orderBy('name', 'asc')
       .preload('productImages', (query) => {
@@ -72,5 +72,20 @@ export class ProductRepository {
     product.published = !product.published
     await product.save()
     return product.published
+  }
+
+  // Functions for switch category controller
+
+  async findByCategory(categoryId: string): Promise<Product[]> {
+    return await Product.query().preload('category').where('categoryId', categoryId)
+  }
+
+  async switchFromCategory(categoryId: string, published: boolean): Promise<boolean> {
+    const products = await this.findByCategory(categoryId)
+    for (const product of products) {
+      product.published = published
+      await product.save()
+    }
+    return true
   }
 }

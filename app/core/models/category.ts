@@ -30,7 +30,9 @@ export default class Category extends BaseModel {
   })
   declare parent: BelongsTo<typeof Category>
 
-  @hasMany(() => Category)
+  @hasMany(() => Category, {
+    foreignKey: 'parentId',
+  })
   declare subCategories: HasMany<typeof Category>
 
   @column.dateTime({ autoCreate: true })
