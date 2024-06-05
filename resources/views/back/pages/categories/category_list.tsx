@@ -7,15 +7,38 @@ import { route } from '#start/view'
 
 interface CategoryListProps {
   categories: AdminCategoryListQueryResult
+  parentId: string | null
 }
 
 export function CategoryList(props: CategoryListProps) {
-  const { categories } = props
+  const { categories, parentId } = props
   const random = randomUUID()
+
+  // todo il faut faire la même chose de façon récursive
+  let subBreadcrumb
+  if (parentId) {
+    subBreadcrumb = (
+      <>
+        <span> &gt; </span>
+        <a href={route('admin.category.list', { parentId: parentId })}>
+          {categories[0].parent.name}
+        </a>
+      </>
+    )
+  }
+
+  const breadcrumb: JSX.Element = (
+    <>
+      <a href="#">Catalogue</a> <span>&gt; </span>
+      <a href={route('admin.category.list')}>Catégories</a>
+      {subBreadcrumb}
+    </>
+  )
+
   return (
     <Admin
       title={'Administration - Liste des catégories'}
-      breadcrumb="Catalogue &gt; Catégories"
+      breadcrumb={breadcrumb}
       header="Liste des catégories"
       bodyTitle="Liste des catégories"
     >
@@ -81,6 +104,16 @@ export function CategoryList(props: CategoryListProps) {
                 </td>
                 <td>{category.parent?.name}</td>
                 <td class="td-flex">
+                  {category.subCategories.length > 0 && (
+                    <a
+                      href={route('admin.category.list', { parentId: category.id })}
+                      class="btn"
+                      up-follow
+                      up-target="#main-content"
+                    >
+                      <i class="material-icons">zoom_in</i>
+                    </a>
+                  )}
                   <a
                     href={route('admin.category.edit', { id: category.id })}
                     class="btn"

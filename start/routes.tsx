@@ -60,7 +60,9 @@ router
 
 // PARTIE CATEGORIES
 
-router.get('/admin/categories', [ShowListCategoryController, 'render']).as('admin.category.list')
+router
+  .get('/admin/categories/:parentId?', [ShowListCategoryController, 'render'])
+  .as('admin.category.list')
 router.get('/admin/categories/add', [AddCategoryController, 'render']).as('admin.category.add')
 router.post('/admin/categories/add', [AddCategoryController, 'store']).as('admin.category.store')
 router

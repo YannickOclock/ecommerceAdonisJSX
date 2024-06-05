@@ -7,8 +7,9 @@ import { CategoryList } from '#resources/views/back/pages/categories/category_li
 export default class ShowListProductController {
   constructor(private repository: CategoryRepository) {}
 
-  async render({}: HttpContext) {
-    const categories = await this.repository.all()
-    return <CategoryList categories={categories} />
+  async render({ request }: HttpContext) {
+    const parentId = request.param('parentId') ?? null
+    const categories = await this.repository.allFromParent(parentId)
+    return <CategoryList categories={categories} parentId={parentId} />
   }
 }

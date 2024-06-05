@@ -6,7 +6,7 @@ import { FlashMessages } from '#viewsback/partials/flash_messages'
 
 interface AdminProps {
   title?: string
-  breadcrumb?: string
+  breadcrumb?: JSX.Element | string
   header?: string
   bodyTitle?: string
   children: JSX.Element

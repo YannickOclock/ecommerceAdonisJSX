@@ -28,6 +28,22 @@ export class CategoryRepository {
     return await Category.query().orderBy('name', 'asc').preload('parent').limit(10)
   }
 
+  async allFromParent(id: string | null) {
+    if (id === null) {
+      // retourner les catégories qui n'ont pas de parent
+      return await Category.query()
+        .orderBy('name', 'asc')
+        .whereNull('parentId')
+        .preload('subCategories')
+    }
+    // retourner les catégories qui ont une catégorie parente
+    return await Category.query()
+      .orderBy('name', 'asc')
+      .where('parentId', id)
+      .preload('parent')
+      .preload('subCategories')
+  }
+
   async find(id: string): Promise<Category> {
     return await Category.query().where('id', '=', id).firstOrFail()
   }

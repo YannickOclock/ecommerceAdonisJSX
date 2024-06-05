@@ -1,20 +1,29 @@
 TODO
 
+PLUS TARD
+
+- voir pour désactiver les catégories de façon récursive (admin) [PLUS TARD]
+- voir pour gérer le breadcrumb de façon récursive dans l'admin [PLUS TARD]
+
 - centraliser la fonction du prix [OK]
 - centraliser le path des images produit [OK]
 - gérer le multi images dans l'admin [OK]
 - gérer le multi images dans la modale front [OK]
-
 - gérer l'affichage des messages flash - côté back [OK]
-
 - gérer la suppression d'une image dans d'édition de produits [OK]
 - gérer le changement d'images dans la modale front [OK]
 - styliser le select dans le back [OK]
 - faire la liaison entre le produit et la catégorie [OK]
-- désactiver la visibilité des produits quand on enlève la visibilité d'une catégorie
-- activer la visibilité des produits quand on réactive la visibilité d'une catégorie
-- attention - si une catégorie est désactivée et qu'un produit de cette catégorie est active, il ne doit pas être visible en ligne (à vérifier) - pour l'instant sur la page d'accueil
+- désactiver la visibilité des produits quand on enlève la visibilité d'une catégorie [OK]
+- activer la visibilité des produits quand on réactive la visibilité d'une catégorie [OK]
+- attention - si une catégorie est désactivée et qu'un produit de cette catégorie est active, il ne doit pas être visible en ligne (à vérifier) - pour l'instant sur la page d'accueil [OK]
+- gérer l'affichage des pages catégories par level [OK]
+- gérer le petit bouton loupe qui permet d'accéder au détail d'une catégorie parente [OK]
+- gérer le breadcrumb [OK]
 
-- gérer l'affichage des pages catégories par level
-- gérer le petit bouton loupe qui permet d'accéder au détail d'une catégorie parente
-- gérer le breadcrumb
+- gérer l'affichage des catégories dans la barre de navigation côté front
+- gérer la pagination dans l'admin, on va commencer par les catégories
+- gérer la liste des utilisateurs dans l'admin
+- gérer l'ajout d'un utilisateur
+- gérer la modification d'un utilisateur
+- gérer la suppression d'un utilisateur
