@@ -161,6 +161,7 @@ main {
   min-height: 500px;
   display: block;
   margin: auto;
+  max-width: 1140px;
 }
 
 .container {
@@ -506,7 +507,8 @@ section.products h2 {
 
 .input-group input {
   width: 3rem;
-  height: 2.75rem;
+  /* todo à voir si c'est gênant (ici c'est pour corriger les input dans register */
+  /* height: 2.75rem; */
 }
 
 .input-group-vertical {

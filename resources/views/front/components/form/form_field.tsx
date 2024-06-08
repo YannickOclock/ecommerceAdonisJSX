@@ -37,7 +37,7 @@ export function FormField(props: FormFieldProps) {
       <label for={name} class={clsx(required ? 'required' : '')}>
         {label}
       </label>
-      <div style="display: flex; flex-direction: column; width: 100%;">
+      <div class="input-group">
         {fieldElement}
         {getFlashMessages().has(`inputErrorsBag.${name}`) &&
           getFlashMessages()
@@ -46,6 +46,7 @@ export function FormField(props: FormFieldProps) {
               return <div class={'alert alert-danger'}>{message}</div>
             })}
       </div>
+      {required === undefined && <div class="optional_field_flag">Optionnel</div>}
     </div>
   )
 }

@@ -23,7 +23,12 @@ PLUS TARD
 - gérer l'affichage des catégories dans la barre de navigation côté front [OK]
 - gérer l'affichage des sous-catégories au survol (front) [OK]
 - rajouter les préfixes sur les routes [OK]
+- créer la route pour la création d'utilisateurs [OK]
 
+- petit problème sur l'affichage des messages d'erreurs (form / côté front)
+- afficher les messages flash (front)
+- revoir les extensions des fichiers ts/tsx
+- validators : revoir les messages en français (placement)
 - gérer la pagination dans l'admin, on va commencer par les catégories
 - gérer la liste des utilisateurs dans l'admin
 - gérer l'ajout d'un utilisateur
@@ -31,3 +36,4 @@ PLUS TARD
 - gérer la suppression d'un utilisateur
 - créer la route pour le login
 - créer la route pour le logout
+

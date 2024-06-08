@@ -22,12 +22,47 @@ export async function Register() {
                   Vous avez déjà un compte ? <a href={route('front.login')}>Connectez-vous</a>
                 </div>
                 <form method="post">
-                  <FormField name="civility" label="Civilité (M./Mme)" required autofocus />
+                  <FormField name="civility" label="Titre (M./Mme)" required autofocus />
                   <FormField name="firstname" label="Prénom" required />
+                  <div class="flex flex-help">
+                    <label>&nbsp;</label>
+                    <div>
+                      <small class="form-text text-muted">
+                        <div id="registration_form_firstname_help" class="help-text">
+                          Seules les lettres et le point (.), suivi d'un espace, sont autorisés.
+                        </div>
+                      </small>
+                    </div>
+                  </div>
                   <FormField name="lastname" label="Nom" required />
+                  <div class="flex flex-help">
+                    <label>&nbsp;</label>
+                    <div>
+                      <small class="form-text text-muted">
+                        <div id="registration_form_firstname_help" class="help-text">
+                          Seules les lettres et le point (.), suivi d'un espace, sont autorisés.
+                        </div>
+                      </small>
+                    </div>
+                  </div>
                   <FormField name="email" label="E-mail" required />
-                  <FormField name="plainPassword" label="Mot de passe" inputType="password" />
+                  <FormField
+                    name="plainPassword"
+                    label="Mot de passe"
+                    inputType="password"
+                    required
+                  />
                   <FormField name="birthdayAt" label="Date de naissance" inputType="date" />
+                  <div class="flex flex-help">
+                    <label>&nbsp;</label>
+                    <div>
+                      <small class="form-text text-muted">
+                        <div id="registration_form_firstname_help" class="help-text">
+                          Exemple : 01/01/1980
+                        </div>
+                      </small>
+                    </div>
+                  </div>
                   <FormField name="addressLine1" label="Principale ligne d'adresse" />
                   <FormField name="addressLine2" label="Adresse complémentaire (facultatif)" />
                   <FormField name="postCode" label="Code postal" />

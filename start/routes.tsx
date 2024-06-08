@@ -16,6 +16,7 @@ router
   .group(() => {
     router.get('/login', [AuthController, 'render']).as('login')
     router.get('/register', [RegisterController, 'render']).as('register')
+    router.post('/register', [RegisterController, 'handle']).as('register.post')
     router.get('/cart', [ShowCartController, 'render']).as('cart')
     router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('step1')
     router.post('/step1', [ShowStep1Controller, 'add']).as('step1.add')
