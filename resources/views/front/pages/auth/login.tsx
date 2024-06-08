@@ -8,6 +8,8 @@ export async function Login() {
   const { auth } = HttpContext.getOrFail()
   await auth.check()
 
+  console.log(auth.user)
+
   return (
     <Base>
       <>
@@ -24,7 +26,8 @@ export async function Login() {
               <div class="block_white">
                 {auth.user && (
                   <div class="mb-3">
-                    Vous êtes connecté(e) comme {auth.user.name}, <a href="#">Me déconnecter</a>
+                    Vous êtes connecté(e) comme {auth.user.$attributes.email},{' '}
+                    <a href={route('front.logout')}>Me déconnecter</a>
                   </div>
                 )}
                 <form method="post">

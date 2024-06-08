@@ -19,7 +19,7 @@ export async function Nav() {
           <nav class="right-nav">
             {auth.user ? (
               <>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href={route('front.logout')}>
                   <i class="material-icons">person</i>
                   <span>Me déconnecter</span>
                 </a>
