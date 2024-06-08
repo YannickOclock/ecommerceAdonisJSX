@@ -1,24 +1,29 @@
 import router from '@adonisjs/core/services/router'
 
-// partie front
+// ---------------------
+// PARTIE FRONT
+// ---------------------
 
 const ShowCartController = () => import('#front/cart/controllers/show_cart_controller')
 const ShowStep1Controller = () => import('#front/product/controllers/show_step1_controller')
 const ShowStep2Controller = () => import('#front/product/controllers/show_step2_controller')
 const ShowHomeController = () => import('#front/home/controllers/show_home_controller')
 
-router.get('/cart', [ShowCartController, 'render']).as('front.cart')
+router
+  .group(() => {
+    router.get('/cart', [ShowCartController, 'render']).as('cart')
+    router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('step1')
+    router.post('/step1', [ShowStep1Controller, 'add']).as('step1.add')
+    router.get('/step2/:id', [ShowStep2Controller, 'render']).as('step2')
+    router.get('/', [ShowHomeController, 'render']).as('home')
+  })
+  .as('front')
 
-router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('front.step1')
-router.post('/step1', [ShowStep1Controller, 'add']).as('front.step1.add')
-router.get('/step2/:id', [ShowStep2Controller, 'render']).as('front.step2')
-
-router.get('/', [ShowHomeController, 'render']).as('front.home')
-
-// partie back
+// -------------------
+// PARTIE BACK
+// -------------------
 
 // CONTROLLERS PRODUCTS
-
 const ShowDashboardController = () =>
   import('#admin/dashboard/controllers/show_dashboard_controller')
 const ShowListProductController = () =>
@@ -30,7 +35,6 @@ const DeleteProductImageController = () =>
   import('#admin/product/controllers/delete_product_image_controller')
 
 // CONTROLLERS CATEGORIES
-
 const ShowListCategoryController = () =>
   import('#admin/category/controllers/show_list_category_controller')
 const AddCategoryController = () => import('#admin/category/controllers/add_category_controller')
@@ -38,39 +42,31 @@ const EditCategoryController = () => import('#admin/category/controllers/edit_ca
 const SwitchCategoryController = () =>
   import('#admin/category/controllers/switch_category_controller')
 
-// CONTROLLERS MAIN
+router
+  .group(() => {
+    // CONTROLLERS MAIN
+    router.get('/', [ShowDashboardController, 'render']).as('dashboard')
 
-router.get('/admin', [ShowDashboardController, 'render']).as('admin.dashboard')
+    // PARTIE PRODUCTS
+    router.get('/products', [ShowListProductController, 'render']).as('product.list')
+    router.get('/products/add', [AddProductController, 'render']).as('product.add')
+    router.post('/products/add', [AddProductController, 'store']).as('product.store')
+    router.get('/products/edit/:id', [EditProductController, 'render']).as('product.edit')
+    router.post('/products/edit/:id', [EditProductController, 'update']).as('product.update')
+    router.get('/products/switch/:id', [SwitchProductController, 'switch']).as('product.switch')
+    router
+      .get('/products/:productId/images/delete/:id', [DeleteProductImageController, 'delete'])
+      .as('product.image.delete')
 
-// PARTIE PRODUCTS
-
-router.get('/admin/products', [ShowListProductController, 'render']).as('admin.product.list')
-router.get('/admin/products/add', [AddProductController, 'render']).as('admin.product.add')
-router.post('/admin/products/add', [AddProductController, 'store']).as('admin.product.store')
-router.get('/admin/products/edit/:id', [EditProductController, 'render']).as('admin.product.edit')
-router
-  .post('/admin/products/edit/:id', [EditProductController, 'update'])
-  .as('admin.product.update')
-router
-  .get('/admin/products/switch/:id', [SwitchProductController, 'switch'])
-  .as('admin.product.switch')
-router
-  .get('/admin/products/:productId/images/delete/:id', [DeleteProductImageController, 'delete'])
-  .as('admin.product.image.delete')
-
-// PARTIE CATEGORIES
-
-router
-  .get('/admin/categories/list/:parentId?', [ShowListCategoryController, 'render'])
-  .as('admin.category.list')
-router.get('/admin/categories/add', [AddCategoryController, 'render']).as('admin.category.add')
-router.post('/admin/categories/add', [AddCategoryController, 'store']).as('admin.category.store')
-router
-  .get('/admin/categories/edit/:id', [EditCategoryController, 'render'])
-  .as('admin.category.edit')
-router
-  .post('/admin/categories/edit/:id', [EditCategoryController, 'update'])
-  .as('admin.category.update')
-router
-  .get('/admin/categories/switch/:id', [SwitchCategoryController, 'switch'])
-  .as('admin.category.switch')
+    // PARTIE CATEGORIES
+    router
+      .get('/categories/list/:parentId?', [ShowListCategoryController, 'render'])
+      .as('category.list')
+    router.get('/categories/add', [AddCategoryController, 'render']).as('category.add')
+    router.post('/categories/add', [AddCategoryController, 'store']).as('category.store')
+    router.get('/categories/edit/:id', [EditCategoryController, 'render']).as('category.edit')
+    router.post('/categories/edit/:id', [EditCategoryController, 'update']).as('category.update')
+    router.get('/categories/switch/:id', [SwitchCategoryController, 'switch']).as('category.switch')
+  })
+  .prefix('admin')
+  .as('admin')
