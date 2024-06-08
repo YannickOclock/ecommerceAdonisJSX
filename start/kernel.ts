@@ -36,10 +36,14 @@ router.use([
   () => import('@adonisjs/session/session_middleware'),
   () => import('@adonisjs/shield/shield_middleware'),
   () => import('#core/middleware/detect_user_locale_middleware'),
+  () => import('@adonisjs/auth/initialize_auth_middleware'),
 ])
 
 /**
  * Named middleware collection must be explicitly assigned to
  * the routes or the routes group.
  */
-export const middleware = router.named({})
+export const middleware = router.named({
+  guest: () => import('#core/middleware/guest_middleware'),
+  auth: () => import('#core/middleware/auth_middleware'),
+})

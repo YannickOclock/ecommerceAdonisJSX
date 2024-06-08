@@ -1,8 +1,12 @@
 import { Vite } from '#resources/helpers/asset'
 import { categoryService } from '#resources/helpers/categories'
 import { route } from '#start/view'
+import { HttpContext } from '@adonisjs/core/http'
 
 export async function Nav() {
+  const { auth } = HttpContext.getOrFail()
+  await auth.check()
+
   const categories = await categoryService.getCategories()
 
   return (
@@ -13,14 +17,23 @@ export async function Nav() {
             <a href="#">Contactez-nous</a>
           </nav>
           <nav class="right-nav">
-            <a class="nav-link" href="#">
-              <i class="material-icons">person</i>
-              <span>Me déconnecter</span>
-            </a>
-            <a class="nav-link" href={route('admin.dashboard')}>
-              <i class="material-icons">admin_panel_settings</i>
-              <span>Administration</span>
-            </a>
+            {auth.user ? (
+              <>
+                <a class="nav-link" href="#">
+                  <i class="material-icons">person</i>
+                  <span>Me déconnecter</span>
+                </a>
+                <a class="nav-link" href={route('admin.dashboard')}>
+                  <i class="material-icons">admin_panel_settings</i>
+                  <span>Administration</span>
+                </a>
+              </>
+            ) : (
+              <a class="nav-link" href={route('front.login')}>
+                <i class="material-icons">person</i>
+                <span>Connexion</span>
+              </a>
+            )}
             <div id="cart" up-source={route('front.cart')} load-fragment></div>
           </nav>
         </div>
