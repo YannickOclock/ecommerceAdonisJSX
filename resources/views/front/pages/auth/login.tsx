@@ -43,7 +43,7 @@ export async function Login() {
                   </div>
                   <hr />
                   <div class="flex no-account">
-                    <a href="#" class="btn btn-secondary mt-3">
+                    <a href={route('front.register')} class="btn btn-secondary mt-3">
                       Pas de compte ? Créez-en un !
                     </a>
                   </div>

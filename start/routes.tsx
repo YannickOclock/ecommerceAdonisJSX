@@ -10,10 +10,12 @@ const ShowStep1Controller = () => import('#front/product/controllers/show_step1_
 const ShowStep2Controller = () => import('#front/product/controllers/show_step2_controller')
 const ShowHomeController = () => import('#front/home/controllers/show_home_controller')
 const AuthController = () => import('#front/auth/controllers/auth_controller')
+const RegisterController = () => import('#front/auth/controllers/register_controller')
 
 router
   .group(() => {
     router.get('/login', [AuthController, 'render']).as('login')
+    router.get('/register', [RegisterController, 'render']).as('register')
     router.get('/cart', [ShowCartController, 'render']).as('cart')
     router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('step1')
     router.post('/step1', [ShowStep1Controller, 'add']).as('step1.add')

@@ -39,7 +39,7 @@ export async function Nav() {
         </div>
       </div>
       <div id="header-top">
-        <a href="">
+        <a href={route('front.home')}>
           <Vite.Image
             src={'resources/assets/front/images/logo.png'}
             alt="Logo"
