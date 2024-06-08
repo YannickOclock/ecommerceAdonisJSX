@@ -3,6 +3,7 @@ import { App } from './components/button'
 import { Slider } from './components/home_slider'
 
 import './vendors/unpoly'
+import './components/main_submenu.js'
 
 // Utilisation des composants
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,6 +1,10 @@
+import { Vite } from '#resources/helpers/asset'
+import { categoryService } from '#resources/helpers/categories'
 import { route } from '#start/view'
 
-export function Nav() {
+export async function Nav() {
+  const categories = await categoryService.getCategories()
+
   return (
     <header id="header">
       <div id="header-nav">
@@ -20,6 +24,38 @@ export function Nav() {
             <div id="cart" up-source={route('front.cart')} load-fragment></div>
           </nav>
         </div>
+      </div>
+      <div id="header-top">
+        <a href="">
+          <Vite.Image
+            src={'resources/assets/front/images/logo.png'}
+            alt="Logo"
+            width="100"
+            height="28"
+          />
+        </a>
+        <nav id="menu">
+          <ul>
+            {categories.map((category) => (
+              <li>
+                <a href="#">{category.name}</a>
+                {category.subCategories.length > 0 && (
+                  <ul class="submenu">
+                    {category.subCategories.map((subCategory) => (
+                      <li>
+                        <a href="#">{subCategory.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <form id="search">
+          <input type="text" placeholder="Rechercher" />
+          <i class="material-icons">search</i>
+        </form>
       </div>
     </header>
   )

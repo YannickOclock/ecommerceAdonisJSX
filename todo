@@ -21,7 +21,9 @@ PLUS TARD
 - gérer le petit bouton loupe qui permet d'accéder au détail d'une catégorie parente [OK]
 - gérer le breadcrumb [OK]
 
-- gérer l'affichage des catégories dans la barre de navigation côté front
+- gérer l'affichage des catégories dans la barre de navigation côté front [OK]
+- gérer l'affichage des sous-catégories au survol (front) [OK]
+
 - gérer la pagination dans l'admin, on va commencer par les catégories
 - gérer la liste des utilisateurs dans l'admin
 - gérer l'ajout d'un utilisateur

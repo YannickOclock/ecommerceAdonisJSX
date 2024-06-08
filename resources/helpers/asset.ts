@@ -1,9 +1,21 @@
 import vite from '@adonisjs/vite/services/main'
 
-function Image(props: { src: string; alt?: string; class?: string }) {
+function Image(props: {
+  src: string
+  alt?: string
+  class?: string
+  width?: string
+  height?: string
+}) {
   const url = vite.assetPath(props.src)
 
-  return Html.createElement('img', { src: url, alt: props.alt, class: props.class })
+  return Html.createElement('img', {
+    src: url,
+    alt: props.alt,
+    class: props.class,
+    width: props.width,
+    height: props.height,
+  })
 }
 
 function Script(props: { src: string; type?: string }) {
