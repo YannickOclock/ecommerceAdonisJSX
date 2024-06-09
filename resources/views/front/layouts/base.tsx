@@ -2,14 +2,16 @@ import { Footer } from '#viewsfront/partials/footer'
 import { Vite } from '#resources/helpers/asset'
 import { Nav } from '#viewsfront/partials/nav'
 import { HttpContext } from '@adonisjs/core/http'
+import { Slider } from '#viewsfront/components/slider'
 
 interface BaseProps {
   title?: string
+  slider?: boolean
   children: JSX.Element
 }
 
 export async function Base(props: BaseProps) {
-  const { title = `Boutique`, children } = props
+  const { title = `Boutique`, slider = false, children } = props
   const { auth } = HttpContext.getOrFail()
   await auth.check()
 
@@ -49,7 +51,12 @@ export async function Base(props: BaseProps) {
             )}
           </div>
           {/*<Main />*/}
-          <main up-main>{children}</main>
+          <main>
+            <Slider />
+          </main>
+          <main class={'container'} up-main>
+            {children}
+          </main>
           <Footer />
         </body>
       </html>

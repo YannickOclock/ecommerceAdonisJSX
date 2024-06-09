@@ -27,16 +27,34 @@ PLUS TARD
 - créer la route pour la création d'utilisateurs [OK]
 - revoir les extensions des fichiers ts/tsx [OK]
 - gérer la liste des utilisateurs dans l'admin [OK]
+- modifier le form select et rajouter la valeur par défaut (selected) ou la old value [OK]
+- créer des champs disabled/readonly pour les input/textarea (admin) [OK]
+- gérer l'ajout d'un utilisateur [OK]
+- gérer la modification d'un utilisateur [OK]
+- créer la route pour le login [OK]
+- créer la route pour le logout [OK]
+- il reste à voir les rôles pour passer admin et n'autoriser que les admin à se connecter [OK]
+- gérer le bandeau front/back pour la vérification du compte [OK]
+- bug avec le slider (à cause du main min-with, voir comment faire) [OK]
 
 - petit problème sur l'affichage des messages d'erreurs (form / côté front)
 - afficher les messages flash (front)
 - il manque l'erreur lors de la connexion (invalid credentials ...)
-- bug avec le slider (à cause du main min-with, voir comment faire)
-- il reste à voir les rôles pour passer admin et n'autoriser que les admin à se connecter
+- il faut customiser les champs sur le form front - register (select, accepter les conditions etc.)
 - validators : revoir les messages en français (placement)
 - gérer la pagination dans l'admin, on va commencer par les catégories
-- gérer l'ajout d'un utilisateur
-- gérer la modification d'un utilisateur
 - gérer la suppression d'un utilisateur
-- créer la route pour le login
-- créer la route pour le logout
+- il faudra créer le lien pour la vérification du compte (envoi de l'email)
+- envoyer le mail pour la vérification du compte lors de l'inscription
+- créer la route de validation du mail pour la vérification du compte (et changer la valeur du paramètre vérifié si c'est OK)
+- gérer le compte utilisateur côté front (avec la gestion des adresses)
+- lister les adresses (côté back)
+- ajouter une adresse (côté back)
+- modifier une adresse (côté back)
+- supprimer une adresse (côté back)
+- lier une adresse à un compte utilisateur (base de données)
+- modifier le formulaire d'inscription côté front pour permettre l'ajout de l'adresse en base de données (en direct)
+- ajout le champ de date de naissance dans la base de données
+- afficher le panier (côté front)
+- afficher la page de détail d'un produit (côté front)
+- afficher la page qui permet d'afficher les produits d'une catégorie (côté front)

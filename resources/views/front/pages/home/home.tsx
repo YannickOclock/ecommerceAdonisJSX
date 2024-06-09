@@ -1,6 +1,5 @@
 import { Base } from '#viewsfront/layouts/base'
 import { ProductSample } from '#viewsfront/components/product_sample'
-import { Slider } from '#viewsfront/components/slider'
 import { HomeProductListQueryResult } from '#app/front/home/repositories/product_repository'
 
 interface HomeProps {
@@ -11,9 +10,8 @@ export function Home(props: HomeProps) {
   const { products } = props
 
   return (
-    <Base title={`Page d'accueil`}>
+    <Base title={`Page d'accueil`} slider={true}>
       <>
-        <Slider />
         <div class="container">
           <section class="products">
             <h2>Produits populaires</h2>

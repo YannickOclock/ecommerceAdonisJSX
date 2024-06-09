@@ -158,10 +158,9 @@ strong {
 }
 
 main {
-  min-height: 500px;
+  min-height: 200px;
   display: block;
   margin: auto;
-  max-width: 1140px;
 }
 
 .container {
