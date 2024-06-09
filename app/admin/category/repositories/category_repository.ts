@@ -1,5 +1,5 @@
-import Category from '#core/models/category'
-import { ResultOf } from '#types/common'
+import Category from "#core/models/category";
+import { ResultOf } from "#types/common";
 
 export interface StoreCategoryDTO {
   name: string
@@ -25,19 +25,16 @@ export type AdminCategoryEditQueryResult = ResultOf<CategoryRepository, 'find'>
 
 export class CategoryRepository {
   async all() {
-    return await Category.query().orderBy('name', 'asc').preload('parent').limit(10)
+    return Category.query().orderBy('name', 'asc').preload('parent').limit(10)
   }
 
   async allFromParent(id: string | null) {
     if (id === null) {
       // retourner les catégories qui n'ont pas de parent
-      return await Category.query()
-        .orderBy('name', 'asc')
-        .whereNull('parentId')
-        .preload('subCategories')
+      return Category.query().orderBy('name', 'asc').whereNull('parentId').preload('subCategories')
     }
     // retourner les catégories qui ont une catégorie parente
-    return await Category.query()
+    return Category.query()
       .orderBy('name', 'asc')
       .where('parentId', id)
       .preload('parent')
@@ -62,14 +59,14 @@ export class CategoryRepository {
 
   async create(payload: StoreCategoryDTO): Promise<string> {
     const category = new Category()
-    this.wideCategoryFromPayload(payload, category)
+    await this.wideCategoryFromPayload(payload, category)
     await category.save()
     return category.id
   }
 
   async update(payload: UpdateCategoryDTO): Promise<void> {
     const category = await this.find(payload.id)
-    this.wideCategoryFromPayload(payload, category)
+    await this.wideCategoryFromPayload(payload, category)
     await category.save()
   }
 

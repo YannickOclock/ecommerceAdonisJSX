@@ -35,7 +35,7 @@ export async function Login() {
                   <FormField name="password" label="Mot de passe" inputType="password" required />
                   {csrfField()}
                   <div class="flex forgot-password">
-                    <a href="{{ path('forgotten_password') }}" class="btn btn-secondary mt-3">
+                    <a href="#" class="btn btn-secondary mt-3">
                       Mot de passe oublié ?
                     </a>
                   </div>

@@ -24,7 +24,7 @@ export default class EditCategoryController {
     // On supprime l'ancienne image (s'il y en a une) et on upload la nouvelle image
     let imagePath
     if (payload.image) {
-      this.categoryImagesService.deleteFromCategory(payload.id)
+      await this.categoryImagesService.deleteFromCategory(payload.id)
       imagePath = await this.categoryImagesService.create(payload.image)
     }
 
