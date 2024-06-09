@@ -93,4 +93,4 @@ router
   })
   .prefix('admin')
   .as('admin')
-  .use(middleware.auth())
+  .use([middleware.auth(), middleware.admin()])

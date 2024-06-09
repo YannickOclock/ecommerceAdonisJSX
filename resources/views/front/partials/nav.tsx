@@ -2,6 +2,7 @@ import { Vite } from '#resources/helpers/asset'
 import { categoryService } from '#resources/helpers/categories'
 import { route } from '#start/view'
 import { HttpContext } from '@adonisjs/core/http'
+import { UserRole } from '#admin/user/enums/user_role'
 
 export async function Nav() {
   const { auth } = HttpContext.getOrFail()
@@ -23,10 +24,12 @@ export async function Nav() {
                   <i class="material-icons">person</i>
                   <span>Me déconnecter</span>
                 </a>
-                <a class="nav-link" href={route('admin.dashboard')}>
-                  <i class="material-icons">admin_panel_settings</i>
-                  <span>Administration</span>
-                </a>
+                {auth.user.role === UserRole.Admin && (
+                  <a class="nav-link" href={route('admin.dashboard')}>
+                    <i class="material-icons">admin_panel_settings</i>
+                    <span>Administration</span>
+                  </a>
+                )}
               </>
             ) : (
               <a class="nav-link" href={route('front.login')}>
