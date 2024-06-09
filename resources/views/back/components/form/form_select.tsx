@@ -4,18 +4,20 @@ import clsx from 'clsx'
 interface FormSelectProps {
   name: string
   required?: boolean
+  disabled?: boolean
   values: Array<string>
   defaultValue?: string
 }
 
 export function FormSelect(props: FormSelectProps) {
-  const { name, required, values, defaultValue } = props
+  const { name, required, disabled, values, defaultValue } = props
   console.log(`Valeur par défaut : ${defaultValue}`)
   return (
     <select
       id={name}
       name={name}
       required={required}
+      disabled={disabled}
       class={clsx(
         'form-control my-2',
         getFlashMessages().has(`inputErrorsBag.${name}`) && 'is-invalid'

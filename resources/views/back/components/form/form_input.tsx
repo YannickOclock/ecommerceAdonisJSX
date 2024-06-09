@@ -5,11 +5,12 @@ interface FormInputProps {
   name: string
   value?: string | null | undefined
   required?: boolean
+  disabled?: boolean
   inputType?: string
 }
 
 export function FormInput(props: FormInputProps) {
-  const { name, value, required, inputType } = props
+  const { name, value, required, disabled, inputType } = props
 
   if (inputType === 'checkbox') {
     let checked: boolean = true
@@ -25,11 +26,12 @@ export function FormInput(props: FormInputProps) {
         id={name}
         name={name}
         checked={checked}
+        disabled={disabled}
         class={clsx(
           'form-control my-2',
           getFlashMessages().has(`inputErrorsBag.${name}`) && 'is-invalid'
         )}
-        required={required}
+        readonly={required}
       />
     )
   } else if (inputType === 'price') {
@@ -45,6 +47,7 @@ export function FormInput(props: FormInputProps) {
           getFlashMessages().has(`inputErrorsBag.${name}`) && 'is-invalid'
         )}
         required={required}
+        readonly={disabled}
       />
     )
   } else {
@@ -59,6 +62,7 @@ export function FormInput(props: FormInputProps) {
           getFlashMessages().has(`inputErrorsBag.${name}`) && 'is-invalid'
         )}
         required={required}
+        readonly={disabled}
       />
     )
   }

@@ -371,6 +371,11 @@ form > div input.form-control, form > div select.form-control {
   border: 1px solid #bbcdd2;
 }
 
+form > div input.form-control[readonly], form > div select.form-control[disabled], form > div textarea.form-control[readonly] {
+  background-color: #bbcdd2;
+  color: var(--edition-black-300);
+}
+
 form > div select.form-control {
   height: 2.5rem;
 }

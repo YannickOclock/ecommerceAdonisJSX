@@ -9,6 +9,7 @@ const messages = {
 }
 
 const fields = {
+  id: "id de l'utilisateur",
   lastname: 'nom',
   firstname: 'prénom',
   email: 'email',
@@ -17,21 +18,16 @@ const fields = {
   verified: 'vérifié',
 }
 
-const createUserValidator = vine.compile(
+const updateUserValidator = vine.compile(
   vine.object({
+    id: vine.string().trim(),
     lastname: vine.string().trim().minLength(3),
     firstname: vine.string().trim().minLength(4),
-    email: vine
-      .string()
-      .minLength(4)
-      .unique(async (db, value) => {
-        const users = await db.from('users').where('email', value).first()
-        return !users
-      }),
-    plainPassword: vine.string().trim().minLength(8),
+    email: vine.string().minLength(4),
+    plainPassword: vine.string().trim().minLength(8).optional(),
     role: vine.number(),
     verified: vine.boolean().optional(),
   })
 )
-createUserValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
-export { createUserValidator }
+updateUserValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
+export { updateUserValidator }

@@ -2,7 +2,6 @@ import { getFlashMessages } from '#resources/helpers/flash_messages'
 import clsx from 'clsx'
 import { FormInput } from './form_input.tsx'
 import { FormTextarea } from './form_textarea.tsx'
-import { FormSelectCategory } from './select/select_category.tsx'
 import { FormSelect } from '#viewsback/components/form/form_select'
 
 interface FormFieldProps {
@@ -10,26 +9,43 @@ interface FormFieldProps {
   label: string
   value?: string | null | undefined
   required?: boolean
+  disabled?: boolean
   inputTagName?: string
   inputType?: string
   inputValues?: any
 }
 
 export function FormField(props: FormFieldProps) {
-  const { name, label, value, required, inputTagName, inputType, inputValues } = props
+  const { name, label, value, required, disabled, inputTagName, inputType, inputValues } = props
 
   let fieldElement = null
   switch (inputTagName) {
     case 'select':
-      fieldElement = <FormSelect name={name} values={inputValues} required={required} defaultValue={value} />
+      fieldElement = (
+        <FormSelect
+          name={name}
+          values={inputValues}
+          required={required}
+          disabled={disabled}
+          defaultValue={value}
+        />
+      )
       break
     case 'textarea':
-      fieldElement = <FormTextarea name={name} value={value} required={required} />
+      fieldElement = (
+        <FormTextarea name={name} value={value} required={required} disabled={disabled} />
+      )
       break
     case 'input':
     default:
       fieldElement = (
-        <FormInput name={name} inputType={inputType} value={value} required={required} />
+        <FormInput
+          name={name}
+          inputType={inputType}
+          value={value}
+          required={required}
+          disabled={disabled}
+        />
       )
       break
   }
