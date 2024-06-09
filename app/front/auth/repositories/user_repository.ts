@@ -1,6 +1,4 @@
 import User from '#app/core/models/user'
-import Product from '#core/models/product'
-import { ResultOf } from '#types/common'
 
 interface AuthRegisterDTO {
   firstname: string

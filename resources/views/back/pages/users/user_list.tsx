@@ -16,7 +16,7 @@ export function UserList(props: UserListProps): JSX.Element {
   return (
     <Admin
       title={'Administration - Liste des utilisateurs'}
-      breadcrumb="Catalogue &gt; Utilisateurs"
+      breadcrumb="Clients &gt; Utilisateurs"
       header="Liste des utilisateurs"
       bodyTitle="Liste des utilisateurs"
     >
@@ -70,7 +70,7 @@ export function UserList(props: UserListProps): JSX.Element {
                       type="checkbox"
                       role="switch"
                       checked={!!user.verified}
-                      data-href="#"
+                      data-href={route('admin.user.switch', { id: user.id })}
                       id="switch1"
                       disabled
                     />
@@ -78,7 +78,12 @@ export function UserList(props: UserListProps): JSX.Element {
                   </div>
                 </td>
                 <td class="td-flex">
-                  <a href="#" class="btn" up-follow up-target="#main-content">
+                  <a
+                    href={route('admin.user.edit', { id: user.id })}
+                    class="btn"
+                    up-follow
+                    up-target="#main-content"
+                  >
                     <i class="material-icons">edit</i>
                   </a>
                   <a href="" class="btn btn-dropdown">

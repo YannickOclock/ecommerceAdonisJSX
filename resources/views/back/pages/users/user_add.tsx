@@ -1,4 +1,3 @@
-import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
 import { Vite } from '#resources/helpers/asset'
 import { csrfField } from '#resources/helpers/csrf_field'
 import { Admin } from '#viewsback/layouts/admin'
@@ -11,7 +10,7 @@ export function UserAdd() {
   return (
     <Admin
       title={'Administration - Ajouter un utilisateur'}
-      breadcrumb="Catalogue &gt; Utilisateurs &gt; Nouvel utilisateur"
+      breadcrumb="Clients &gt; Utilisateurs &gt; Nouvel utilisateur"
       header="Ajouter un utilisateur"
       bodyTitle="Ajouter un utilisateur"
     >
@@ -31,6 +30,7 @@ export function UserAdd() {
           inputValues={UserRoleText}
           value={UserRole.User}
         />
+        <FormField name="verified" label="Adresse vérifiée ?" inputType="checkbox" value="1" />
         {csrfField()}
         <button type="submit" class="btn btn-primary my-2">
           Ajouter
