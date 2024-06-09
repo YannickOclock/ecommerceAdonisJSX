@@ -51,6 +51,9 @@ const EditCategoryController = () => import('#admin/category/controllers/edit_ca
 const SwitchCategoryController = () =>
   import('#admin/category/controllers/switch_category_controller')
 
+// CONTROLLERS USERS
+const ShowListUserController = () => import('#admin/user/controllers/show_list_user_controller')
+
 router
   .group(() => {
     // CONTROLLERS MAIN
@@ -76,6 +79,9 @@ router
     router.get('/categories/edit/:id', [EditCategoryController, 'render']).as('category.edit')
     router.post('/categories/edit/:id', [EditCategoryController, 'update']).as('category.update')
     router.get('/categories/switch/:id', [SwitchCategoryController, 'switch']).as('category.switch')
+
+    // PARTIE USERS
+    router.get('/users', [ShowListUserController, 'render']).as('users.list')
   })
   .prefix('admin')
   .as('admin')

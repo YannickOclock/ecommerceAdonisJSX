@@ -50,6 +50,20 @@ export function Nav() {
     active: request.matchesRoute('admin.category.add'),
     level: 2,
   }
+  const clientsLink = {
+    title: 'Clients',
+    icon: 'account_circle',
+    url: '#',
+    active: request.matchesRoute([
+      'admin.users.list',
+    ]),
+  }
+  const usersLink = {
+    title: 'Utilisateurs',
+    url: route('admin.users.list'),
+    active: request.matchesRoute(['admin.users.list', 'admin.users.edit']),
+    level: 2,
+  }
 
   return (
     <nav id="navbar">
@@ -63,6 +77,14 @@ export function Nav() {
               <Link {...productsAddLink} />
               <Link {...categoriesLink} />
               <Link {...categoriesAddLink} />
+            </>
+          </SubMenu>
+        </Link>
+        <TitleLink title="Clients" />
+        <Link {...clientsLink}>
+          <SubMenu>
+            <>
+              <Link {...usersLink} />
             </>
           </SubMenu>
         </Link>
