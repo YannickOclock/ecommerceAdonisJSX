@@ -8,4 +8,7 @@
 @import 'login.css';
 @import 'cart.css';
 
+@import 'colors.css';
+@import 'alert.css';
+
 @import 'master.css';

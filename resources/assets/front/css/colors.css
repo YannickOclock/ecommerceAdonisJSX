@@ -1,0 +1,29 @@
+:root {
+  --edition-info-50: #e8edfd;
+  --edition-info-100: #d1dcfc;
+  --edition-info-200: #a2b8f9;
+  --edition-info-500: #174eef;
+  --edition-info-700: #113deb;
+  --edition-info-900: #0725e4;
+  --edition-destructive-50: #fae7e8;
+  --edition-destructive-100: #f2c2c5;
+  --edition-destructive-500: #bd473e;
+  --edition-destructive-700: #ca272e;
+  --edition-destructive-900: #ba151a;
+  --edition-success-50: #e9f3ed;
+  --edition-success-100: #d3e6db;
+  --edition-success-200: #a6cdb8;
+  --edition-success-500: #21834d;
+  --edition-success-700: #18703d;
+  --edition-success-900: #0b5325;
+  --edition-warning-50: #fff5e5;
+  --edition-warning-100: #ffeccc;
+  --edition-warning-200: #ffd999;
+  --edition-warning-500: #ffa000;
+  --edition-warning-700: #ff8e00;
+  --edition-warning-900: #ff7300;
+  --edtion-primary-600: #5e5e5e;
+  --edition-red-50: #ffe4e6;
+  --edition-blue-700: #2942cc;
+  --edition-purple-700: #7b4fac;
+}
