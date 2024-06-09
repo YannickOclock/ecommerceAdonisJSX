@@ -13,9 +13,10 @@ const fields = {
   firstname: 'prénom',
   email: 'email',
   plainPassword: 'mot de passe',
+  role: 'role',
 }
 
-const authRegisterValidator = vine.compile(
+const createUserValidator = vine.compile(
   vine.object({
     lastname: vine.string().trim().minLength(3),
     firstname: vine.string().trim().minLength(4),
@@ -27,7 +28,8 @@ const authRegisterValidator = vine.compile(
         return !users
       }),
     plainPassword: vine.string().trim().minLength(8),
+    role: vine.number(),
   })
 )
-authRegisterValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
-export { authRegisterValidator }
+createUserValidator.messagesProvider = new SimpleMessagesProvider(messages, fields)
+export { createUserValidator }

@@ -53,6 +53,7 @@ const SwitchCategoryController = () =>
 
 // CONTROLLERS USERS
 const ShowListUserController = () => import('#admin/user/controllers/show_list_user_controller')
+const AddUserController = () => import('#admin/user/controllers/add_user_controller')
 
 router
   .group(() => {
@@ -81,7 +82,9 @@ router
     router.get('/categories/switch/:id', [SwitchCategoryController, 'switch']).as('category.switch')
 
     // PARTIE USERS
-    router.get('/users', [ShowListUserController, 'render']).as('users.list')
+    router.get('/users', [ShowListUserController, 'render']).as('user.list')
+    router.get('/users/add', [AddUserController, 'render']).as('user.add')
+    router.post('/users/add', [AddUserController, 'store']).as('user.store')
   })
   .prefix('admin')
   .as('admin')

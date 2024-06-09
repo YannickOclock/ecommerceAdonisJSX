@@ -10,6 +10,7 @@ interface FormSelectProps {
 
 export function FormSelect(props: FormSelectProps) {
   const { name, required, values, defaultValue } = props
+  console.log(`Valeur par défaut : ${defaultValue}`)
   return (
     <select
       id={name}
@@ -20,12 +21,13 @@ export function FormSelect(props: FormSelectProps) {
         getFlashMessages().has(`inputErrorsBag.${name}`) && 'is-invalid'
       )}
     >
-      <option value="">Sélectionner une catégorie ...</option>
+      <option value="">Sélectionner une valeur ...</option>
       {Object.entries(values).map(([value, label]) => (
         <option
           value={value}
           selected={
-            getFlashMessages().get(`${name}`) === value || (defaultValue && defaultValue === value)
+            getFlashMessages().get(`${name}`) === value ||
+            (defaultValue && defaultValue.toString() === value)
           }
         >
           {label}

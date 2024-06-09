@@ -60,8 +60,14 @@ export function Nav() {
   }
   const usersLink = {
     title: 'Utilisateurs',
-    url: route('admin.users.list'),
-    active: request.matchesRoute(['admin.users.list', 'admin.users.edit']),
+    url: route('admin.user.list'),
+    active: request.matchesRoute(['admin.user.list', 'admin.user.edit']),
+    level: 2,
+  }
+  const usersAddLink = {
+    title: 'Ajouter un utilisateur',
+    url: route('admin.user.add'),
+    active: request.matchesRoute('admin.user.add'),
     level: 2,
   }
 
@@ -85,6 +91,7 @@ export function Nav() {
           <SubMenu>
             <>
               <Link {...usersLink} />
+              <Link {...usersAddLink} />
             </>
           </SubMenu>
         </Link>
