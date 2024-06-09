@@ -35,7 +35,7 @@ export function CategoryEdit(props: CategoryEditProps) {
           type="module"
           src={`resources/assets/back/js/components/check_to_switch_btn.ts?random=${random}`}
         />
-        <FormField name="id" label="Id du produit" value={category.id} required />
+        <FormField name="id" label="Id du produit" value={category.id} required disabled />
         <FormField name="name" label="Nom du produit" value={category.name} required />
         <FormField
           name="description"

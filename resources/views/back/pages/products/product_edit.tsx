@@ -35,7 +35,7 @@ export function ProductEdit(props: ProductEditProps) {
           type="module"
           src={`resources/assets/back/js/components/check_to_switch_btn.ts?random=${random}`}
         />
-        <FormField name="id" label="Id du produit" value={product.id} required />
+        <FormField name="id" label="Id du produit" value={product.id} required disabled />
         <FormField name="name" label="Nom du produit" value={product.name} required />
         <FormField
           name="description"
