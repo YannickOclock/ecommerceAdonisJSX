@@ -12,6 +12,13 @@ interface CategoryAddProps {
 export function CategoryAdd(props: CategoryAddProps) {
   const { categories } = props
   const random = randomUUID()
+
+  // transform categories to array
+  const selectParentCategories = [] as Array<string>
+  for (const category of categories) {
+    selectParentCategories[category.id] = category.name
+  }
+
   return (
     <Admin
       title={'Administration - Ajouter une catégorie'}
@@ -32,7 +39,7 @@ export function CategoryAdd(props: CategoryAddProps) {
           name="parentId"
           label="Catégorie parente"
           inputTagName="select"
-          inputValues={categories}
+          inputValues={selectParentCategories}
         />
 
         <div class="form-group">

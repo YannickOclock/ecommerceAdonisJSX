@@ -16,6 +16,13 @@ interface ProductEditProps {
 export function ProductEdit(props: ProductEditProps) {
   const { product, categories } = props
   const random = randomUUID()
+
+  // transform categories to array
+  const selectCategories = [] as Array<string>
+  for (const category of categories) {
+    selectCategories[category.id] = category.name
+  }
+
   return (
     <Admin
       title={'Administration - Editer un produit'}
@@ -36,7 +43,13 @@ export function ProductEdit(props: ProductEditProps) {
           value={product.description}
           inputTagName="textarea"
         />
-        <FormField name="category" label="Catégorie" value={product.name} required />
+        <FormField
+          name="categoryId"
+          label="Catégorie"
+          inputTagName="select"
+          inputValues={selectCategories}
+          value={product.categoryId}
+        />
         <FormField
           name="price"
           label="Entrez le prix"
@@ -56,12 +69,6 @@ export function ProductEdit(props: ProductEditProps) {
           label="Est en ligne ?"
           inputType="checkbox"
           value={`${product.published}`}
-        />
-        <FormField
-          name="categoryId"
-          label="Catégorie"
-          inputTagName="select"
-          inputValues={categories}
         />
 
         <div class="form-group">

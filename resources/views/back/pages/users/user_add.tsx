@@ -4,6 +4,7 @@ import { csrfField } from '#resources/helpers/csrf_field'
 import { Admin } from '#viewsback/layouts/admin'
 import { randomUUID } from 'node:crypto'
 import { FormField } from '../../components/form/form_field.tsx'
+import { UserRoleText } from "#admin/user/enums/user_role";
 
 interface ProductAddProps {
   categories: AdminCategoryListQueryResult
@@ -11,37 +12,30 @@ interface ProductAddProps {
 
 export function ProductAdd(props: ProductAddProps) {
   const { categories } = props
-
-  // transform categories to array
-  const selectCategories = [] as Array<string>
-  for (const category of categories) {
-    selectCategories[category.id] = category.name
-  }
-
   const random = randomUUID()
   return (
     <Admin
-      title={'Administration - Ajouter un produit'}
-      breadcrumb="Catalogue &gt; Produits &gt; Nouveau produit"
-      header="Ajouter un produit"
-      bodyTitle="Ajouter un produit"
+      title={'Administration - Ajouter un utilisateur'}
+      breadcrumb="Catalogue &gt; Utilisateurs &gt; Nouvel utilisateur"
+      header="Ajouter un utilisateur"
+      bodyTitle="Ajouter un utilisateur"
     >
-      <form method="post" enctype="multipart/form-data">
+      <form method="post">
         <Vite.Script
           type="module"
           src={`resources/assets/back/js/components/check_to_switch_btn.ts?random=${random}`}
         />
-        <FormField name="name" label="Nom du produit" required />
-        <FormField name="description" label="Description" inputTagName="textarea" />
+        <FormField name="firstname" label="Prénom" required />
+        <FormField name="lastname" label="Nom" required />
+        <FormField name="email" label="E-mail" required />
+        <FormField name="password" label="Mot de passe" required inputType="password" />
         <FormField
-          name="categoryId"
-          label="Catégorie"
+          name="role"
+          label="Rôle attribué"
           inputTagName="select"
-          inputValues={selectCategories}
+          inputValues={UserRoleText}
         />
-        <FormField name="price" label="Entrez le prix" required inputType="number" />
-        <FormField name="quantity" label="Entrez le stock disponible" required inputType="number" />
-        <FormField name="published" label="Est en ligne ?" inputType="checkbox" value="1" />
+
         <div class="form-group">
           <label for="images">Images du produit</label>
           <input type="file" id="images" name="images[]" multiple class="form-control my-2" />

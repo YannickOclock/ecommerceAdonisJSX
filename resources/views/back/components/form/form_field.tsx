@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { FormInput } from './form_input.tsx'
 import { FormTextarea } from './form_textarea.tsx'
 import { FormSelectCategory } from './select/select_category.tsx'
+import { FormSelect } from '#viewsback/components/form/form_select'
 
 interface FormFieldProps {
   name: string
@@ -20,7 +21,7 @@ export function FormField(props: FormFieldProps) {
   let fieldElement = null
   switch (inputTagName) {
     case 'select':
-      fieldElement = <FormSelectCategory name={name} values={inputValues} required={required} />
+      fieldElement = <FormSelect name={name} values={inputValues} required={required} defaultValue={value} />
       break
     case 'textarea':
       fieldElement = <FormTextarea name={name} value={value} required={required} />

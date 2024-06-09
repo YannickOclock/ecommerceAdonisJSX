@@ -16,6 +16,13 @@ interface CategoryEditProps {
 export function CategoryEdit(props: CategoryEditProps) {
   const { category, categories } = props
   const random = randomUUID()
+
+  // transform categories to array
+  const selectParentCategories = [] as Array<string>
+  for (const category of categories) {
+    selectParentCategories[category.id] = category.name
+  }
+
   return (
     <Admin
       title={'Administration - Editer une catégorie'}
@@ -47,7 +54,8 @@ export function CategoryEdit(props: CategoryEditProps) {
           name="parentId"
           label="Catégorie parente"
           inputTagName="select"
-          inputValues={categories}
+          inputValues={selectParentCategories}
+          value={category.parentId}
         />
 
         <div class="form-group">
