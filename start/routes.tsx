@@ -12,9 +12,14 @@ const ShowHomeController = () => import('#front/home/controllers/show_home_contr
 const AuthController = () => import('#front/auth/controllers/auth_controller')
 const RegisterController = () => import('#front/auth/controllers/register_controller')
 const LogoutController = () => import('#front/auth/controllers/logout_controller')
+const RegisterEmailController = () => import('#front/auth/controllers/register_email_controller')
 
 router
   .group(() => {
+    router
+      .get('/register/send/email', [RegisterEmailController, 'execute'])
+      .as('register.send.mail')
+
     router.get('/login', [AuthController, 'render']).as('login')
     router.post('/login', [AuthController, 'handle']).as('login.post')
     router.get('/register', [RegisterController, 'render']).as('register')

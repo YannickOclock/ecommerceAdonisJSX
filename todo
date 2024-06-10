@@ -36,9 +36,10 @@ PLUS TARD
 - il reste à voir les rôles pour passer admin et n'autoriser que les admin à se connecter [OK]
 - gérer le bandeau front/back pour la vérification du compte [OK]
 - bug avec le slider (à cause du main min-with, voir comment faire) [OK]
+- afficher les messages flash (front) [OK]
 
+- nommer les status (published de category et published de product) sous forme enumeration
 - petit problème sur l'affichage des messages d'erreurs (form / côté front)
-- afficher les messages flash (front)
 - il manque l'erreur lors de la connexion (invalid credentials ...)
 - il faut customiser les champs sur le form front - register (select, accepter les conditions etc.)
 - validators : revoir les messages en français (placement)
