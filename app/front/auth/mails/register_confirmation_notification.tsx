@@ -9,6 +9,10 @@ interface RegisterConfirmationNotificationParams {
 
 export class RegisterConfirmationNotification extends BaseMail {
   subject = '[URL BOUTIQUE] Confirmez votre inscription au site e-commerce'
+  from = {
+    address: 'no-reply@boutique.com',
+    name: 'no-reply',
+  }
 
   constructor(private params: RegisterConfirmationNotificationParams) {
     super()
