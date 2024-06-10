@@ -15,7 +15,10 @@ export default class AuthController {
   async handle({ request, session, response }: HttpContext) {
     const payload = await request.validateUsing(authRegisterValidator)
     await this.userRepository.create(payload)
-    session.flash('success', 'Inscription Ok !!!')
+    session.flash('notification', {
+      type: 'success',
+      message: 'Inscription Ok !!!',
+    })
     return response.redirect().toRoute('front.login')
   }
 }

@@ -3,6 +3,7 @@ import { Vite } from '#resources/helpers/asset'
 import { Nav } from '#viewsfront/partials/nav'
 import { HttpContext } from '@adonisjs/core/http'
 import { Slider } from '#viewsfront/components/slider'
+import { FlashMessages } from "#viewsfront/partials/flash_messages";
 
 interface BaseProps {
   title?: string
@@ -35,20 +36,7 @@ export async function Base(props: BaseProps) {
           <Nav />
           {/*<Flash message />*/}
           <div class="flash_messages">
-            {!!auth.user && !auth.user.verified && (
-              <div class="alert alert-warning alert-dismissible" role="alert">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"
-                ></button>
-                <div class="alert-message">
-                  <strong>Votre compte n'est pas activé</strong>,{' '}
-                  <a href="#">renvoyer le lien d'activation</a>
-                </div>
-              </div>
-            )}
+            <FlashMessages />
           </div>
           {/*<Main />*/}
           <main>

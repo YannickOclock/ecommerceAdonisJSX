@@ -10,10 +10,12 @@
   box-sizing: border-box;
   padding: 1rem 1rem 1rem 3rem;
   color: #363a41;
-  margin: 1rem 0;
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .alert .btn-close {
-  float: right;
   cursor: pointer;
   margin-left: 20px;
   line-height: 0.8;
@@ -25,12 +27,21 @@
 .alert {
   position: relative;
 }
-.alert::before {
+.alert .material-icons {
+  font-size: 1.2rem;
+}
+.alert-message, .alert-message strong {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.1rem;
+}
+.alert-message strong {
+  gap: 0.5rem;
+}
+.alert-message strong::before {
   font-family: "Material Icons",Arial,Verdana,Tahoma,sans-serif;
   display: inline-block;
-  position: absolute;
-  top: 8px;
-  left: 15px;
   font-size: 1.5rem;
 }
 
@@ -43,12 +54,12 @@
 /* ALERT SUCCESS */
 
 .alert-success {
-  background-color: var(--edition-success-50);
+  background-color: var(--edition-success-100);
 }
 .alert-success .btn-close {
   color: var(--edition-success-900);
 }
-.alert-success::before {
+.alert-success .alert-message strong::before {
   color: var(--edition-success-900);
   content: "done";
 }
@@ -62,7 +73,7 @@
 .alert-warning .btn-close {
   color: var(--edition-warning-700);
 }
-.alert-warning::before {
+.alert-warning .alert-message strong::before {
   content: "warning";
 }
 
@@ -70,11 +81,11 @@
 
 .alert-danger {
   color: var(--edition-destructive-900);
-  background-color: var(--edition-destructive-50);
+  background-color: var(--edition-destructive-100);
 }
 .alert-danger .btn-close {
   color: var(--edition-destructive-900);
 }
-.alert-danger::before {
+.alert-danger .alert-message strong::before {
   content: "error";
 }

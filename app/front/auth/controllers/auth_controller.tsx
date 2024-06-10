@@ -14,7 +14,10 @@ export default class AuthController {
     const { email, password } = await request.validateUsing(authLoginValidator)
     const user = await User.verifyCredentials(email, password)
     await auth.use('web').login(user)
-    session.flash('success', 'Connexion Ok !!')
+    session.flash('notification', {
+      type: 'success',
+      message: 'Connexion Ok !!',
+    })
     return response.redirect().toRoute('front.home')
   }
 }
