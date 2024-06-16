@@ -1,5 +1,5 @@
-import Category from "#core/models/category";
-import { ResultOf } from "#types/common";
+import Category from '#core/models/category'
+import { ResultOf } from '#types/common'
 
 export interface StoreCategoryDTO {
   name: string

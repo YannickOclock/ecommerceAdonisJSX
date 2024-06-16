@@ -62,6 +62,10 @@ const AddUserController = () => import('#admin/user/controllers/add_user_control
 const EditUserController = () => import('#admin/user/controllers/edit_user_controller')
 const SwitchUserController = () => import('#admin/user/controllers/switch_user_controller')
 
+// CONTROLLERS ADDRESSES
+const ShowListAddressController = () =>
+  import('#admin/address/controllers/show_list_address_controller')
+
 router
   .group(() => {
     // CONTROLLERS MAIN
@@ -95,6 +99,9 @@ router
     router.get('/users/edit/:id', [EditUserController, 'render']).as('user.edit')
     router.post('/users/edit/:id', [EditUserController, 'update']).as('user.update')
     router.get('/users/switch/:id', [SwitchUserController, 'switch']).as('user.switch')
+
+    // PARTIE ADRESSES
+    router.get('/addresses', [ShowListAddressController, 'render']).as('address.list')
   })
   .prefix('admin')
   .as('admin')
