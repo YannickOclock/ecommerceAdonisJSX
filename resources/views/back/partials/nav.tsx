@@ -70,6 +70,18 @@ export function Nav() {
     active: request.matchesRoute('admin.user.add'),
     level: 2,
   }
+  const addressesLink = {
+    title: 'Adresses',
+    url: route('admin.address.list'),
+    active: request.matchesRoute(['admin.address.list']),
+    level: 2,
+  }
+  const addressesAddLink = {
+    title: 'Ajouter une adresse',
+    url: route('admin.address.add'),
+    active: request.matchesRoute('admin.address.add'),
+    level: 2,
+  }
 
   return (
     <nav id="navbar">
@@ -92,6 +104,8 @@ export function Nav() {
             <>
               <Link {...usersLink} />
               <Link {...usersAddLink} />
+              <Link {...addressesLink} />
+              <Link {...addressesAddLink} />
             </>
           </SubMenu>
         </Link>

@@ -65,6 +65,7 @@ const SwitchUserController = () => import('#admin/user/controllers/switch_user_c
 // CONTROLLERS ADDRESSES
 const ShowListAddressController = () =>
   import('#admin/address/controllers/show_list_address_controller')
+const AddAddressController = () => import('#admin/address/controllers/add_address_controller')
 
 router
   .group(() => {
@@ -102,6 +103,8 @@ router
 
     // PARTIE ADRESSES
     router.get('/addresses', [ShowListAddressController, 'render']).as('address.list')
+    router.get('/addresses/add', [AddAddressController, 'render']).as('address.add')
+    router.post('/addresses/add', [AddAddressController, 'store']).as('address.store')
   })
   .prefix('admin')
   .as('admin')
