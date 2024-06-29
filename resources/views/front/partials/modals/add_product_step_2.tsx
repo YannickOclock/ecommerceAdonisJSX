@@ -2,14 +2,17 @@ import { Cart } from '#app/front/cart_state'
 import { CartProductRepositoryResult } from '#app/front/product/repositories/cart_product_repository'
 import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 import { Master } from '#viewsfront/layouts/master'
+import { route } from "#start/view";
 
 interface AddProductStep2Props {
-  cart: Cart
+  totalQuantityProduct: number
+  totalQuantityCart: number
+  totalPriceCart: number
   product: CartProductRepositoryResult
 }
 
 export function AddProductStep2(props: AddProductStep2Props) {
-  const { cart, product } = props
+  const { cart, product, totalQuantityProduct, totalQuantityCart, totalPriceCart } = props
   return (
     <Master>
       <div id="master">
@@ -35,13 +38,13 @@ export function AddProductStep2(props: AddProductStep2Props) {
                     <p class="product-price">{convertPrice(product.price)}</p>
                     <p class="product-quantity">
                       Quantité :{' '}
-                      <strong class="quantity">{cart.getTotalQuantityOfProduct(product.id)}</strong>
+                      <strong class="quantity">{totalQuantityProduct}</strong>
                     </p>
                   </div>
                 </div>
                 <div class="modal-info-cart">
                   <p class="cart-products-count">
-                    Il y a <span class="quantity">{cart.getTotalQuantity()}</span> produit(s) dans
+                    Il y a <span class="quantity">{totalQuantityCart}</span> produit(s) dans
                     panier.
                   </p>
                   <div class="line-cart subtotal">
@@ -49,7 +52,7 @@ export function AddProductStep2(props: AddProductStep2Props) {
                       <strong>Sous-total</strong>
                     </p>
                     <p>
-                      <strong class="value">{convertPrice(cart.getTotal())}</strong>
+                      <strong class="value">{convertPrice(totalPriceCart)}</strong>
                     </p>
                   </div>
                   <div class="line-cart">
@@ -63,16 +66,18 @@ export function AddProductStep2(props: AddProductStep2Props) {
                       <strong>Total (TTC)</strong>
                     </p>
                     <p>
-                      <strong class="value">{convertPrice(cart.getTotal())}</strong>
+                      <strong class="value">{convertPrice(totalPriceCart)}</strong>
                     </p>
                   </div>
-                  <a class="btn cancel btn-space" up-emit="cart:reload">
-                    Continuer mes achats
-                  </a>
-                  <a class="btn btn-primary" href="#">
-                    <i class="material-icons">done</i>
-                    Commander
-                  </a>
+                  <div class="modal-action-buttons">
+                    <a class="btn cancel btn-space" up-emit="cart:reload">
+                      Continuer mes achats
+                    </a>
+                    <a class="btn btn-primary" href={route('front.cart')}>
+                      <i class="material-icons">done</i>
+                      Commander
+                    </a>
+                  </div>
                 </div>
               </div>
             </section>

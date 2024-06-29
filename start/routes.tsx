@@ -6,6 +6,12 @@ import { middleware } from './kernel.ts'
 // ---------------------
 
 const ShowCartController = () => import('#front/cart/controllers/show_cart_controller')
+const ShowCartCounterController = () =>
+  import('#front/cart/controllers/show_cart_counter_controller')
+const UpdateQuantityCartController = () =>
+  import('#front/cart/controllers/update_quantity_cart_controller')
+const DeleteProductFromCartController = () =>
+  import('#front/cart/controllers/delete_product_from_cart_controller')
 const ShowStep1Controller = () => import('#front/product/controllers/show_step1_controller')
 const ShowStep2Controller = () => import('#front/product/controllers/show_step2_controller')
 const ShowHomeController = () => import('#front/home/controllers/show_home_controller')
@@ -26,6 +32,17 @@ router
     router.post('/register', [RegisterController, 'handle']).as('register.post')
     router.get('/logout', [LogoutController, 'handle']).as('logout')
     router.get('/cart', [ShowCartController, 'render']).as('cart')
+    router
+      .post('/cart/update/quantity', [UpdateQuantityCartController, 'handle'])
+      .as('cart.update.quantity')
+    router
+      .get('/cart/delete/:productId', [DeleteProductFromCartController, 'render'])
+      .where('productId', router.matchers.uuid())
+      .as('cart.product.delete')
+    router
+      .post('/cart/delete', [DeleteProductFromCartController, 'handle'])
+      .as('cart.product.delete.post')
+    router.get('/cart/counter', [ShowCartCounterController, 'render']).as('cart.counter')
     router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('step1')
     router.post('/step1', [ShowStep1Controller, 'add']).as('step1.add')
     router.get('/step2/:id', [ShowStep2Controller, 'render']).as('step2')

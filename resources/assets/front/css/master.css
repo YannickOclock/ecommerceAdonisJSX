@@ -2,3 +2,13 @@
   padding: 1rem;
   background: none;
 }
+
+#master-body > h1 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+#master-body > p {
+  margin-bottom: 2rem;
+}

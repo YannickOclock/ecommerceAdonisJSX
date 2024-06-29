@@ -516,6 +516,10 @@ section.products h2 {
   height: 2.75rem;
 }
 
+.input-group-vertical form {
+  height: 50%;
+}
+
 .input-group-vertical button, .input-group-vertical a {
   height: 50%;
   width: 2rem;
@@ -529,6 +533,10 @@ section.products h2 {
   box-sizing: border-box;
 }
 
+.input-group-vertical button {
+  height: 100%;
+}
+
 .input-group-vertical button:hover, .input-group-vertical a:hover {
   background-color: #f6f6f6;
 }
@@ -537,7 +545,7 @@ section.products h2 {
   font-size: 1rem;
 }
 
-.input-group-vertical button:nth-of-type(1), .input-group-vertical a:nth-of-type(1) {
+.input-group-vertical a.touch-up, .input-group-vertical button.touch-up {
   border-bottom: 0;
 }
 
@@ -614,12 +622,17 @@ section.products h2 {
 }
 
 /* les boutons */
+.modal-action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .btn {
   /* box-sizing: border-box; */
-  display: inline-block;
-  /* align-items: center;
-  justify-content: center; */
-  line-height: 1.25;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.2rem;
   cursor: pointer;
   border: 1px solid transparent;
   padding: 0.5rem 1.25rem;
@@ -628,6 +641,10 @@ section.products h2 {
   color: #232323;
   background-color: #f6f6f6;
   text-decoration: none;
+}
+
+.modal-action-buttons a.btn {
+  align-items: center;
 }
 
 .btn-space {

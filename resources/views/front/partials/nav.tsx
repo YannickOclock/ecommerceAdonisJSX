@@ -37,7 +37,7 @@ export async function Nav() {
                 <span>Connexion</span>
               </a>
             )}
-            <div id="cart" up-source={route('front.cart')} load-fragment></div>
+            <div id="cart" up-source={route('front.cart.counter')} load-fragment></div>
           </nav>
         </div>
       </div>

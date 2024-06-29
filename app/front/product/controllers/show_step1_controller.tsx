@@ -1,12 +1,15 @@
 import { AddProductStep1 } from '#viewsfront/partials/modals/add_product_step_1'
 import { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
-import { cart } from '#front/cart_state'
 import { CartProductRepository } from '#front/product/repositories/cart_product_repository'
+import { CartService } from '#front/cart/services/cart_service'
 
 @inject()
 export default class ShowStep1Controller {
-  constructor(private cartProductRepository: CartProductRepository) {}
+  constructor(
+    private cartProductRepository: CartProductRepository,
+    private cartService: CartService
+  ) {}
 
   async render({ request }: HttpContext) {
     const id = request.param('id')
@@ -20,9 +23,9 @@ export default class ShowStep1Controller {
     const id = request.input('product_id')
     const quantity = Number.parseInt(request.input('quantity'))
     const product = await this.cartProductRepository.findOneById(id)
-    cart.addProduct(product.id, product.name, product.price, quantity)
+    this.cartService.addProduct(product.id, product.name, product.price, quantity)
 
-    console.log(`Add product to cart ${cart.getTotalQuantity()}`)
+    console.log(`Add product to cart ${this.cartService.getTotalQuantity()}`)
     response.redirect().toRoute('front.step2', { id: product.id })
   }
 }
