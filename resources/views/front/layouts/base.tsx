@@ -39,9 +39,11 @@ export async function Base(props: BaseProps) {
             <FlashMessages />
           </div>
           {/*<Main />*/}
-          <main>
-            <Slider />
-          </main>
+          {slider && (
+            <main>
+              <Slider />
+            </main>
+          )}
           <main class={'container'} up-main>
             {children}
           </main>
