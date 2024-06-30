@@ -5,6 +5,7 @@
 @import 'reset.css';
 @import 'style.css';
 @import 'category.css';
+@import 'form.scss';
 @import 'login.css';
 @import 'cart.css';
 

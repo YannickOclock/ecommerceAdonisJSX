@@ -7,7 +7,7 @@ export class HomeProductRepository {
   async home() {
     // récupérer uniquement les produits qui ont une catégorie qui est publiée
     // NB : si le produit n'a pas de catégorie, il n'apparaîtra pas
-    return await Product.query()
+    return Product.query()
       .where('published', true)
       .orderBy('created_at', 'desc')
       .whereHas('category', (query) => {

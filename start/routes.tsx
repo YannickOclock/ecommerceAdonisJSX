@@ -19,6 +19,7 @@ const AuthController = () => import('#front/auth/controllers/auth_controller')
 const RegisterController = () => import('#front/auth/controllers/register_controller')
 const LogoutController = () => import('#front/auth/controllers/logout_controller')
 const RegisterEmailController = () => import('#front/auth/controllers/register_email_controller')
+const ShowCategoryProductsController = () => import('#front/category/controllers/show_category_products_controller')
 
 router
   .group(() => {
@@ -42,6 +43,11 @@ router
     router
       .post('/cart/delete', [DeleteProductFromCartController, 'handle'])
       .as('cart.product.delete.post')
+    router
+      .get('/category/:slug', [ShowCategoryProductsController, 'render'])
+      .where('slug', router.matchers.slug())
+      .as('category.show')
+
     router.get('/cart/counter', [ShowCartCounterController, 'render']).as('cart.counter')
     router.get('/step1/:id/:productImageId?', [ShowStep1Controller, 'render']).as('step1')
     router.post('/step1', [ShowStep1Controller, 'add']).as('step1.add')

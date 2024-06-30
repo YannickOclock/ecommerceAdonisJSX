@@ -54,12 +54,14 @@ export async function Nav() {
           <ul>
             {categories.map((category) => (
               <li>
-                <a href="#">{category.name}</a>
+                <a href={route('front.category.show', { slug: category.slug })}>{category.name}</a>
                 {category.subCategories.length > 0 && (
                   <ul class="submenu">
                     {category.subCategories.map((subCategory) => (
                       <li>
-                        <a href="#">{subCategory.name}</a>
+                        <a href={route('front.category.show', { slug: subCategory.slug })}>
+                          {subCategory.name}
+                        </a>
                       </li>
                     ))}
                   </ul>

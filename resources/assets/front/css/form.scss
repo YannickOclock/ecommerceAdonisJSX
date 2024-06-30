@@ -1,0 +1,11 @@
+.right_column form {
+  height: 2rem;
+
+  & select, & button {
+    height: 100%;
+  }
+
+  & button {
+    align-items: center;
+  }
+}
