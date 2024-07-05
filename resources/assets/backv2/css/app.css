@@ -1,0 +1,18 @@
+/* import material icons (from node modules) */
+@import 'material-icons/iconfont/material-icons.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#header_logo {
+  display: block;
+  width: 13rem;
+  height: 50px;
+  background: url("../images/logo.png") 15px center no-repeat;
+  background-size: 150px auto;
+}
+
+/*.menu-horizontal {
+  @apply gap-5;
+}*/

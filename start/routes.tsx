@@ -90,10 +90,16 @@ const ShowListAddressController = () =>
   import('#admin/address/controllers/show_list_address_controller')
 const AddAddressController = () => import('#admin/address/controllers/add_address_controller')
 
+// CONTROLLERS TEST
+const TestPageController = () => import('#admin/test/controllers/test_page_controller')
+
 router
   .group(() => {
     // CONTROLLERS MAIN
     router.get('/', [ShowDashboardController, 'render']).as('dashboard')
+
+    // CONTROLLERS TEST
+    router.get('/test', [TestPageController, 'render']).as('test')
 
     // PARTIE PRODUCTS
     router.get('/products', [ShowListProductController, 'render']).as('product.list')
