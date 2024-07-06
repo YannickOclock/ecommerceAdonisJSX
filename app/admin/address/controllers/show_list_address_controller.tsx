@@ -1,5 +1,5 @@
 import { AddressRepository } from '#admin/address/repositories/address_repository'
-import { AddressList } from '#viewsback/pages/addresses/address_list'
+import { AddressList } from '#viewsbackv2/pages/addresses/address_list'
 import { inject } from '@adonisjs/core'
 
 @inject()

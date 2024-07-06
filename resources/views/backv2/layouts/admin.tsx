@@ -5,10 +5,11 @@ import { Header } from '#viewsbackv2/partials/header'
 
 interface AdminProps {
   children: JSX.Element
+  title?: string
 }
 
 export function Admin(props: AdminProps) {
-  const { children } = props
+  const { children, title = 'Tableau de bord' } = props
   return (
     <>
       {'<!DOCTYPE html>'}
@@ -16,7 +17,7 @@ export function Admin(props: AdminProps) {
         <head>
           <meta charset={'UTF-8'} />
           <meta name={'viewport'} content={'width=device-width, initial-scale=1.0'} />
-          <title>{'Test Backend in DaisyUI'}</title>
+          <title>{title}</title>
           <Vite.Entrypoint
             entrypoints={[
               'resources/assets/backv2/css/app.css',
