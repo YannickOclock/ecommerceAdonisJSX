@@ -7,6 +7,7 @@ interface InputProps {
   id: string
   name: string
   required?: boolean
+  disabled?: boolean
   type?: string
   defaultValue?: string
   placeholder?: string
@@ -18,6 +19,7 @@ export function Input(props: InputProps) {
     id,
     name,
     required = false,
+    disabled = false,
     withErrors = true,
     type = 'text',
     defaultValue,
@@ -30,8 +32,10 @@ export function Input(props: InputProps) {
       type={type}
       id={id}
       required={required}
+      disabled={disabled}
       class={clsx([
         'input input-bordered',
+        type === 'file' && 'file-input pl-0',
         required ? 'w-full' : 'w-4/6',
         withErrors && getFlashMessages().has(`inputErrorsBag.${name}`) && 'input-error',
       ])}

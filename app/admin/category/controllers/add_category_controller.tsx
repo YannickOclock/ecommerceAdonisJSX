@@ -1,4 +1,4 @@
-import { CategoryAdd } from '#viewsback/pages/categories/category_add'
+import { CategoryAdd } from '#viewsbackv2/pages/categories/category_add'
 import { HttpContext } from '@adonisjs/core/http'
 import { createCategoryValidator } from '#admin/category/validators/create_category_validator'
 import { CategoryRepository } from '#admin/category/repositories/category_repository'

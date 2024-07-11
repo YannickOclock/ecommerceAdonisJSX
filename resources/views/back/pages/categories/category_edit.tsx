@@ -19,8 +19,8 @@ export function CategoryEdit(props: CategoryEditProps) {
 
   // transform categories to array
   const selectParentCategories = [] as Array<string>
-  for (const category of categories) {
-    selectParentCategories[category.id] = category.name
+  for (const parentCategory of categories) {
+    selectParentCategories[parentCategory.id] = parentCategory.name
   }
 
   return (

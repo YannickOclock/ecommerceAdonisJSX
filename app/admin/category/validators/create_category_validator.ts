@@ -30,7 +30,7 @@ const createCategoryValidator = vine.compile(
       // @ts-ignore
       .file({
         size: '2mb',
-        extnames: ['jpg', 'png'],
+        extnames: ['jpg', 'png', 'webp'],
       })
       // @ts-ignore
       .optional(),

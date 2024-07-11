@@ -19,7 +19,8 @@ const AuthController = () => import('#front/auth/controllers/auth_controller')
 const RegisterController = () => import('#front/auth/controllers/register_controller')
 const LogoutController = () => import('#front/auth/controllers/logout_controller')
 const RegisterEmailController = () => import('#front/auth/controllers/register_email_controller')
-const ShowCategoryProductsController = () => import('#front/category/controllers/show_category_products_controller')
+const ShowCategoryProductsController = () =>
+  import('#front/category/controllers/show_category_products_controller')
 
 router
   .group(() => {
@@ -89,6 +90,7 @@ const SwitchUserController = () => import('#admin/user/controllers/switch_user_c
 const ShowListAddressController = () =>
   import('#admin/address/controllers/show_list_address_controller')
 const AddAddressController = () => import('#admin/address/controllers/add_address_controller')
+const EditAddressController = () => import('#admin/address/controllers/edit_address_controller')
 
 // CONTROLLERS TEST
 const TestPageController = () => import('#admin/test/controllers/test_page_controller')
@@ -134,6 +136,7 @@ router
     router.get('/addresses', [ShowListAddressController, 'render']).as('address.list')
     router.get('/addresses/add', [AddAddressController, 'render']).as('address.add')
     router.post('/addresses/add', [AddAddressController, 'store']).as('address.store')
+    router.get('/addresses/edit/:id', [EditAddressController, 'render']).as('address.edit')
   })
   .prefix('admin')
   .as('admin')

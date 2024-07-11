@@ -52,7 +52,14 @@ export function Nav() {
     title: 'Clients',
     icon: 'account_circle',
     url: '#',
-    active: request.matchesRoute(['admin.users.list']),
+    active: request.matchesRoute([
+      'admin.user.list',
+      'admin.user.edit',
+      'admin.user.add',
+      'admin.address.list',
+      'admin.address.add',
+      'admin.address.edit',
+    ]),
   }
   const usersLink = {
     title: 'Utilisateurs',
@@ -69,7 +76,7 @@ export function Nav() {
   const addressesLink = {
     title: 'Adresses',
     url: route('admin.address.list'),
-    active: request.matchesRoute(['admin.address.list']),
+    active: request.matchesRoute(['admin.address.list', 'admin.address.edit']),
     level: 2,
   }
   const addressesAddLink = {

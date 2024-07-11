@@ -13,9 +13,6 @@ export function TableLine(props: TableLineProps) {
         </label>
       </th>
       {children}
-      <th>
-        <button class="btn btn-ghost btn-xs">details</button>
-      </th>
     </tr>
   )
 }

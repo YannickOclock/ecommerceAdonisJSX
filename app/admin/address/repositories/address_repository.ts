@@ -2,6 +2,7 @@ import Address from '#core/models/address'
 import { ResultOf } from '#types/common'
 
 export type AdminAddressListQueryResult = ResultOf<AddressRepository, 'all'>
+export type AdminAddressEditQueryResult = ResultOf<AddressRepository, 'find'>
 
 export interface StoreAddressRepository {
   lastname: string
@@ -17,6 +18,10 @@ export interface StoreAddressRepository {
 export class AddressRepository {
   async all() {
     return Address.query().orderBy('lastname', 'asc').limit(10)
+  }
+
+  async find(id: string): Promise<Address> {
+    return await Address.query().where('id', '=', id).firstOrFail()
   }
 
   async save(payload: StoreAddressRepository) {
