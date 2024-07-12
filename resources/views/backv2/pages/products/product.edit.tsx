@@ -46,6 +46,10 @@ export function ProductEdit(props: ProductEditProps) {
         <div class="p-4 pt-8">
           <form method={'post'} enctype="multipart/form-data">
             <FormGroup>
+              <Label id={'id'} label="Id du produit" />
+              <Input name="id" id={'id'} defaultValue={product.id} required disabled />
+            </FormGroup>
+            <FormGroup>
               <Label id={'name'} label="Nom du produit" />
               <Input name="name" id={'name'} defaultValue={product.name} required />
             </FormGroup>
@@ -84,7 +88,7 @@ export function ProductEdit(props: ProductEditProps) {
                 name="quantity"
                 id={'quantity'}
                 type={'number'}
-                defaultValue={product.quantity}
+                defaultValue={product.stock}
                 required
               />
             </FormGroup>
@@ -94,18 +98,13 @@ export function ProductEdit(props: ProductEditProps) {
             </FormGroup>
             <FormGroup>
               <Label id={'published'} label="Est en ligne ?" />
-              <Checkbox
-                name="published"
-                id={'published'}
-                defaultValue={product.published}
-                required
-              />
+              <Checkbox name="published" id={'published'} toggle defaultValue={product.published} />
             </FormGroup>
 
             {csrfField()}
             <div class={'flex justify-center mt-12'}>
               <button type="submit" class="btn btn-primary w-1/2">
-                Ajouter
+                Editer
               </button>
             </div>
           </form>

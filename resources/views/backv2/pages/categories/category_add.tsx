@@ -6,6 +6,7 @@ import { Select } from '#viewsbackv2/components/form/select'
 import { csrfField } from '#resources/helpers/csrf_field'
 import { Textarea } from '#viewsbackv2/components/form/textarea'
 import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
+import { Checkbox } from '#viewsbackv2/components/form/checkbox'
 
 interface CategoryAddProps {
   categories: AdminCategoryListQueryResult
@@ -67,6 +68,10 @@ export function CategoryAdd(props: CategoryAddProps) {
             <FormGroup>
               <Label id={'image'} label="Image de la catégorie" />
               <Input name="image" type={'file'} id={'image'} />
+            </FormGroup>
+            <FormGroup>
+              <Label id={'published'} label="Est en ligne ?" />
+              <Checkbox name="published" id={'published'} toggle defaultValue={true} />
             </FormGroup>
 
             {csrfField()}

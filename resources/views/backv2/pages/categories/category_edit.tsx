@@ -9,6 +9,7 @@ import {
   AdminCategoryEditQueryResult,
   AdminCategoryListQueryResult,
 } from '#admin/category/repositories/category_repository'
+import { Checkbox } from '#viewsbackv2/components/form/checkbox'
 
 interface CategoryEditProps {
   category: AdminCategoryEditQueryResult
@@ -80,6 +81,15 @@ export function CategoryEdit(props: CategoryEditProps) {
             <FormGroup>
               <Label id={'image'} label="Image de la catégorie" />
               <Input name="image" type={'file'} id={'image'} />
+            </FormGroup>
+            <FormGroup>
+              <Label id={'published'} label="Est en ligne ?" />
+              <Checkbox
+                name="published"
+                id={'published'}
+                toggle
+                defaultValue={category.published}
+              />
             </FormGroup>
 
             {csrfField()}

@@ -8,12 +8,21 @@ interface CheckboxProps {
   name: string
   required?: boolean
   disabled?: boolean
-  defaultValue?: boolean
+  toggle?: boolean
+  defaultValue?: boolean | undefined
   withErrors?: boolean
 }
 
 export function Checkbox(props: Checkbox) {
-  const { id, name, required = false, disabled = false, withErrors = true, defaultValue } = props
+  const {
+    id,
+    name,
+    required = false,
+    disabled = false,
+    toggle = false,
+    withErrors = true,
+    defaultValue = undefined,
+  } = props
 
   let inputElement = (
     <input
@@ -23,10 +32,11 @@ export function Checkbox(props: Checkbox) {
       required={required}
       disabled={disabled}
       class={clsx([
-        'checkbox checkbox-primary',
+        !toggle && 'checkbox checkbox-primary',
+        toggle && 'toggle toggle-primary',
         withErrors && getFlashMessages().has(`inputErrorsBag.${name}`) && 'input-error',
       ])}
-      checked={getFlashMessages().get(`${name}`) || defaultValue}
+      checked={defaultValue || getFlashMessages().get(`${name}`)}
     />
   )
   inputElement = required ? <RequiredIndicator>{inputElement}</RequiredIndicator> : inputElement

@@ -54,9 +54,7 @@ export function Nav() {
     title: 'Clients',
     icon: 'account_circle',
     url: '#',
-    active: request.matchesRoute([
-      'admin.users.list',
-    ]),
+    active: request.matchesRoute(['admin.user.list']),
   }
   const usersLink = {
     title: 'Utilisateurs',

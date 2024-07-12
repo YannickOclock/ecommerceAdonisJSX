@@ -1,6 +1,6 @@
 import { Admin } from '#viewsbackv2/layouts/admin'
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
-import { ProductTable } from '#viewsbackv2/pages/product/product_table'
+import { ProductTable } from '#viewsbackv2/pages/products/product_table'
 
 interface ProductListProps {
   products: AdminProductListQueryResult

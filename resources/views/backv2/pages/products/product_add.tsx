@@ -75,7 +75,7 @@ export function ProductAdd(props: ProductAddProps) {
             </FormGroup>
             <FormGroup>
               <Label id={'published'} label="Est en ligne ?" />
-              <Checkbox name="published" id={'published'} defaultValue={true} required />
+              <Checkbox name="published" id={'published'} toggle defaultValue={true} />
             </FormGroup>
 
             {csrfField()}

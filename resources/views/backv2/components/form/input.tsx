@@ -35,7 +35,7 @@ export function Input(props: InputProps) {
       multiple={type === 'file' && multiple}
       id={id}
       required={required}
-      disabled={disabled}
+      readonly={disabled}
       class={clsx([
         'input input-bordered',
         type === 'file' && 'file-input pl-0',

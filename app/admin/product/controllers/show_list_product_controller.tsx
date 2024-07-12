@@ -1,4 +1,4 @@
-import { ProductList } from '#viewsbackv2/pages/product/product_list'
+import { ProductList } from '#viewsbackv2/pages/products/product_list'
 import { HttpContext } from '@adonisjs/core/http'
 import { ProductRepository } from '#admin/product/repositories/product_repository'
 import { inject } from '@adonisjs/core'

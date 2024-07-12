@@ -11,8 +11,8 @@ export default class SwitchProductController {
     const published = await this.productRepository.switch(productId)
     session.flash('notification', {
       type: 'success',
-      message: `Le produit a été ${published === true ? 'activé' : 'désactivé'} avec succès`,
+      message: `Le produit a été ${published ? 'activé' : 'désactivé'} avec succès`,
     })
-    response.redirect().toRoute('admin.product.list')
+    response.redirect().toRoute('admin.products.list')
   }
 }
