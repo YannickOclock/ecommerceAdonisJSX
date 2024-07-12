@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.uuid('id').notNullable()
 
       table.string('name').notNullable()
+      table.string('slug').notNullable()
       table.text('description').nullable()
       table.float('price').unsigned().defaultTo('0')
       table.integer('stock').defaultTo('0')

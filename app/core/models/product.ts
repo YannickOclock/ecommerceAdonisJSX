@@ -3,6 +3,7 @@ import { BaseModel, beforeCreate, belongsTo, column, hasMany } from '@adonisjs/l
 import { v4 as uuid } from 'uuid'
 import ProductImage from '#core/models/product_image'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import slugify from 'slugify'
 import Category from '#core/models/category'
 
 export default class Product extends BaseModel {
@@ -11,6 +12,9 @@ export default class Product extends BaseModel {
 
   @column()
   declare name: string
+
+  @column()
+  declare slug: string
 
   @column()
   declare description: string | null
@@ -44,5 +48,10 @@ export default class Product extends BaseModel {
   @beforeCreate()
   static async createUUID(model: Product) {
     model.id = uuid()
+  }
+
+  @beforeCreate()
+  static async createSlug(model: Product) {
+    model.slug = slugify(model.name, { lower: true })
   }
 }
