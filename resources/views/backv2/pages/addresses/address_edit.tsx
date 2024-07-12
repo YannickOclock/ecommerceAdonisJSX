@@ -33,6 +33,10 @@ export function AddressEdit(props: AddressEditProps) {
         <div class="p-4 pt-8">
           <form method={'post'}>
             <FormGroup>
+              <Label id={'id'} label="Id de l'adresse" />
+              <Input name="id" id={'id'} defaultValue={address.id} required disabled />
+            </FormGroup>
+            <FormGroup>
               <Label id={'lastname'} label="Nom" />
               <Input name="lastname" id={'lastname'} defaultValue={address.lastname} required />
             </FormGroup>

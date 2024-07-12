@@ -6,6 +6,18 @@ PLUS TARD
 - voir pour gérer le breadcrumb de façon récursive dans l'admin [PLUS TARD]
 - voir pour créer un indicateur visuel pour le password (8 minimum) [PLUS TARD]
 
+AU PLUS TOT (à faire pour la V2)
+----------------------
+- admin : problème au niveau du menu sidebar - il faut le définir en fixe pour le scroll
+- admin : gérer les messages flash
+- admin : il faut modifier les vérifier/publier par des toggle et les gérer avec unpoly js
+- admin : rajouter le lien sur le bouton voir la boutique
+- admin : gérer le changement de thème (black/white)
+- admin : gérer et centraliser les breadcrumbs ? par thématique ?
+- admin : gérer l'arborescence des menus catégories
+-----------------------
+
+
 - centraliser la fonction du prix [OK]
 - centraliser le path des images produit [OK]
 - gérer le multi images dans l'admin [OK]
@@ -37,6 +49,9 @@ PLUS TARD
 - gérer le bandeau front/back pour la vérification du compte [OK]
 - bug avec le slider (à cause du main min-with, voir comment faire) [OK]
 - afficher les messages flash (front) [OK]
+- lister les adresses (côté back) [OK]
+- ajouter une adresse (côté back) [OK]
+- modifier une adresse (côté back) [OK]
 
 - nommer les status (published de category et published de product) sous forme enumeration
 - petit problème sur l'affichage des messages d'erreurs (form / côté front)
@@ -49,9 +64,6 @@ PLUS TARD
 - envoyer le mail pour la vérification du compte lors de l'inscription
 - créer la route de validation du mail pour la vérification du compte (et changer la valeur du paramètre vérifié si c'est OK)
 - gérer le compte utilisateur côté front (avec la gestion des adresses)
-- lister les adresses (côté back)
-- ajouter une adresse (côté back)
-- modifier une adresse (côté back)
 - supprimer une adresse (côté back)
 - lier une adresse à un compte utilisateur (base de données)
 - modifier le formulaire d'inscription côté front pour permettre l'ajout de l'adresse en base de données (en direct)

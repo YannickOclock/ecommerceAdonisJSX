@@ -15,6 +15,18 @@ export interface StoreAddressRepository {
   country: string
 }
 
+interface UpdateAddressRepository {
+  id: string
+  lastname: string
+  firstname: string
+  phoneNumber: string | undefined
+  addressLine1: string
+  addressLine2: string | undefined
+  postCode: string
+  city: string
+  country: string
+}
+
 export class AddressRepository {
   async all() {
     return Address.query().orderBy('lastname', 'asc').limit(10)
@@ -24,8 +36,10 @@ export class AddressRepository {
     return await Address.query().where('id', '=', id).firstOrFail()
   }
 
-  async save(payload: StoreAddressRepository) {
-    const address = new Address()
+  async wideProductFromPayload(
+    payload: StoreAddressRepository | UpdateAddressRepository,
+    address: Address
+  ) {
     address.lastname = payload.lastname
     address.firstname = payload.firstname
     if (payload.phoneNumber) {
@@ -38,7 +52,18 @@ export class AddressRepository {
     address.postCode = payload.postCode
     address.city = payload.city
     address.country = payload.country
+  }
 
+  async create(payload: StoreAddressRepository): Promise<string> {
+    const address = new Address()
+    await this.wideProductFromPayload(payload, address)
+    await address.save()
+    return address.id
+  }
+
+  async update(payload: UpdateAddressRepository) {
+    const address = await this.find(payload.id)
+    await this.wideProductFromPayload(payload, address)
     await address.save()
   }
 }

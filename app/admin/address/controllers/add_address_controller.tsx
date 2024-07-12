@@ -15,7 +15,7 @@ export default class AddAddressController {
   async store({ request, response, session }: HttpContext) {
     // création du validateur pour valider les données provenant du front
     const payload = await request.validateUsing(createAddressValidator)
-    await this.addressRepository.save(payload)
+    await this.addressRepository.create(payload)
 
     session.flash('notification', {
       type: 'success',

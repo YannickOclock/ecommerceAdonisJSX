@@ -137,6 +137,7 @@ router
     router.get('/addresses/add', [AddAddressController, 'render']).as('address.add')
     router.post('/addresses/add', [AddAddressController, 'store']).as('address.store')
     router.get('/addresses/edit/:id', [EditAddressController, 'render']).as('address.edit')
+    router.post('/addresses/edit/:id', [EditAddressController, 'update']).as('address.update')
   })
   .prefix('admin')
   .as('admin')
