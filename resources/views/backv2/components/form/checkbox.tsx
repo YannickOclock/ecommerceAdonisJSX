@@ -3,47 +3,30 @@ import clsx from 'clsx'
 import { getFlashMessages } from '#resources/helpers/flash_messages'
 import { RequiredIndicator } from '#viewsbackv2/components/utils/required_indicator'
 
-interface InputProps {
+interface CheckboxProps {
   id: string
   name: string
   required?: boolean
   disabled?: boolean
-  type?: string
-  multiple?: boolean
-  defaultValue?: string
-  placeholder?: string
+  defaultValue?: boolean
   withErrors?: boolean
 }
 
-export function Input(props: InputProps) {
-  const {
-    id,
-    name,
-    required = false,
-    disabled = false,
-    withErrors = true,
-    type = 'text',
-    multiple = false,
-    defaultValue,
-    placeholder,
-  } = props
+export function Checkbox(props: Checkbox) {
+  const { id, name, required = false, disabled = false, withErrors = true, defaultValue } = props
 
   let inputElement = (
     <input
       name={name}
-      type={type}
-      multiple={type === 'file' && multiple}
+      type="checkbox"
       id={id}
       required={required}
       disabled={disabled}
       class={clsx([
-        'input input-bordered',
-        type === 'file' && 'file-input pl-0',
-        required ? 'w-full' : 'w-4/6',
+        'checkbox checkbox-primary',
         withErrors && getFlashMessages().has(`inputErrorsBag.${name}`) && 'input-error',
       ])}
-      value={getFlashMessages().get(`${name}`) || defaultValue}
-      placeholder={placeholder}
+      checked={getFlashMessages().get(`${name}`) || defaultValue}
     />
   )
   inputElement = required ? <RequiredIndicator>{inputElement}</RequiredIndicator> : inputElement

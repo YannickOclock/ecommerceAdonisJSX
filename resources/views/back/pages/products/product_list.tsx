@@ -77,7 +77,7 @@ export function ProductList(props: ProductListProps) {
                       class="form-check-input"
                       type="checkbox"
                       role="switch"
-                      checked={product.published ? true : false}
+                      checked={product.published}
                       data-href={route('admin.product.switch', { id: product.id })}
                       id="switch1"
                       disabled

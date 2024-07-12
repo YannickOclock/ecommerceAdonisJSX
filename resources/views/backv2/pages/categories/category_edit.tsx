@@ -67,7 +67,7 @@ export function CategoryEdit(props: CategoryEditProps) {
               <Input name="order" type={'number'} defaultValue={category.order} id={'order'} />
             </FormGroup>
             <FormGroup>
-              <Label id={'country'} label="Catégorie parente" />
+              <Label id={'parentId'} label="Catégorie parente" />
               <Select
                 id={'parentId'}
                 name={'parentId'}

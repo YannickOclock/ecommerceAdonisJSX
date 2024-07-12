@@ -23,7 +23,7 @@ export function AddressAdd() {
               <li>Ajout d'une adresse</li>
             </ul>
           </div>
-          <h1 class="text-2xl">Ajout d'un adresse</h1>
+          <h1 class="text-2xl">Ajout d'une adresse</h1>
         </div>
         <div class="p-4 pt-8">
           <form method={'post'}>
