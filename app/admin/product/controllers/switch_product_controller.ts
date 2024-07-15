@@ -13,6 +13,6 @@ export default class SwitchProductController {
       type: 'success',
       message: `Le produit a été ${published ? 'activé' : 'désactivé'} avec succès`,
     })
-    response.redirect().toRoute('admin.products.list')
+    response.redirect().toRoute('admin.product.list')
   }
 }

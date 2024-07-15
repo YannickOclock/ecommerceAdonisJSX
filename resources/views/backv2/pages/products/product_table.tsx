@@ -31,7 +31,18 @@ export function ProductTable(props: ProductTableProps) {
                 <td>{product.slug}</td>
                 <td>{convertPrice(product.price)}</td>
                 <td>{product.stock}</td>
-                <td>{product.published}</td>
+                <td>
+                  <form method={'get'} action={route('admin.product.switch', { id: product.id })}>
+                    <div up-autosubmit>
+                      <input
+                        type="checkbox"
+                        class="toggle toggle-success"
+                        name="published"
+                        checked={!!product.published}
+                      />
+                    </div>
+                  </form>
+                </td>
                 <td>{product.category?.name ?? 'aucune'}</td>
                 <th>
                   <a

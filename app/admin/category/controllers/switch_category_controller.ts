@@ -32,8 +32,14 @@ export default class SwitchCategoryController {
 
     session.flash('notification', {
       type: 'success',
-      message: `La catégorie a été ${published === true ? 'activé' : 'désactivé'} avec succès (ainsi que les produits de celle-ci)`,
+      message: `La catégorie a été ${published ? 'activé' : 'désactivé'} avec succès (ainsi que les produits de celle-ci)`,
     })
-    response.redirect().toRoute('admin.category.list')
+    if (categoryId.parent) {
+      response.redirect().toRoute('admin.category.list', {
+        parentId: categoryId.parent.id,
+      })
+    } else {
+      response.redirect().toRoute('admin.category.list')
+    }
   }
 }

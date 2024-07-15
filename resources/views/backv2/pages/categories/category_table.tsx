@@ -27,7 +27,18 @@ export function CategoryTable(props: CategoryTableProps) {
                   />
                 </td>
                 <td>{category.name}</td>
-                <td>{category.published.toString()}</td>
+                <td>
+                  <form method={'get'} action={route('admin.category.switch', { id: category.id })}>
+                    <div up-autosubmit>
+                      <input
+                        type="checkbox"
+                        class="toggle toggle-success"
+                        name="published"
+                        checked={!!category.published}
+                      />
+                    </div>
+                  </form>
+                </td>
                 <td>{category.parent?.name ?? ''}</td>
                 <th>
                   {category.subCategories.length > 0 && (

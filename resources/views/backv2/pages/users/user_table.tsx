@@ -22,7 +22,18 @@ export function UserTable(props: UserTableProps) {
                 <td>{user.lastname}</td>
                 <td>{user.email}</td>
                 <td>{UserRoleText[user.role]}</td>
-                <td>{user.verified}</td>
+                <td>
+                  <form method={'get'} action={route('admin.user.switch', { id: user.id })}>
+                    <div up-autosubmit>
+                      <input
+                        type="checkbox"
+                        class="toggle toggle-success"
+                        name="published"
+                        checked={!!user.verified}
+                      />
+                    </div>
+                  </form>
+                </td>
                 <th>
                   <a
                     href={route('admin.user.edit', { id: user.id })}
