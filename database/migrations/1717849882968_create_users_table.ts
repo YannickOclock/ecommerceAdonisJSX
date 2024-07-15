@@ -13,6 +13,7 @@ export default class extends BaseSchema {
       table.string('password').notNullable()
       table.integer('role').unsigned().defaultTo(UserRole.User)
       table.boolean('verified').defaultTo(0)
+      table.boolean('dark_mode').defaultTo(0)
 
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()

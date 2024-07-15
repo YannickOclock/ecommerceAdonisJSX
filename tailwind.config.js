@@ -11,7 +11,7 @@ export default {
 
   // daisyUI config (optional - here are the default values)
   daisyui: {
-    themes: ['cupcake'],
+    themes: ['dark', 'cupcake'],
     base: true,
     styled: true,
     utils: true,

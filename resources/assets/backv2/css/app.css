@@ -1,5 +1,6 @@
 /* import material icons (from node modules) */
 @import 'material-icons/iconfont/material-icons.css';
+@import 'unpoly/unpoly.css';
 
 @tailwind base;
 @tailwind components;

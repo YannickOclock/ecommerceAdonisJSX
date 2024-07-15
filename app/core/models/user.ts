@@ -29,6 +29,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare role: number
 
+  @column()
+  declare darkMode: boolean
+
   @column({ serializeAs: null })
   declare password: string
 

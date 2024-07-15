@@ -85,6 +85,8 @@ const ShowListUserController = () => import('#admin/user/controllers/show_list_u
 const AddUserController = () => import('#admin/user/controllers/add_user_controller')
 const EditUserController = () => import('#admin/user/controllers/edit_user_controller')
 const SwitchUserController = () => import('#admin/user/controllers/switch_user_controller')
+const SwitchUserDarkModeController = () =>
+  import('#admin/user/controllers/switch_dark_mode_controller')
 
 // CONTROLLERS ADDRESSES
 const ShowListAddressController = () =>
@@ -131,6 +133,9 @@ router
     router.get('/users/edit/:id', [EditUserController, 'render']).as('user.edit')
     router.post('/users/edit/:id', [EditUserController, 'update']).as('user.update')
     router.get('/users/switch/:id', [SwitchUserController, 'switch']).as('user.switch')
+    router
+      .get('/users/switch_theme', [SwitchUserDarkModeController, 'handle'])
+      .as('user.switch.darkMode')
 
     // PARTIE ADRESSES
     router.get('/addresses', [ShowListAddressController, 'render']).as('address.list')

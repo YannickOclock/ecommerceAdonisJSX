@@ -1,5 +1,6 @@
 import { route } from '#start/view'
 import { DrawerBtn } from '#viewsbackv2/components/drawer_btn'
+import { DarkModeBtn } from '#viewsbackv2/components/user/dark_mode_btn'
 
 export function Header() {
   return (
@@ -18,8 +19,9 @@ export function Header() {
       <div class="navbar-end">
         <ul class="menu menu-horizontal">
           <li>
-            <a>
-              <i class="material-icons">visibility</i>Voir la boutique
+            <a href={route('front.home')}>
+              <i class="material-icons">visibility</i>
+              <span>Voir la boutique</span>
             </a>
           </li>
           <li>
@@ -27,6 +29,9 @@ export function Header() {
           </li>
           <li>
             <i class="material-icons">account_circle</i>
+          </li>
+          <li>
+            <DarkModeBtn />
           </li>
         </ul>
       </div>
