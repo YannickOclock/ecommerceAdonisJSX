@@ -30,6 +30,16 @@ export function CategoryTable(props: CategoryTableProps) {
                 <td>{category.published.toString()}</td>
                 <td>{category.parent?.name ?? ''}</td>
                 <th>
+                  {category.subCategories.length > 0 && (
+                    <a
+                      href={route('admin.category.list', { parentId: category.id })}
+                      class="btn btn-xs btn-ghost"
+                      up-follow
+                      up-target="#main-content"
+                    >
+                      <i class="material-icons">zoom_in</i>
+                    </a>
+                  )}
                   <a
                     href={route('admin.category.edit', { id: category.id })}
                     class="btn btn-xs btn-ghost"
