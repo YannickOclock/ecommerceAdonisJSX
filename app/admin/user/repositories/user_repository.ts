@@ -63,4 +63,10 @@ export class UserRepository {
     await user.save()
     return user.verified
   }
+
+  async switchTheme(userId: string): Promise<void> {
+    const user = await this.find(userId)
+    user.darkMode = !user.darkMode
+    await user.save()
+  }
 }
