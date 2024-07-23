@@ -14,6 +14,12 @@
   background-size: 150px auto;
 }
 
+/* spécifications pour les modales unpoly */
+up-modal-box {
+  background: oklch(var(--b1));
+  border-radius: var(--rounded-box);
+}
+
 /* spécifications pour les input readonly (daisyui) */
 .input:has(> input[readonly]),
 .input-readonly,

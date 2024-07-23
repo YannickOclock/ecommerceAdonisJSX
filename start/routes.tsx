@@ -69,6 +69,7 @@ const ShowListProductController = () =>
 const AddProductController = () => import('#admin/product/controllers/add_product_controller')
 const EditProductController = () => import('#admin/product/controllers/edit_product_controller')
 const SwitchProductController = () => import('#admin/product/controllers/switch_product_controller')
+const DeleteProductController = () => import('#admin/product/controllers/delete_product_controller')
 const DeleteProductImageController = () =>
   import('#admin/product/controllers/delete_product_image_controller')
 
@@ -79,6 +80,8 @@ const AddCategoryController = () => import('#admin/category/controllers/add_cate
 const EditCategoryController = () => import('#admin/category/controllers/edit_category_controller')
 const SwitchCategoryController = () =>
   import('#admin/category/controllers/switch_category_controller')
+const DeleteCategoryController = () =>
+  import('#admin/category/controllers/delete_category_controller')
 
 // CONTROLLERS USERS
 const ShowListUserController = () => import('#admin/user/controllers/show_list_user_controller')
@@ -87,12 +90,14 @@ const EditUserController = () => import('#admin/user/controllers/edit_user_contr
 const SwitchUserController = () => import('#admin/user/controllers/switch_user_controller')
 const SwitchUserDarkModeController = () =>
   import('#admin/user/controllers/switch_dark_mode_controller')
+const DeleteUserController = () => import('#admin/user/controllers/delete_user_controller')
 
 // CONTROLLERS ADDRESSES
 const ShowListAddressController = () =>
   import('#admin/address/controllers/show_list_address_controller')
 const AddAddressController = () => import('#admin/address/controllers/add_address_controller')
 const EditAddressController = () => import('#admin/address/controllers/edit_address_controller')
+const DeleteAddressController = () => import('#admin/address/controllers/delete_address_controller')
 
 // CONTROLLERS TEST
 const TestPageController = () => import('#admin/test/controllers/test_page_controller')
@@ -115,6 +120,10 @@ router
     router
       .get('/products/:productId/images/delete/:id', [DeleteProductImageController, 'delete'])
       .as('product.image.delete')
+    router
+      .get('/products/confirm/delete/:id', [DeleteProductController, 'render'])
+      .as('product.confirm.delete')
+    router.get('/products/delete/:id', [DeleteProductController, 'handle']).as('product.delete')
 
     // PARTIE CATEGORIES
     router
@@ -125,6 +134,10 @@ router
     router.get('/categories/edit/:id', [EditCategoryController, 'render']).as('category.edit')
     router.post('/categories/edit/:id', [EditCategoryController, 'update']).as('category.update')
     router.get('/categories/switch/:id', [SwitchCategoryController, 'switch']).as('category.switch')
+    router
+      .get('/categories/confirm/delete/:id', [DeleteCategoryController, 'render'])
+      .as('category.confirm.delete')
+    router.get('/categories/delete/:id', [DeleteCategoryController, 'handle']).as('category.delete')
 
     // PARTIE USERS
     router.get('/users', [ShowListUserController, 'render']).as('user.list')
@@ -136,6 +149,10 @@ router
     router
       .get('/users/switch_theme', [SwitchUserDarkModeController, 'handle'])
       .as('user.switch.darkMode')
+    router
+      .get('/users/confirm/delete/:id', [DeleteUserController, 'render'])
+      .as('user.confirm.delete')
+    router.get('/users/delete/:id', [DeleteUserController, 'handle']).as('user.delete')
 
     // PARTIE ADRESSES
     router.get('/addresses', [ShowListAddressController, 'render']).as('address.list')
@@ -143,6 +160,10 @@ router
     router.post('/addresses/add', [AddAddressController, 'store']).as('address.store')
     router.get('/addresses/edit/:id', [EditAddressController, 'render']).as('address.edit')
     router.post('/addresses/edit/:id', [EditAddressController, 'update']).as('address.update')
+    router
+      .get('/addresses/confirm/delete/:id', [DeleteAddressController, 'render'])
+      .as('address.confirm.delete')
+    router.get('/addresses/delete/:id', [DeleteAddressController, 'handle']).as('address.delete')
   })
   .prefix('admin')
   .as('admin')

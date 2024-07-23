@@ -1,18 +1,12 @@
 import { Vite } from '#resources/helpers/asset'
-import { Drawer } from '#viewsbackv2/components/drawer'
-import { Nav } from '#viewsbackv2/partials/nav'
-import { Header } from '#viewsbackv2/partials/header'
 import { HttpContext } from '@adonisjs/core/http'
-import { SuccessMessage } from '#viewsbackv2/components/messages/success_message'
-import { MessagesManager } from '#viewsbackv2/components/messages/messages_manager'
 
-interface AdminProps {
+interface MasterProps {
   children: JSX.Element
-  title?: string
 }
 
-export function Admin(props: AdminProps) {
-  const { children, title = 'Tableau de bord' } = props
+export function Master(props: MasterProps) {
+  const { children } = props
 
   // -- On récupère le User
   const httpContext = HttpContext.getOrFail()
@@ -27,7 +21,6 @@ export function Admin(props: AdminProps) {
         <head>
           <meta charset={'UTF-8'} />
           <meta name={'viewport'} content={'width=device-width, initial-scale=1.0'} />
-          <title>{title}</title>
           <Vite.Entrypoint
             entrypoints={[
               'resources/assets/backv2/css/app.css',
@@ -36,11 +29,7 @@ export function Admin(props: AdminProps) {
           />
         </head>
         <body data-theme={usedTheme} up-main>
-          <Header />
-          <Drawer nav={<Nav />}>
-            <MessagesManager />
-            {children}
-          </Drawer>
+          {children}
         </body>
       </html>
     </>
