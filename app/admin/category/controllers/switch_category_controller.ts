@@ -34,9 +34,9 @@ export default class SwitchCategoryController {
       type: 'success',
       message: `La catégorie a été ${published ? 'activé' : 'désactivé'} avec succès (ainsi que les produits de celle-ci)`,
     })
-    if (categoryId.parent) {
+    if (category.parent) {
       response.redirect().toRoute('admin.category.list', {
-        parentId: categoryId.parent.id,
+        parentId: category.parent.id,
       })
     } else {
       response.redirect().toRoute('admin.category.list')
