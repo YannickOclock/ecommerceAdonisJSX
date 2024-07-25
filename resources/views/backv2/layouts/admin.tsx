@@ -35,7 +35,7 @@ export function Admin(props: AdminProps) {
             ]}
           />
         </head>
-        <body data-theme={usedTheme} up-main>
+        <body data-theme={usedTheme}>
           <Header />
           <Drawer nav={<Nav />}>
             <MessagesManager />

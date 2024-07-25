@@ -6,7 +6,7 @@ export function SuccessMessage(props: SuccessMessageProps) {
   const { message } = props
   return (
     <div role="alert" class="alert alert-success mb-4 flex justify-between">
-      <div class={'inline-flex gap-4'}>
+      <div class="inline-flex gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6 shrink-0 stroke-current"
@@ -22,8 +22,8 @@ export function SuccessMessage(props: SuccessMessageProps) {
         </svg>
         <span>{message}</span>
       </div>
-      <button class="btn btn-sm btn-square">
-        <i class={'material-icons'}>close</i>
+      <button class="btn btn-sm btn-square close">
+        <i class="material-icons">close</i>
       </button>
     </div>
   )

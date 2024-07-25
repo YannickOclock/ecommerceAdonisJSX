@@ -11,5 +11,9 @@ export function MessagesManager() {
     }
   }
 
-  return <div class={'p-4'}>{messageElements.map((messageElement) => messageElement)}</div>
+  return (
+    <div class={'p-4'} up-flashes>
+      {messageElements.map((messageElement) => messageElement)}
+    </div>
+  )
 }
