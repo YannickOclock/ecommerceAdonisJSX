@@ -12,21 +12,21 @@ declare global {
       ['mj-column']: MjmlColumnTag
       ['mj-spacer']: MjmlSpacerTag
       ['mj-text']: MjmlTextTag
-      ['mj-raw']: MjmlWChildenTag
+      ['mj-raw']: MjmlWChildrenTag
       ['mj-image']: MjmlImageTag
       ['mj-button']: MjmlButtonTag
+
+      ['custom-alert']: CustomElement
+      ['custom-table']: CustomElement
     }
-    /*
-      <mj-section padding="0px">
-        <mj-column>
-          <mj-spacer height="30px"></mj-spacer>
-        </mj-column>
-      </mj-section>
-     */
+    // -- specification of custom components
+    interface CustomElement {
+      ['children']?: JSX.Element
+    }
     // -- specification to mjml --
     // - MJML Layout -
     interface MjmlTag {}
-    interface MjmlWChildenTag {
+    interface MjmlWChildrenTag {
       ['children']?: Element | JSX.Element | string
     }
     interface MjmlStyleTag {

@@ -9,7 +9,7 @@ export function TableLine(props: TableLineProps) {
     <tr>
       <th>
         <label>
-          <input type="checkbox" class="checkbox" />
+          <input type="checkbox" class="checkbox" data-table-checkbox="" />
         </label>
       </th>
       {children}
