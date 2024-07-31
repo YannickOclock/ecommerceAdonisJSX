@@ -22,10 +22,7 @@ export function Master(props: MasterProps) {
           <meta charset={'UTF-8'} />
           <meta name={'viewport'} content={'width=device-width, initial-scale=1.0'} />
           <Vite.Entrypoint
-            entrypoints={[
-              'resources/assets/backv2/css/app.css',
-              'resources/assets/backv2/js/app.ts',
-            ]}
+            entrypoints={['resources/assets/back/css/app.css', 'resources/assets/back/js/app.ts']}
           />
         </head>
         <body data-theme={usedTheme} up-main>
