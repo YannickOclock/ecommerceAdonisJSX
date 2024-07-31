@@ -1,4 +1,4 @@
-import { ProductEdit } from '#viewsbackv2/pages/products/product.edit'
+import { ProductEdit } from '#viewsback/pages/products/product.edit'
 import { HttpContext } from '@adonisjs/core/http'
 import { ProductRepository } from '#admin/product/repositories/product_repository'
 import { ProductImagesService } from '#admin/product/services/product_images_service'

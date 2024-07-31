@@ -1,7 +1,7 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
 import { AddressRepository } from '#admin/address/repositories/address_repository'
-import { AddressEdit } from '#viewsbackv2/pages/addresses/address_edit'
+import { AddressEdit } from '#viewsback/pages/addresses/address_edit'
 import { updateAddressValidator } from '#admin/address/validators/update_address_validator'
 
 @inject()

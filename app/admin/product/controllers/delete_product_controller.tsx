@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
 import { ProductRepository } from '#admin/product/repositories/product_repository'
-import { ProductDeleteModale } from '#viewsbackv2/pages/products/product_delete_modale'
+import { ProductDeleteModale } from '#viewsback/pages/products/product_delete_modale'
 
 @inject()
 export default class DeleteProductController {

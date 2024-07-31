@@ -1,7 +1,7 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { UserRepository } from '#admin/user/repositories/user_repository'
 import { inject } from '@adonisjs/core'
-import { UserEdit } from '#viewsbackv2/pages/users/user_edit'
+import { UserEdit } from '#viewsback/pages/users/user_edit'
 import { updateUserValidator } from '#admin/user/validators/update_user_validator'
 
 @inject()

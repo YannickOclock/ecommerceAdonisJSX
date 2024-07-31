@@ -1,5 +1,5 @@
 import { inject } from '@adonisjs/core'
-import { AddressAdd } from '#viewsbackv2/pages/addresses/address_add'
+import { AddressAdd } from '#viewsback/pages/addresses/address_add'
 import { HttpContext } from '@adonisjs/core/http'
 import { createAddressValidator } from '#admin/address/validators/create_address_validator'
 import { AddressRepository } from '#admin/address/repositories/address_repository'

@@ -2,7 +2,7 @@ import { inject } from '@adonisjs/core'
 
 import { HttpContext } from '@adonisjs/core/http'
 import { AddressRepository } from '#admin/address/repositories/address_repository'
-import { AddressDeleteModale } from '#viewsbackv2/pages/addresses/address_delete_modale'
+import { AddressDeleteModale } from '#viewsback/pages/addresses/address_delete_modale'
 
 @inject()
 export default class DeleteAddressController {

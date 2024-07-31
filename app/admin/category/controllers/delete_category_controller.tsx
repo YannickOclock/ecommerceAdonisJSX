@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core'
 import { CategoryRepository } from '#admin/category/repositories/category_repository'
-import { CategoryDeleteModale } from '#viewsbackv2/pages/categories/category_delete_modale'
+import { CategoryDeleteModale } from '#viewsback/pages/categories/category_delete_modale'
 import { HttpContext } from '@adonisjs/core/http'
 
 @inject()

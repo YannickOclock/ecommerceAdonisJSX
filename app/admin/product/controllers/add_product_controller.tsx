@@ -1,4 +1,4 @@
-import { ProductAdd } from '#viewsbackv2/pages/products/product_add'
+import { ProductAdd } from '#viewsback/pages/products/product_add'
 import { HttpContext } from '@adonisjs/core/http'
 import { createProductValidator } from '#admin/product/validators/create_product_validator'
 import { ProductRepository } from '#admin/product/repositories/product_repository'

@@ -1,7 +1,7 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { CategoryRepository } from '#admin/category/repositories/category_repository'
 import { inject } from '@adonisjs/core'
-import { CategoryList } from '#viewsbackv2/pages/categories/category_list'
+import { CategoryList } from '#viewsback/pages/categories/category_list'
 
 @inject()
 export default class ShowListProductController {

@@ -1,4 +1,4 @@
-import { Test } from '#viewsbackv2/pages/test/test'
+import { Test } from '#viewsback/pages/test/test'
 
 export default class TestPageController {
   render() {

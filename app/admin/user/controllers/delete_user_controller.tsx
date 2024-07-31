@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core'
 import { HttpContext } from '@adonisjs/core/http'
 import { UserRepository } from '#admin/user/repositories/user_repository'
-import { UserDeleteModale } from '#viewsbackv2/pages/users/user_delete_modale'
+import { UserDeleteModale } from '#viewsback/pages/users/user_delete_modale'
 
 @inject()
 export default class DeleteUserController {

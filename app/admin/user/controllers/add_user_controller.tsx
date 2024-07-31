@@ -1,5 +1,5 @@
 import { HttpContext } from '@adonisjs/core/http'
-import { UserAdd } from '#viewsbackv2/pages/users/user_add'
+import { UserAdd } from '#viewsback/pages/users/user_add'
 import { createUserValidator } from '#admin/user/validators/create_user_validator'
 import { UserRepository } from '#admin/user/repositories/user_repository'
 import { inject } from '@adonisjs/core'
