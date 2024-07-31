@@ -1,11 +1,11 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
-import { FormGroup } from '#viewsbackv2/components/form/form_group'
-import { Label } from '#viewsbackv2/components/form/label'
-import { Input } from '#viewsbackv2/components/form/input'
+import { Admin } from '#viewsback/layouts/admin'
+import { FormGroup } from '#viewsback/components/form/form_group'
+import { Label } from '#viewsback/components/form/label'
+import { Input } from '#viewsback/components/form/input'
 import { csrfField } from '#resources/helpers/csrf_field'
 import { UserRoleText } from '#admin/user/enums/user_role'
-import { Select } from '#viewsbackv2/components/form/select'
-import { Checkbox } from '#viewsbackv2/components/form/checkbox'
+import { Select } from '#viewsback/components/form/select'
+import { Checkbox } from '#viewsback/components/form/checkbox'
 
 export function UserAdd() {
   const roleValues = []

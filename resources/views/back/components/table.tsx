@@ -1,6 +1,6 @@
-import { TableHeader } from '#viewsbackv2/components/table/table_header'
-import { TableSimpleLine } from '#viewsbackv2/components/table/table_simple_line'
-import { TableLine } from '#viewsbackv2/components/table/table_line'
+import { TableHeader } from '#viewsback/components/table/table_header'
+import { TableSimpleLine } from '#viewsback/components/table/table_simple_line'
+import { TableLine } from '#viewsback/components/table/table_line'
 
 export function Table() {
   return (

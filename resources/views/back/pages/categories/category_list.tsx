@@ -1,6 +1,6 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
+import { Admin } from '#viewsback/layouts/admin'
 import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
-import { CategoryTable } from '#viewsbackv2/pages/categories/category_table'
+import { CategoryTable } from '#viewsback/pages/categories/category_table'
 import { route } from '#start/view'
 
 interface CategoryListProps {

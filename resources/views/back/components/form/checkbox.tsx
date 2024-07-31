@@ -1,7 +1,7 @@
-import { ErrorField } from '#viewsbackv2/components/form/error_field'
+import { ErrorField } from '#viewsback/components/form/error_field'
 import clsx from 'clsx'
 import { getFlashMessages } from '#resources/helpers/flash_messages'
-import { RequiredIndicator } from '#viewsbackv2/components/utils/required_indicator'
+import { RequiredIndicator } from '#viewsback/components/utils/required_indicator'
 
 interface CheckboxProps {
   id: string

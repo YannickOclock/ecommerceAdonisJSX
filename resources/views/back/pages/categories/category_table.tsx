@@ -1,10 +1,10 @@
-import { TableHeader } from '#viewsbackv2/components/table/table_header'
-import { TableSimpleLine } from '#viewsbackv2/components/table/table_simple_line'
+import { TableHeader } from '#viewsback/components/table/table_header'
+import { TableSimpleLine } from '#viewsback/components/table/table_simple_line'
 import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
-import { TableLine } from '#viewsbackv2/components/table/table_line'
-import { PublicImage } from '#viewsbackv2/components/utils/image'
+import { TableLine } from '#viewsback/components/table/table_line'
+import { PublicImage } from '#viewsback/components/utils/image'
 import { route } from '#start/view'
-import { Table } from '#viewsbackv2/components/table/table'
+import { Table } from '#viewsback/components/table/table'
 
 interface CategoryTableProps {
   categories: AdminCategoryListQueryResult

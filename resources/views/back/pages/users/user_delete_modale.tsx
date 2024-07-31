@@ -1,4 +1,4 @@
-import { Master } from '#viewsbackv2/layouts/master'
+import { Master } from '#viewsback/layouts/master'
 import { route } from '#start/view'
 import { AdminUserEditQueryResult } from '#admin/user/repositories/user_repository'
 

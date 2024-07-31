@@ -1,10 +1,9 @@
 import { Vite } from '#resources/helpers/asset'
-import { Drawer } from '#viewsbackv2/components/drawer'
-import { Nav } from '#viewsbackv2/partials/nav'
-import { Header } from '#viewsbackv2/partials/header'
+import { Drawer } from '#viewsback/components/drawer'
+import { Nav } from '#viewsback/partials/nav'
+import { Header } from '#viewsback/partials/header'
 import { HttpContext } from '@adonisjs/core/http'
-import { SuccessMessage } from '#viewsbackv2/components/messages/success_message'
-import { MessagesManager } from '#viewsbackv2/components/messages/messages_manager'
+import { MessagesManager } from '#viewsback/components/messages/messages_manager'
 
 interface AdminProps {
   children: JSX.Element

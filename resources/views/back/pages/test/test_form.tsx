@@ -1,9 +1,9 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
-import { Label } from '#viewsbackv2/components/form/label'
-import { Input } from '#viewsbackv2/components/form/input'
-import { FormGroup } from '#viewsbackv2/components/form/form_group'
-import { Textarea } from '#viewsbackv2/components/form/textarea'
-import { Select } from '#viewsbackv2/components/form/select'
+import { Admin } from '#viewsback/layouts/admin'
+import { Label } from '#viewsback/components/form/label'
+import { Input } from '#viewsback/components/form/input'
+import { FormGroup } from '#viewsback/components/form/form_group'
+import { Textarea } from '#viewsback/components/form/textarea'
+import { Select } from '#viewsback/components/form/select'
 
 export function TestForm() {
   return (

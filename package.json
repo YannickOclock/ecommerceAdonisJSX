@@ -35,7 +35,6 @@
     "#resources/*": "./resources/*.js",
     "#views/*": "./resources/views/*.js",
     "#viewsback/*": "./resources/views/back/*.js",
-    "#viewsbackv2/*": "./resources/views/backv2/*.js",
     "#viewsfront/*": "./resources/views/front/*.js"
   },
   "devDependencies": {

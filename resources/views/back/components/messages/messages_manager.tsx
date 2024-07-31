@@ -1,5 +1,5 @@
 import { getFlashMessages } from '#resources/helpers/flash_messages'
-import { SuccessMessage } from '#viewsbackv2/components/messages/success_message'
+import { SuccessMessage } from '#viewsback/components/messages/success_message'
 
 export function MessagesManager() {
   const messageElements = []

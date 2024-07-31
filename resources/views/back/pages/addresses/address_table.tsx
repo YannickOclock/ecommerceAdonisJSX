@@ -1,8 +1,8 @@
-import { TableHeader } from '#viewsbackv2/components/table/table_header'
+import { TableHeader } from '#viewsback/components/table/table_header'
 import { AdminAddressListQueryResult } from '#admin/address/repositories/address_repository'
 import { route } from '#start/view'
-import { TableLine } from '#viewsbackv2/components/table/table_line'
-import { Table } from '#viewsbackv2/components/table/table'
+import { TableLine } from '#viewsback/components/table/table_line'
+import { Table } from '#viewsback/components/table/table'
 
 interface AddressTableProps {
   addresses: AdminAddressListQueryResult

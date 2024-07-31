@@ -1,4 +1,4 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
+import { Admin } from '#viewsback/layouts/admin'
 
 export function Dashboard() {
   return (

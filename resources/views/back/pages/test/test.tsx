@@ -1,5 +1,5 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
-import { Table } from '#viewsbackv2/components/table'
+import { Admin } from '#viewsback/layouts/admin'
+import { Table } from '#viewsback/components/table'
 
 export function Test() {
   return (

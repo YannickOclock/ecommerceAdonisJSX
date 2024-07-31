@@ -1,4 +1,4 @@
-import { Master } from '#viewsbackv2/layouts/master'
+import { Master } from '#viewsback/layouts/master'
 import { AdminCategoryEditQueryResult } from '#admin/category/repositories/category_repository'
 import { route } from '#start/view'
 

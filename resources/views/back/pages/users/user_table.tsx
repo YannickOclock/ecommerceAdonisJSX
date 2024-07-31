@@ -1,9 +1,9 @@
-import { TableHeader } from '#viewsbackv2/components/table/table_header'
+import { TableHeader } from '#viewsback/components/table/table_header'
 import { route } from '#start/view'
-import { TableLine } from '#viewsbackv2/components/table/table_line'
+import { TableLine } from '#viewsback/components/table/table_line'
 import { AdminUserListQueryResult } from '#admin/user/repositories/user_repository'
 import { UserRoleText } from '#admin/user/enums/user_role'
-import { Table } from '#viewsbackv2/components/table/table'
+import { Table } from '#viewsback/components/table/table'
 
 interface UserTableProps {
   users: AdminUserListQueryResult

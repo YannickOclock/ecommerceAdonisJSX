@@ -1,6 +1,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { route } from '#start/view'
-import { Link } from '#viewsbackv2/components/nav/link'
+import { Link } from '#viewsback/components/nav/link'
 
 export function Nav() {
   const { request } = HttpContext.getOrFail()

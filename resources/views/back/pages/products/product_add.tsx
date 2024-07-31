@@ -1,12 +1,12 @@
 import { AdminCategoryListQueryResult } from '#admin/category/repositories/category_repository'
-import { Admin } from '#viewsbackv2/layouts/admin'
-import { FormGroup } from '#viewsbackv2/components/form/form_group'
-import { Label } from '#viewsbackv2/components/form/label'
-import { Input } from '#viewsbackv2/components/form/input'
-import { Select } from '#viewsbackv2/components/form/select'
+import { Admin } from '#viewsback/layouts/admin'
+import { FormGroup } from '#viewsback/components/form/form_group'
+import { Label } from '#viewsback/components/form/label'
+import { Input } from '#viewsback/components/form/input'
+import { Select } from '#viewsback/components/form/select'
 import { csrfField } from '#resources/helpers/csrf_field'
-import { Textarea } from '#viewsbackv2/components/form/textarea'
-import { Checkbox } from '#viewsbackv2/components/form/checkbox'
+import { Textarea } from '#viewsback/components/form/textarea'
+import { Checkbox } from '#viewsback/components/form/checkbox'
 
 interface ProductAddProps {
   categories: AdminCategoryListQueryResult

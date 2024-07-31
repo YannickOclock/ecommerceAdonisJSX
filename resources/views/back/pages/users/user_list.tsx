@@ -1,6 +1,6 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
+import { Admin } from '#viewsback/layouts/admin'
 import { AdminUserListQueryResult } from '#admin/user/repositories/user_repository'
-import { UserTable } from '#viewsbackv2/pages/users/user_table'
+import { UserTable } from '#viewsback/pages/users/user_table'
 
 interface UserListProps {
   users: AdminUserListQueryResult

@@ -1,10 +1,10 @@
-import { TableHeader } from '#viewsbackv2/components/table/table_header'
+import { TableHeader } from '#viewsback/components/table/table_header'
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
-import { PublicImage } from '#viewsbackv2/components/utils/image'
-import { TableLine } from '#viewsbackv2/components/table/table_line'
+import { PublicImage } from '#viewsback/components/utils/image'
+import { TableLine } from '#viewsback/components/table/table_line'
 import { convertPrice } from '#resources/helpers/utils'
 import { route } from '#start/view'
-import { Table } from '#viewsbackv2/components/table/table'
+import { Table } from '#viewsback/components/table/table'
 
 interface ProductTableProps {
   products: AdminProductListQueryResult

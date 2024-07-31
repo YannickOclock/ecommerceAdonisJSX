@@ -1,6 +1,6 @@
-import { Admin } from '#viewsbackv2/layouts/admin'
+import { Admin } from '#viewsback/layouts/admin'
 import { AdminAddressListQueryResult } from '#admin/address/repositories/address_repository'
-import { AddressTable } from '#viewsbackv2/pages/addresses/address_table'
+import { AddressTable } from '#viewsback/pages/addresses/address_table'
 
 interface AddressListProps {
   addresses: AdminAddressListQueryResult

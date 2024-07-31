@@ -1,6 +1,6 @@
 import { route } from '#start/view'
-import { DrawerBtn } from '#viewsbackv2/components/drawer_btn'
-import { DarkModeBtn } from '#viewsbackv2/components/user/dark_mode_btn'
+import { DrawerBtn } from '#viewsback/components/drawer_btn'
+import { DarkModeBtn } from '#viewsback/components/user/dark_mode_btn'
 
 export function Header() {
   return (
