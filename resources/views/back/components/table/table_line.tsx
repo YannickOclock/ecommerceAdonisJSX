@@ -4,9 +4,9 @@ interface TableLineProps {
 }
 
 export function TableLine(props: TableLineProps) {
-  const { children } = props
+  const { children, id } = props
   return (
-    <tr>
+    <tr data-id={id}>
       <th>
         <label>
           <input type="checkbox" class="checkbox" data-table-checkbox="" />

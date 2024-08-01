@@ -22,6 +22,7 @@ interface UpdateProductDTO {
 
 export type AdminProductListQueryResult = ResultOf<ProductRepository, 'all'>
 export type AdminProductEditQueryResult = ResultOf<ProductRepository, 'find'>
+export type AdminProductByIdsQueryResult = ResultOf<ProductRepository, 'findByIds'>
 
 export class ProductRepository {
   async all(): Promise<Product[]> {
@@ -41,6 +42,14 @@ export class ProductRepository {
         query.orderBy('created_at', 'asc')
       })
       .firstOrFail()
+  }
+
+  async findByIds(ids: string[]): Promise<Product[]> {
+    return Product.query()
+      .whereIn('id', ids)
+      .preload('productImages', (query) => {
+        query.orderBy('created_at', 'asc')
+      })
   }
 
   wideProductFromPayload(payload: StoreProductDTO | UpdateProductDTO, product: Product) {

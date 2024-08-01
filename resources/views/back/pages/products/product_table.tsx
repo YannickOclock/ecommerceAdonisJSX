@@ -14,6 +14,16 @@ export function ProductTable(props: ProductTableProps) {
   const { products } = props
   return (
     <Table>
+      <a
+        href={route('admin.product.confirm.delete')}
+        class={'btn btn-primary'}
+        disabled="disabled"
+        up-follow
+        up-layer={'new'}
+        data-delete-btn=""
+      >
+        Supprimer les produits
+      </a>
       <TableHeader
         fields={['Photo', 'Nom', 'Slug', 'Prix', 'Stock', 'En ligne', 'Catégorie', 'Actions']}
       />
@@ -63,7 +73,7 @@ export function ProductTable(props: ProductTableProps) {
                   >
                     <li>
                       <a
-                        href={route('admin.product.confirm.delete', { id: product.id })}
+                        href={route('admin.product.confirm.delete', { ids: [product.id] })}
                         up-layer="new"
                         up-follow
                       >

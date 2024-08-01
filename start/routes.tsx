@@ -121,9 +121,9 @@ router
       .get('/products/:productId/images/delete/:id', [DeleteProductImageController, 'delete'])
       .as('product.image.delete')
     router
-      .get('/products/confirm/delete/:id', [DeleteProductController, 'render'])
+      .get('/products/confirm/delete/:ids?', [DeleteProductController, 'render'])
       .as('product.confirm.delete')
-    router.get('/products/delete/:id', [DeleteProductController, 'handle']).as('product.delete')
+    router.post('/products/delete', [DeleteProductController, 'handle']).as('product.delete')
 
     // PARTIE CATEGORIES
     router
