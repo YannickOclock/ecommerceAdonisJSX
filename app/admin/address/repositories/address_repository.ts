@@ -3,6 +3,7 @@ import { ResultOf } from '#types/common'
 
 export type AdminAddressListQueryResult = ResultOf<AddressRepository, 'all'>
 export type AdminAddressEditQueryResult = ResultOf<AddressRepository, 'find'>
+export type AdminAddressByIdsQueryResult = ResultOf<AddressRepository, 'findByIds'>
 
 export interface StoreAddressRepository {
   lastname: string
@@ -34,6 +35,10 @@ export class AddressRepository {
 
   async find(id: string): Promise<Address> {
     return await Address.query().where('id', '=', id).firstOrFail()
+  }
+
+  async findByIds(ids: string[]): Promise<Address[]> {
+    return Address.query().whereIn('id', ids)
   }
 
   async wideProductFromPayload(

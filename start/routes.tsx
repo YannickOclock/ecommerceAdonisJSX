@@ -161,9 +161,9 @@ router
     router.get('/addresses/edit/:id', [EditAddressController, 'render']).as('address.edit')
     router.post('/addresses/edit/:id', [EditAddressController, 'update']).as('address.update')
     router
-      .get('/addresses/confirm/delete/:id', [DeleteAddressController, 'render'])
+      .get('/addresses/confirm/delete/:ids?', [DeleteAddressController, 'render'])
       .as('address.confirm.delete')
-    router.get('/addresses/delete/:id', [DeleteAddressController, 'handle']).as('address.delete')
+    router.post('/addresses/delete', [DeleteAddressController, 'handle']).as('address.delete')
   })
   .prefix('admin')
   .as('admin')

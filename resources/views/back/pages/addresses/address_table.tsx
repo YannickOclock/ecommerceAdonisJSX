@@ -12,6 +12,16 @@ export function AddressTable(props: AddressTableProps) {
   const { addresses } = props
   return (
     <Table>
+      <a
+        href={route('admin.address.confirm.delete')}
+        class={'btn btn-primary'}
+        disabled="disabled"
+        up-follow
+        up-layer={'new'}
+        data-delete-btn=""
+      >
+        Supprimer les adresses
+      </a>
       <TableHeader
         fields={[
           'Nom',
@@ -54,7 +64,7 @@ export function AddressTable(props: AddressTableProps) {
                   >
                     <li>
                       <a
-                        href={route('admin.address.confirm.delete', { id: address.id })}
+                        href={route('admin.address.confirm.delete', { ids: [address.id] })}
                         up-layer="new"
                         up-follow
                       >
