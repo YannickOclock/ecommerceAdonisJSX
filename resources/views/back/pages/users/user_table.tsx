@@ -13,6 +13,16 @@ export function UserTable(props: UserTableProps) {
   const { users } = props
   return (
     <Table>
+      <a
+        href={route('admin.user.confirm.delete')}
+        class={'btn btn-primary'}
+        disabled="disabled"
+        up-follow
+        up-layer={'new'}
+        data-delete-btn=""
+      >
+        Supprimer les utilisateurs
+      </a>
       <TableHeader fields={['Prénom', 'Nom', 'Email', 'Rôle', 'Vérifié', 'Actions']} />
       <tbody>
         {users.map((user) => (
@@ -53,7 +63,7 @@ export function UserTable(props: UserTableProps) {
                   >
                     <li>
                       <a
-                        href={route('admin.user.confirm.delete', { id: user.id })}
+                        href={route('admin.user.confirm.delete', { ids: [user.id] })}
                         up-layer="new"
                         up-follow
                       >

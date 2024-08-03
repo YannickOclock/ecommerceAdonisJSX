@@ -150,9 +150,9 @@ router
       .get('/users/switch_theme', [SwitchUserDarkModeController, 'handle'])
       .as('user.switch.darkMode')
     router
-      .get('/users/confirm/delete/:id', [DeleteUserController, 'render'])
+      .get('/users/confirm/delete/:ids?', [DeleteUserController, 'render'])
       .as('user.confirm.delete')
-    router.get('/users/delete/:id', [DeleteUserController, 'handle']).as('user.delete')
+    router.post('/users/delete', [DeleteUserController, 'handle']).as('user.delete')
 
     // PARTIE ADRESSES
     router.get('/addresses', [ShowListAddressController, 'render']).as('address.list')

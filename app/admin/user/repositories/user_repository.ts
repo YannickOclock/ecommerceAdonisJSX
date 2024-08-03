@@ -22,6 +22,7 @@ interface UserUpdateDto {
 
 export type AdminUserListQueryResult = ResultOf<UserRepository, 'all'>
 export type AdminUserEditQueryResult = ResultOf<UserRepository, 'find'>
+export type AdminUserByIdsQueryResult = ResultOf<UserRepository, 'findByIds'>
 
 export class UserRepository {
   async all(): Promise<User[]> {
@@ -30,6 +31,10 @@ export class UserRepository {
 
   async find(id: string): Promise<User> {
     return await User.query().where('id', '=', id).firstOrFail()
+  }
+
+  async findByIds(ids: string[]): Promise<User[]> {
+    return User.query().whereIn('id', ids)
   }
 
   wideProductFromPayload(payload: UserCreateDto | UserUpdateDto, user: User) {
