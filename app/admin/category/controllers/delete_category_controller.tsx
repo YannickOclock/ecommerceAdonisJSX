@@ -2,29 +2,35 @@ import { inject } from '@adonisjs/core'
 import { CategoryRepository } from '#admin/category/repositories/category_repository'
 import { CategoryDeleteModale } from '#viewsback/pages/categories/category_delete_modale'
 import { HttpContext } from '@adonisjs/core/http'
+import { deleteCategoryValidator } from '#admin/category/validators/delete_category_validator'
 
 @inject()
 export default class DeleteCategoryController {
   constructor(private categoryRepository: CategoryRepository) {}
 
   async render({ request }: HttpContext) {
-    // bouton: ouvrir le message de confirmation dans une modale
-    const categoryId = request.param('id')
-    const category = await this.categoryRepository.find(categoryId)
-    return <CategoryDeleteModale category={category} />
+    const categoryIds = request.param('ids').split(',')
+    const categories = await this.categoryRepository.findByIds(categoryIds)
+    return <CategoryDeleteModale categories={categories} />
   }
 
   async handle({ request, response, session }: HttpContext) {
-    const categoryId: string = request.param('id')
-    const category = await this.categoryRepository.find(categoryId)
-    await category.delete()
+    const payload = await request.validateUsing(deleteCategoryValidator)
+    const categories = await this.categoryRepository.findByIds(payload.ids)
+    // TODO: Vérifier la suppression des images dans le dossier public
+    for (const category of categories) {
+      await category.delete()
+    }
     session.flash('notification', {
       type: 'success',
-      message: `La catégorie a été supprimée avec succès`,
+      message:
+        categories.length > 1
+          ? `Les catégories ont été supprimées avec succès`
+          : `La catégorie a été supprimée avec succès`,
     })
-    if (category.parent) {
+    if (categories[0].parent) {
       response.redirect().toRoute('admin.category.list', {
-        parentId: category.parent.id,
+        parentId: categories[0].parent.id,
       })
     } else {
       response.redirect().toRoute('admin.category.list')

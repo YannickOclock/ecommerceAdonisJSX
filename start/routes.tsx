@@ -135,9 +135,9 @@ router
     router.post('/categories/edit/:id', [EditCategoryController, 'update']).as('category.update')
     router.get('/categories/switch/:id', [SwitchCategoryController, 'switch']).as('category.switch')
     router
-      .get('/categories/confirm/delete/:id', [DeleteCategoryController, 'render'])
+      .get('/categories/confirm/delete/:ids?', [DeleteCategoryController, 'render'])
       .as('category.confirm.delete')
-    router.get('/categories/delete/:id', [DeleteCategoryController, 'handle']).as('category.delete')
+    router.post('/categories/delete', [DeleteCategoryController, 'handle']).as('category.delete')
 
     // PARTIE USERS
     router.get('/users', [ShowListUserController, 'render']).as('user.list')

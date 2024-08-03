@@ -22,6 +22,7 @@ interface UpdateCategoryDTO {
 
 export type AdminCategoryListQueryResult = ResultOf<CategoryRepository, 'all'>
 export type AdminCategoryEditQueryResult = ResultOf<CategoryRepository, 'find'>
+export type AdminCategoryByIdsQueryResult = ResultOf<CategoryRepository, 'findByIds'>
 
 export class CategoryRepository {
   async all() {
@@ -43,6 +44,10 @@ export class CategoryRepository {
 
   async find(id: string): Promise<Category> {
     return await Category.query().where('id', '=', id).firstOrFail()
+  }
+
+  async findByIds(ids: string[]): Promise<Category[]> {
+    return Category.query().whereIn('id', ids)
   }
 
   async wideCategoryFromPayload(payload: StoreCategoryDTO, category: Category) {

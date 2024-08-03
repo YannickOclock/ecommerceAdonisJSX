@@ -14,6 +14,16 @@ export function CategoryTable(props: CategoryTableProps) {
   const { categories } = props
   return (
     <Table>
+      <a
+        href={route('admin.category.confirm.delete')}
+        class={'btn btn-primary'}
+        disabled="disabled"
+        up-follow
+        up-layer={'new'}
+        data-delete-btn=""
+      >
+        Supprimer les catégories
+      </a>
       <TableHeader fields={['Photo', 'Nom', 'En ligne', 'Parent', 'Actions']} />
       <tbody>
         {categories.map((category) => (
@@ -69,7 +79,7 @@ export function CategoryTable(props: CategoryTableProps) {
                   >
                     <li>
                       <a
-                        href={route('admin.category.confirm.delete', { id: category.id })}
+                        href={route('admin.category.confirm.delete', { ids: [category.id] })}
                         up-layer="new"
                         up-follow
                       >
