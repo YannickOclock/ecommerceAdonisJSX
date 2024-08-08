@@ -80,7 +80,7 @@ export class CustomTableComponent extends HTMLElement {
    */
   #toggleElements() {
     this.#tbodyCheckboxElements.forEach((checkboxElement) => {
-      if (this.#theadCheckboxElement) {
+      if (this.#theadCheckboxElement && !checkboxElement.disabled) {
         checkboxElement.checked = this.#theadCheckboxElement.checked
       }
     })

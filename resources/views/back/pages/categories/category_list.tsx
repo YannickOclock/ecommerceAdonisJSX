@@ -42,7 +42,11 @@ export function CategoryList(props: CategoryListProps) {
           <h1 class="text-2xl">Liste des catégories</h1>
         </div>
         <div class="p-4 pt-8">
-          <CategoryTable categories={categories} />
+          {categories.length === 0 ? (
+            <p>Aucune catégorie dans la base de données !</p>
+          ) : (
+            <CategoryTable categories={categories} />
+          )}
         </div>
       </>
     </Admin>

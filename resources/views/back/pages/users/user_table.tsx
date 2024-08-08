@@ -2,7 +2,7 @@ import { TableHeader } from '#viewsback/components/table/table_header'
 import { route } from '#start/view'
 import { TableLine } from '#viewsback/components/table/table_line'
 import { AdminUserListQueryResult } from '#admin/user/repositories/user_repository'
-import { UserRoleText } from '#admin/user/enums/user_role'
+import { UserRole, UserRoleText } from '#admin/user/enums/user_role'
 import { Table } from '#viewsback/components/table/table'
 
 interface UserTableProps {
@@ -27,7 +27,7 @@ export function UserTable(props: UserTableProps) {
       <tbody>
         {users.map((user) => (
           <>
-            <TableLine id={user.id}>
+            <TableLine id={user.id} disabled={user.role === UserRole.Admin}>
               <td>{user.firstname}</td>
               <td>{user.lastname}</td>
               <td>{user.email}</td>
@@ -53,25 +53,27 @@ export function UserTable(props: UserTableProps) {
                 >
                   <i class="material-icons">edit</i>
                 </a>
-                <div class="dropdown dropdown-end">
-                  <div tabindex="0" role="button" class="btn btn-md btn-ghost">
-                    <i class="material-icons">more_vert</i>
+                {user.role !== UserRole.Admin && (
+                  <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-md btn-ghost">
+                      <i class="material-icons">more_vert</i>
+                    </div>
+                    <ul
+                      tabindex="0"
+                      class="dropdown-content menu bg-base-100 rounded-box z-[99] w-52 p-2 shadow"
+                    >
+                      <li>
+                        <a
+                          href={route('admin.user.confirm.delete', { ids: [user.id] })}
+                          up-layer="new"
+                          up-follow
+                        >
+                          <i class="material-icons">delete</i> Supprimer
+                        </a>
+                      </li>
+                    </ul>
                   </div>
-                  <ul
-                    tabindex="0"
-                    class="dropdown-content menu bg-base-100 rounded-box z-[99] w-52 p-2 shadow"
-                  >
-                    <li>
-                      <a
-                        href={route('admin.user.confirm.delete', { ids: [user.id] })}
-                        up-layer="new"
-                        up-follow
-                      >
-                        <i class="material-icons">delete</i> Supprimer
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                )}
               </th>
             </TableLine>
           </>

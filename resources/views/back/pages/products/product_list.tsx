@@ -1,6 +1,7 @@
 import { Admin } from '#viewsback/layouts/admin'
 import { AdminProductListQueryResult } from '#admin/product/repositories/product_repository'
 import { ProductTable } from '#viewsback/pages/products/product_table'
+import { CategoryTable } from '#viewsback/pages/categories/category_table'
 
 interface ProductListProps {
   products: AdminProductListQueryResult
@@ -26,7 +27,11 @@ export function ProductList(props: ProductListProps) {
           <h1 class="text-2xl">Liste des produits</h1>
         </div>
         <div class="p-4 pt-8">
-          <ProductTable products={products} />
+          {products.length === 0 ? (
+            <p>Aucun produit dans la base de données !</p>
+          ) : (
+            <ProductTable products={products} />
+          )}
         </div>
       </>
     </Admin>

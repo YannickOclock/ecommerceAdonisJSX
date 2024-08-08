@@ -26,7 +26,11 @@ export function AddressList(props: AddressListProps) {
           <h1 class="text-2xl">Liste des adresses</h1>
         </div>
         <div class="p-4 pt-8">
-          <AddressTable addresses={addresses} />
+          {addresses.length === 0 ? (
+            <p>Aucune adresse dans la base de données !</p>
+          ) : (
+            <AddressTable addresses={addresses} />
+          )}
         </div>
       </>
     </Admin>
