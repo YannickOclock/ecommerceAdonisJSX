@@ -1,0 +1,24 @@
+{
+  "shared": {
+    "fields": {
+      "id": "identifiant",
+      "ids": "identifiants",
+      "lastname": "nom de famille",
+      "firstname": "prénom",
+      "phoneNumber": "numéro de téléphone",
+      "addressLine1": "adresse principale",
+      "addressLine2": "adresse secondaire",
+      "postCode": "code postal",
+      "city": "ville",
+      "country": "pays"
+    },
+    "messages": {
+      "string": "Le champs {field} doit être une chaîne de caractères",
+      "required": "Le champs {field} est requis",
+      "minLength": "Le champs {field} doit contenir au moins {min} caractères",
+      "in": "Le champs {field} ne contient pas la bonne valeur",
+      "trim": "Le champs {field} doit être une chaîne de caractères",
+      "number": "Le champs {field} doit être un nombre"
+    }
+  }
+}

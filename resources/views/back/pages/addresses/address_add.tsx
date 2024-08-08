@@ -29,11 +29,11 @@ export function AddressAdd() {
           <form method={'post'}>
             <FormGroup>
               <Label id={'lastname'} label="Nom" />
-              <Input name="lastname" id={'lastname'} required />
+              <Input name="lastname" id={'lastname'} />
             </FormGroup>
             <FormGroup>
               <Label id={'firstname'} label="Prénom" />
-              <Input name="firstname" id={'firstname'} required />
+              <Input name="firstname" id={'firstname'} />
             </FormGroup>
             <FormGroup>
               <Label id={'phoneNumber'} label="Numéro de téléphone" />
@@ -41,7 +41,7 @@ export function AddressAdd() {
             </FormGroup>
             <FormGroup>
               <Label id={'addressLine1'} label="Ligne d'adresse principale" />
-              <Input name="addressLine1" id={'addressLine1'} required />
+              <Input name="addressLine1" id={'addressLine1'} />
             </FormGroup>
             <FormGroup>
               <Label id={'addressLine2'} label="Ligne d'adresse secondaire" />
@@ -49,11 +49,11 @@ export function AddressAdd() {
             </FormGroup>
             <FormGroup>
               <Label id={'postCode'} label="Code postal" />
-              <Input name="postCode" id={'postCode'} required />
+              <Input name="postCode" id={'postCode'} />
             </FormGroup>
             <FormGroup>
               <Label id={'city'} label="Ville" />
-              <Input name="city" id={'city'} required />
+              <Input name="city" id={'city'} />
             </FormGroup>
             <FormGroup>
               <Label id={'country'} label="Pays" />
@@ -62,7 +62,6 @@ export function AddressAdd() {
                 name={'country'}
                 placeholder={'Sélectionner un pays'}
                 options={countryList}
-                required
               />
             </FormGroup>
 

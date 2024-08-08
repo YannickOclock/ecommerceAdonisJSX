@@ -34,15 +34,15 @@ export function AddressEdit(props: AddressEditProps) {
           <form method={'post'}>
             <FormGroup>
               <Label id={'id'} label="Id de l'adresse" />
-              <Input name="id" id={'id'} defaultValue={address.id} required disabled />
+              <Input name="id" id={'id'} defaultValue={address.id} disabled />
             </FormGroup>
             <FormGroup>
               <Label id={'lastname'} label="Nom" />
-              <Input name="lastname" id={'lastname'} defaultValue={address.lastname} required />
+              <Input name="lastname" id={'lastname'} defaultValue={address.lastname} />
             </FormGroup>
             <FormGroup>
               <Label id={'firstname'} label="Prénom" />
-              <Input name="firstname" id={'firstname'} defaultValue={address.firstname} required />
+              <Input name="firstname" id={'firstname'} defaultValue={address.firstname} />
             </FormGroup>
             <FormGroup>
               <Label id={'phoneNumber'} label="Numéro de téléphone" />
@@ -50,12 +50,7 @@ export function AddressEdit(props: AddressEditProps) {
             </FormGroup>
             <FormGroup>
               <Label id={'addressLine1'} label="Ligne d'adresse principale" />
-              <Input
-                name="addressLine1"
-                id={'addressLine1'}
-                defaultValue={address.addressLine1}
-                required
-              />
+              <Input name="addressLine1" id={'addressLine1'} defaultValue={address.addressLine1} />
             </FormGroup>
             <FormGroup>
               <Label id={'addressLine2'} label="Ligne d'adresse secondaire" />
@@ -63,11 +58,11 @@ export function AddressEdit(props: AddressEditProps) {
             </FormGroup>
             <FormGroup>
               <Label id={'postCode'} label="Code postal" />
-              <Input name="postCode" id={'postCode'} defaultValue={address.postCode} required />
+              <Input name="postCode" id={'postCode'} defaultValue={address.postCode} />
             </FormGroup>
             <FormGroup>
               <Label id={'city'} label="Ville" />
-              <Input name="city" id={'city'} defaultValue={address.city} required />
+              <Input name="city" id={'city'} defaultValue={address.city} />
             </FormGroup>
             <FormGroup>
               <Label id={'country'} label="Pays" />
@@ -77,7 +72,6 @@ export function AddressEdit(props: AddressEditProps) {
                 placeholder={'Sélectionner un pays'}
                 options={countryList}
                 defaultValue={address.country}
-                required
               />
             </FormGroup>
 
