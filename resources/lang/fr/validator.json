@@ -10,15 +10,31 @@
       "addressLine2": "adresse secondaire",
       "postCode": "code postal",
       "city": "ville",
-      "country": "pays"
+      "country": "pays",
+      "name": "nom",
+      "description": "description",
+      "published": "publié",
+      "order": "ordre d'affichage",
+      "image": "image",
+      "images": "images",
+      "parentId": "catégorie parente",
+      "categoryId": "catégorie",
+      "price": "prix",
+      "quantity": "quantité",
+      "email": "email",
+      "plainPassword": "mot de passe",
+      "role": "role",
+      "verified": "vérifié"
     },
     "messages": {
       "string": "Le champs {field} doit être une chaîne de caractères",
+      "number": "Le champs {field} doit être un nombre",
+      "boolean": "Le champs {field} doit être un booléen (vrai ou faux)",
       "required": "Le champs {field} est requis",
       "minLength": "Le champs {field} doit contenir au moins {min} caractères",
       "in": "Le champs {field} ne contient pas la bonne valeur",
       "trim": "Le champs {field} doit être une chaîne de caractères",
-      "number": "Le champs {field} doit être un nombre"
+      "unique": "Le champs {field} doit être unique (valeur déjà présente en base)"
     }
   }
 }
