@@ -17,12 +17,7 @@ export function Link(props: LinkProps) {
 
   return (
     <li class={clsx(classes, active ? '' : '')}>
-      <a
-        href={url}
-        class={clsx(active ? 'bg-primary text-primary-content' : '')}
-        up-follow
-        up-target="#main-container"
-      >
+      <a href={url} class={clsx(active ? 'bg-primary text-primary-content' : '')}>
         {iconElement}
         {title}
       </a>
