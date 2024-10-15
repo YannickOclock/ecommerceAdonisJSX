@@ -10,6 +10,8 @@ export default class extends BaseSchema {
       table.string('path').notNullable()
       table.uuid('product_id').notNullable()
 
+      table.integer('order').unsigned().defaultTo('0')
+
       table.foreign('product_id').references('products.id').onDelete('CASCADE')
 
       table.timestamp('created_at')

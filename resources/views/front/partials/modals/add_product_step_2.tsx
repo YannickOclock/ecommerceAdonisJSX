@@ -2,7 +2,7 @@ import { Cart } from '#app/front/cart_state'
 import { CartProductRepositoryResult } from '#app/front/product/repositories/cart_product_repository'
 import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
 import { Master } from '#viewsfront/layouts/master'
-import { route } from "#start/view";
+import { route } from '#start/view'
 
 interface AddProductStep2Props {
   totalQuantityProduct: number
@@ -28,24 +28,26 @@ export function AddProductStep2(props: AddProductStep2Props) {
               <div class="modal-body-container">
                 <div class="modal-cart-product">
                   <div class="picture">
-                    <img
-                      src={productImagesMinSrc(product.productImages[0].path)}
-                      alt={`Image principale du produit ${product.name}`}
-                    />
+                    {product.productImages[0] ? (
+                      <img
+                        src={productImagesMinSrc(product.productImages[0].path)}
+                        alt={`Image principale du produit ${product.name}`}
+                      />
+                    ) : (
+                      <img src={'https://fakeimg.pl/300x300?text=No+image'} alt="Pas d'image" />
+                    )}
                   </div>
                   <div class="info-product">
                     <h6>{product.name}</h6>
                     <p class="product-price">{convertPrice(product.price)}</p>
                     <p class="product-quantity">
-                      Quantité :{' '}
-                      <strong class="quantity">{totalQuantityProduct}</strong>
+                      Quantité : <strong class="quantity">{totalQuantityProduct}</strong>
                     </p>
                   </div>
                 </div>
                 <div class="modal-info-cart">
                   <p class="cart-products-count">
-                    Il y a <span class="quantity">{totalQuantityCart}</span> produit(s) dans
-                    panier.
+                    Il y a <span class="quantity">{totalQuantityCart}</span> produit(s) dans panier.
                   </p>
                   <div class="line-cart subtotal">
                     <p>

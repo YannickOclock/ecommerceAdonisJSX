@@ -19,16 +19,17 @@ export class CartService {
   // (il faut pouvoir l'initialiser s'il y a un panier existant dans la session CF getOrCreate)
   #cart: Cart
 
-  constructor(ctx: HttpContext) {
+  constructor() {
     this.#cart = {
       products: [],
     }
+    const ctx = HttpContext.getOrFail()
     this.#session = ctx.session
     this.#getOrCreate()
   }
 
   #getOrCreate() {
-    const cart = this.#session.get('cart')
+    const cart = this.#session?.get('cart')
     if (!cart) {
       this.#session.put('cart', this.#cart)
     } else {

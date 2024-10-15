@@ -5,6 +5,7 @@ import { Master } from '#viewsfront/layouts/master'
 import { Vite } from '#resources/helpers/asset'
 import { randomUUID } from 'node:crypto'
 import { convertPrice, productImagesMinSrc } from '#resources/helpers/utils'
+import ProductImage from '#core/models/product_image'
 import clsx from 'clsx'
 
 interface AddProductStep1Props {
@@ -17,12 +18,16 @@ export function AddProductStep1(props: AddProductStep1Props) {
   const random = randomUUID()
 
   // sélectionner la première image par défaut
-  let selectedThumbnail = product.productImages[0]
-  if (selectedProductImageId) {
-    const foundProductImage = product.productImages.find(
-      (productImage) => productImage.id === selectedProductImageId
-    )
-    if (foundProductImage) selectedThumbnail = foundProductImage
+  let selectedThumbnail: null | ProductImage = null
+
+  if (product.productImages.length > 0) {
+    selectedThumbnail = product.productImages[0]
+    if (selectedProductImageId) {
+      const foundProductImage = product.productImages.find(
+        (productImage) => productImage.id === selectedProductImageId
+      )
+      if (foundProductImage) selectedThumbnail = foundProductImage
+    }
   }
 
   return (
@@ -41,12 +46,28 @@ export function AddProductStep1(props: AddProductStep1Props) {
               <div class="modal-body-container">
                 <div class="modal-body-thumbnails">
                   <div class="picture">
-                    <img
-                      src={productImagesMinSrc(selectedThumbnail.path)}
-                      alt={`Image principale du produit ${product.name}`}
-                    />
+                    {selectedThumbnail ? (
+                      <img
+                        src={productImagesMinSrc(selectedThumbnail.path)}
+                        alt={`Image principale du produit ${product.name}`}
+                      />
+                    ) : (
+                      <img src={'https://fakeimg.pl/300x300?text=No+image'} alt="Pas d'image" />
+                    )}
                   </div>
                   <ul class="thumbnails-products">
+                    {product.productImages.length === 0 && (
+                      <li>
+                        <div class="picture">
+                          <a href="#">
+                            <img
+                              src={'https://fakeimg.pl/300x300?text=No+image'}
+                              alt="Pas d'image"
+                            />
+                          </a>
+                        </div>
+                      </li>
+                    )}
                     {product.productImages.map((image) => (
                       <li>
                         <div class="picture">

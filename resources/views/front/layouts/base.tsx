@@ -3,7 +3,7 @@ import { Vite } from '#resources/helpers/asset'
 import { Nav } from '#viewsfront/partials/nav'
 import { HttpContext } from '@adonisjs/core/http'
 import { Slider } from '#viewsfront/components/slider'
-import { FlashMessages } from "#viewsfront/partials/flash_messages";
+import { FlashMessages } from '#viewsfront/partials/flash_messages'
 
 interface BaseProps {
   title?: string

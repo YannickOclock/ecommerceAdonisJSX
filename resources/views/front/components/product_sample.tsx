@@ -14,7 +14,11 @@ export function ProductSample(props: ProductProps) {
   return (
     <div class="product" data-id={id}>
       <div class="thumbnail">
-        <img src={productImagesMinSrc(images[0])} alt={`Image principale du produit ${name}`} />
+        {images[0] ? (
+          <img src={productImagesMinSrc(images[0])} alt={`Image principale du produit ${name}`} />
+        ) : (
+          <img src={'https://fakeimg.pl/300x300?text=No+image'} alt="Pas d'image" />
+        )}
         <div class="hightlighted--info">
           <a
             href={route('front.step1', { id: id })}
