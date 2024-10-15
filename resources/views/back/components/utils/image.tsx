@@ -6,9 +6,10 @@ interface PublicImageInterface {
   src: string
   alt: string
   type?: string
+  classes?: string
 }
 export function PublicImage(props: PublicImageInterface) {
-  const { src, alt, type = 'product' } = props
+  const { src, alt, type = 'product', classes = 'h-12' } = props
   let pathSrc
   switch (type) {
     case 'category':
@@ -23,5 +24,5 @@ export function PublicImage(props: PublicImageInterface) {
     pathSrc = 'https://fakeimg.pl/300x300?text=No+image'
   }
 
-  return <img src={pathSrc} alt={`${alt}`} class={`h-12`} />
+  return <img src={pathSrc} alt={`${alt}`} class={classes} />
 }

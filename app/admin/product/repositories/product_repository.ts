@@ -36,7 +36,7 @@ export class ProductRepository {
   }
 
   async find(id: string): Promise<Product> {
-    return await Product.query()
+    return Product.query()
       .where('id', '=', id)
       .preload('productImages', (query) => {
         query.orderBy('created_at', 'asc')

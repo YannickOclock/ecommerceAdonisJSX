@@ -13,6 +13,7 @@ interface InputProps {
   defaultValue?: string
   placeholder?: string
   withErrors?: boolean
+  classes?: string
 }
 
 export function Input(props: InputProps) {
@@ -26,6 +27,7 @@ export function Input(props: InputProps) {
     multiple = false,
     defaultValue,
     placeholder,
+    classes,
   } = props
 
   let inputElement = (
@@ -46,7 +48,11 @@ export function Input(props: InputProps) {
       placeholder={placeholder}
     />
   )
-  inputElement = required ? <RequiredIndicator>{inputElement}</RequiredIndicator> : inputElement
+  inputElement = required ? (
+    <RequiredIndicator classes={classes}>{inputElement}</RequiredIndicator>
+  ) : (
+    inputElement
+  )
 
   return (
     <>

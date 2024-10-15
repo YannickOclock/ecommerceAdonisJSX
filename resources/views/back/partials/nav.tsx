@@ -17,6 +17,7 @@ export function Nav() {
     url: '#',
     active: request.matchesRoute([
       'admin.product.list',
+      'admin.product.show',
       'admin.product.add',
       'admin.product.edit',
       'admin.category.list',
@@ -27,7 +28,11 @@ export function Nav() {
   const productsLink = {
     title: 'Produits',
     url: route('admin.product.list'),
-    active: request.matchesRoute(['admin.product.list', 'admin.product.edit']),
+    active: request.matchesRoute([
+      'admin.product.list',
+      'admin.product.edit',
+      'admin.product.show',
+    ]),
     level: 2,
   }
   const productsAddLink = {

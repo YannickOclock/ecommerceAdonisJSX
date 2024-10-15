@@ -12,6 +12,9 @@ export default class ProductImage extends BaseModel {
   declare path: string
 
   @column()
+  declare order: number
+
+  @column()
   declare productId: string
 
   @belongsTo(() => Product)

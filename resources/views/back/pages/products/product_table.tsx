@@ -42,7 +42,10 @@ export function ProductTable(props: ProductTableProps) {
               <td>{convertPrice(product.price)}</td>
               <td>{product.stock}</td>
               <td>
-                <form method={'get'} action={route('admin.product.switch', { id: product.id })}>
+                <form
+                  method={'get'}
+                  action={route('admin.product.switch', { from: 'list', id: product.id })}
+                >
                   <div up-autosubmit>
                     <input
                       type="checkbox"
@@ -55,6 +58,14 @@ export function ProductTable(props: ProductTableProps) {
               </td>
               <td>{product.category?.name ?? 'aucune'}</td>
               <th>
+                <a
+                  href={route('admin.product.show', { id: product.id })}
+                  class="btn btn-xs btn-ghost"
+                  up-follow
+                  up-target="#main-content"
+                >
+                  <i class="material-icons">preview</i>
+                </a>
                 <a
                   href={route('admin.product.edit', { id: product.id })}
                   class="btn btn-xs btn-ghost"
