@@ -16,10 +16,12 @@ export class ProductImageRepository {
     await productImage.save()
   }
 
-  async updateOrder(productImageId: string, order: number): Promise<void> {
-    const productImage = await this.find(productImageId)
-    productImage.order = order
-    await productImage.save()
+  async updateProductImagesOrders(payload: { imageId: string; imageOrder: number }[]) {
+    for (const image of payload) {
+      const productImage = await this.find(image.imageId)
+      productImage.order = image.imageOrder
+      await productImage.save()
+    }
   }
 
   async find(productImageId: string): Promise<ProductImage> {

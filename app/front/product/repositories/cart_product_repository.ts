@@ -7,7 +7,7 @@ export class CartProductRepository {
   async findOneById(id: string) {
     return await Product.query()
       .preload('productImages', (query) => {
-        query.orderBy('created_at', 'asc')
+        query.orderBy('order', 'asc')
       })
       .where('id', id)
       .firstOrFail()

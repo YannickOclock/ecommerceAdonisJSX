@@ -16,8 +16,8 @@ export class CartProductRepository {
         query.where('published', true)
       })
       .preload('productImages', (query) => {
-        query.orderBy('created_at', 'asc')
+        query.orderBy('order', 'asc')
       })
-      .orderBy('name', 'asc');
+      .orderBy('name', 'asc')
   }
 }

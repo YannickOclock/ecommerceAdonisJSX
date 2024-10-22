@@ -24,15 +24,7 @@ export default function productsRoutes() {
       router.get('/edit/:id', [EditProductController, 'render']).as('edit')
       router.post('/edit/:id', [EditProductController, 'update']).as('update')
       router.get('/switch/:from/:id', [SwitchProductController, 'switch']).as('switch')
-      router
-        .post(':productId/images/:productImageId/update/order/:order', [
-          OrderProductImageController,
-          'handle',
-        ])
-        .as('image.order')
-        .where('order', {
-          match: /^[0-9]+$/,
-        })
+      router.post('/images/order', [OrderProductImageController, 'handle']).as('image.order')
       router
         .get('/:productId/images/delete/:id', [DeleteProductImageController, 'delete'])
         .as('image.delete')

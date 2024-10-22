@@ -29,7 +29,7 @@ export class ProductRepository {
     return Product.query()
       .orderBy('name', 'asc')
       .preload('productImages', (query) => {
-        query.orderBy('created_at', 'asc')
+        query.orderBy('order', 'asc')
       })
       .preload('category')
       .limit(5)
@@ -39,7 +39,7 @@ export class ProductRepository {
     return Product.query()
       .where('id', '=', id)
       .preload('productImages', (query) => {
-        query.orderBy('created_at', 'asc')
+        query.orderBy('order', 'asc')
       })
       .firstOrFail()
   }
@@ -48,7 +48,7 @@ export class ProductRepository {
     return Product.query()
       .whereIn('id', ids)
       .preload('productImages', (query) => {
-        query.orderBy('created_at', 'asc')
+        query.orderBy('order', 'asc')
       })
   }
 
@@ -86,7 +86,7 @@ export class ProductRepository {
   // Functions for switch category controller
 
   async findByCategory(categoryId: string): Promise<Product[]> {
-    return await Product.query().preload('category').where('categoryId', categoryId)
+    return Product.query().preload('category').where('categoryId', categoryId)
   }
 
   async switchFromCategory(categoryId: string, published: boolean): Promise<boolean> {

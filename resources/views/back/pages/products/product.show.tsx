@@ -8,6 +8,7 @@ import { route } from '#start/view'
 import { convertPrice } from '#resources/helpers/utils'
 import { Tab } from '#viewsback/components/tabs/tab'
 import { TabList } from '#viewsback/components/tabs/tab_list'
+import { csrfField } from '#resources/helpers/csrf_field'
 
 interface ProductShowProps {
   product: AdminProductEditQueryResult
@@ -21,6 +22,7 @@ export function ProductShow(props: ProductShowProps) {
 
   return (
     <Admin classes={'relative min-h-[calc(100dvh-6rem)]'}>
+      <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" />
       <div class="p-4 border-b border-b-primary">
         <div class="breadcrumbs text-sm">
           <ul>
@@ -82,30 +84,38 @@ export function ProductShow(props: ProductShowProps) {
         {/* TABS */}
         <TabList>
           <Tab label="Description" checked={true}>
-            <div class="border border-neutral p-4 h-52 flex gap-4">
-              <div class="w-1/6 border border-neutral flex items-center justify-center">
-                <i class="material-icons text-4xl">add_a_photo</i>
+            <div class="border border-neutral h-52 flex">
+              <div class="w-1/6 h-full p-4">
+                <div class="border border-neutral h-full w-full flex items-center justify-center">
+                  <i class="material-icons text-4xl">add_a_photo</i>
+                </div>
               </div>
-              {product.productImages.map((image, index) => {
-                console.log(image)
-                return (
-                  <div class="w-1/6 border border-neutral flex items-center justify-center relative">
-                    <PublicImage
-                      src={image.path}
-                      alt={`Image numéro ${index} du produit ${product.name}`}
-                      classes="h-36"
-                    />
-                    <div class="absolute flex gap-4 bottom-0 right-0">
-                      <button class="btn btn-primary btn-sm">
-                        <i class="material-icons">arrow_back</i>
-                      </button>
-                      <button class="btn btn-primary btn-sm">
-                        <i class="material-icons">arrow_forward</i>
-                      </button>
+              <div class="w-full h-full flex cards" id="sort1" data-sortable=".column">
+                {product.productImages.map((image, index) => {
+                  return (
+                    <div
+                      class="column w-1/6 h-full p-4"
+                      data-position={image.order - 1}
+                      data-id={image.id}
+                    >
+                      <div class="border border-neutral h-full flex items-center justify-center relative p-2">
+                        <PublicImage
+                          src={image.path}
+                          alt={`Image numéro ${index} du produit ${product.name}`}
+                          classes="h-36"
+                        />
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
+              <form
+                data-form="order-images"
+                method="post"
+                action={route('admin.product.image.order')}
+              >
+                {csrfField()}
+              </form>
             </div>
           </Tab>
           <Tab label="Détails">

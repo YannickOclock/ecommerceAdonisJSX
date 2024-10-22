@@ -14,7 +14,7 @@ export class HomeProductRepository {
         query.where('published', true)
       })
       .preload('productImages', (query) => {
-        query.orderBy('created_at', 'asc')
+        query.orderBy('order', 'asc')
       })
       .limit(10)
   }
