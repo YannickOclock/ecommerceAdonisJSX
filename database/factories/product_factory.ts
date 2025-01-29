@@ -1,16 +1,21 @@
+// database/factories/ProductFactory.ts
 import factory from '@adonisjs/lucid/factories'
 import Product from '#core/models/product'
-import { CategoryFactory } from '#database/factories/category_factory'
+import { ProductImageFactory } from './product_image_factory.ts'
+import { v4 as uuid } from 'uuid'
 
 export const ProductFactory = factory
-  .define(Product, async ({ faker }) => {
+  .define(Product, ({ faker }) => {
+    const name = faker.commerce.productName()
+
     return {
-      name: faker.commerce.productName(),
-      description: faker.lorem.sentence(),
-      price: faker.number.int({ min: 10, max: 1000 }),
-      stock: faker.number.int({ min: 1, max: 10 }),
+      name,
+      description: faker.commerce.productDescription(),
+      price: faker.number.float({ min: 10, max: 1000, precision: 0.01 }),
+      stock: faker.number.int({ min: 0, max: 100 }),
       published: true,
+      categoryId: uuid(),
     }
   })
-  .relation('category', () => CategoryFactory)
+  .relation('productImages', () => ProductImageFactory)
   .build()

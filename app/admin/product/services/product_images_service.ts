@@ -17,8 +17,7 @@ export class ProductImagesService {
     if (!images) return
 
     // eslint-disable-next-line"
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i]
+    for (const [i, image] of images.entries()) {
       const publicPath = app.makePath('public/images/products')
       const imageName = `${cuid()}`
       const imagePath = `${imageName}.${image.extname}`
