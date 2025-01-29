@@ -7,6 +7,22 @@ export function convertPrice(price: number): string {
   })
 }
 
+function isValidUrl(string: string): boolean {
+  // Vérifier si l'URL commence par http:// ou https://
+  const regex = /^(https?:\/\/)/
+  if (!regex.test(string)) {
+    return false
+  }
+
+  // Ensuite, on peut utiliser le constructeur URL pour vérifier la validité globale
+  try {
+    new URL(string)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 export function productImagesPath(): string {
   return app.makePath(`/images/products`)
 }
@@ -15,12 +31,12 @@ export function productImagesMinPath(): string {
 }
 export function productImagesSrc(image: string): string | undefined {
   if (image) {
-    return `${productImagesPath()}/${image}`
+    return isValidUrl(image) ? image : `${productImagesPath()}/${image}`
   }
 }
 export function productImagesMinSrc(image: string): string | undefined {
   if (image) {
-    return `${productImagesMinPath()}/${image}`
+    return isValidUrl(image) ? image : `${productImagesMinPath()}/${image}`
   }
 }
 
